@@ -2,6 +2,7 @@ use yew::prelude::*;
 
 enum Msg {
     AddOne,
+    Fuck,
 }
 
 struct Model {
@@ -16,10 +17,7 @@ impl Component for Model {
     type Properties = ();
 
     fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self {
-            link,
-            value: 0,
-        }
+        Self { link, value: 0 }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
@@ -28,6 +26,10 @@ impl Component for Model {
                 self.value += 1;
                 // the value has changed so we need to
                 // re-render for it to appear on the page
+                true
+            }
+            Msg::Fuck => {
+                self.value -= 1;
                 true
             }
         }
@@ -43,8 +45,9 @@ impl Component for Model {
     fn view(&self) -> Html {
         html! {
             <div>
-                <button onclick=self.link.callback(|_| Msg::AddOne)>{ "+1" }</button>
+                <button onclick=self.link.callback(|_| Msg::AddOne ) class="a">{ "+1" }</button>
                 <p>{ self.value }</p>
+                <button onclick=self.link.callback(|_| Msg::Fuck) class="a">{"fuck"}</button>
             </div>
         }
     }
