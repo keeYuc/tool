@@ -1,10 +1,11 @@
 use std::{
     borrow::BorrowMut,
     collections::HashMap,
-    sync::{mpsc, Arc, Mutex, RwLock},
+    sync::{Arc, Mutex},
 };
 
 use anyhow::Result;
+mod data;
 mod http;
 mod ssh;
 use http::{Rsb, SessionData};
@@ -19,13 +20,13 @@ extern crate rocket;
 lazy_static! {
     static ref SESSIONMAP: Arc<Mutex<HashMap<String, Session>>> =
         Arc::new(Mutex::new(HashMap::new()));
-    static ref MESSAGEMAP: Arc<Mutex<HashMap<String, message_chan>>> =
+    static ref MESSAGEMAP: Arc<Mutex<HashMap<String, data::message_chan>>> =
         Arc::new(Mutex::new(HashMap::new()));
 }
 ////---------------------------------------------------------------------------------------
-struct message_chan {
-    rcv: mpsc::Receiver<String>,
-    sed: mpsc::Sender<String>,
+fn write2chan(chan: String, data: String) -> Result<()> {
+    // TODO
+    Ok(())
 }
 ////---------------------------------------------------------------------------------------
 
@@ -34,14 +35,39 @@ pub async fn index() -> &'static str {
     "Hello, world!"
 }
 
-#[get("/do_command?<command>&<id>")]
-pub async fn command(command: &str, id: String) -> String {
+#[get("/read?<chan>")]
+pub async fn read(chan: String) -> Json<Rsb<String>> {
+    // TODO
+    return Json(Rsb::ok(String::new()));
+}
+
+#[get("/new-chan")]
+pub async fn new_chan() -> Json<Rsb<String>> {
+    let lock = Arc::clone(&MESSAGEMAP);
+    let map = lock.lock();
+    match map {
+        Ok(mut map) => {
+            let id = Uuid::new_v4().to_string();
+            map.insert(id.clone(), data::message_chan::new());
+            return Json(Rsb::ok(id));
+        }
+        Err(err) => {
+            return Json(Rsb::err(err.to_string()));
+        }
+    }
+}
+
+#[get("/do_command?<command>&<id>&<chan>")]
+pub async fn command(command: &str, id: String, chan: String) -> String {
     let map = SESSIONMAP.clone();
     if let Ok(mut map) = map.lock() {
         if let Some(s) = map.get_mut(&id) {
             match s.channel_session() {
                 Ok(ref mut c) => match do_command(c, command) {
-                    Ok(str) => return "ok".to_string(),
+                    Ok(str) => match write2chan(chan, str) {
+                        Ok(_) => return "ok".to_string(),
+                        Err(err) => return err.to_string(),
+                    },
                     Err(err) => return err.to_string(),
                 },
                 Err(err) => {
@@ -55,8 +81,8 @@ pub async fn command(command: &str, id: String) -> String {
     "lock err".to_string()
 }
 
-#[post("/init-session", data = "<user_info>")]
-pub async fn init_session(user_info: Json<SessionData<'_>>) -> Json<Rsb<String>> {
+#[post("/new-session", data = "<user_info>")]
+pub async fn new_session(user_info: Json<SessionData<'_>>) -> Json<Rsb<String>> {
     match connect_(
         user_info.username,
         user_info.addr,
@@ -83,5 +109,5 @@ pub async fn init_session(user_info: Json<SessionData<'_>>) -> Json<Rsb<String>>
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![index, init_session, command])
+    rocket::build().mount("/", routes![index, new_session, command, new_chan, read])
 }
