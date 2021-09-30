@@ -8,3 +8,9 @@ edition = "2018"
 [dependencies]
 ssh2="0.9.1"
 anyhow="1.0.44"
+serde="1.0.130"
+lazy_static="1.4.0"
+uuid = { version = "0.8.2", features = ["serde", "v4"] }
+[dependencies.rocket]
+version = "0.5.0-rc.1"
+features = ["json"]
