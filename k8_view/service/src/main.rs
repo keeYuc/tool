@@ -8,6 +8,7 @@ use std::{
 };
 mod data;
 mod http;
+use std::thread;
 mod ssh;
 use http::{Rsb, SessionData};
 use lazy_static::lazy_static;
@@ -25,15 +26,27 @@ lazy_static! {
         Arc::new(Mutex::new(HashMap::new()));
 }
 ////---------------------------------------------------------------------------------------
-pub fn write2chan(chan: String, data: String) {
+pub fn write2chan(mut channel: Channel, chan: String, data: String) {
     let chan = "const".to_string(); //* 为以后多通道多终端预留 位置 */
     let lock = Arc::clone(&MESSAGEMAP);
     let map = lock.lock();
     match map {
         Ok(mut map) => match map.get_mut(&chan) {
-            Some(chan) => {
-                chan.sed.send(data);
-            }
+            Some(chan) => loop {
+                let mut buf =[0u8;10];
+                match channel.read(&mut buf) {
+                    Ok(n) => {
+                        println!("[{}]",n);
+                        if n == 0 {
+                            break;
+                        }
+                    }
+                    Err(_) => break,
+                }
+                unsafe {
+                    chan.sed.send(String::from(&buf));
+                }
+            },
             _ => {
                 println!("write2chan no chan");
                 return;
@@ -104,17 +117,14 @@ fn init_chan() {
 }
 
 #[get("/do_command?<command>&<id>&<chan>")]
-pub async fn command(command: &str, id: String, chan: String) -> String {
+pub async fn command(command: String, id: String, chan: String) -> String {
     let map = SESSIONMAP.clone();
     if let Ok(mut map) = map.lock() {
         if let Some(s) = map.get_mut(&id) {
             match s.channel_session() {
                 //* 每条命令使用一条新的管道 */
-                Ok(ref mut c) => {
-                    c.exec(command);
-                    let mut buf = Vec::new();
-                    let a = c.read(&mut buf);
-                    println!("{:?}", a);
+                Ok(c) => {
+                    thread::spawn(move || write2chan(c, chan, command));
                     return "ok".to_string();
                 }
                 Err(err) => {
