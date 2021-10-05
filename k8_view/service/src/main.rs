@@ -1,17 +1,18 @@
+use anyhow::Result;
+use ssh2::Channel;
 use std::{
     borrow::BorrowMut,
     collections::HashMap,
+    io::Read,
     sync::{Arc, Mutex},
 };
-
-use anyhow::Result;
 mod data;
 mod http;
 mod ssh;
 use http::{Rsb, SessionData};
 use lazy_static::lazy_static;
 use rocket::serde::json::Json;
-use ssh::{connect_, do_command};
+use ssh::connect_;
 use ssh2::Session;
 use uuid::Uuid;
 #[macro_use]
@@ -24,16 +25,52 @@ lazy_static! {
         Arc::new(Mutex::new(HashMap::new()));
 }
 ////---------------------------------------------------------------------------------------
-fn write2chan(chan: String, data: String) -> Result<()> {
+pub fn write2chan(chan: String, data: String) {
     let chan = "const".to_string(); //* 为以后多通道多终端预留 位置 */
-    Ok(())
+    let lock = Arc::clone(&MESSAGEMAP);
+    let map = lock.lock();
+    match map {
+        Ok(mut map) => match map.get_mut(&chan) {
+            Some(chan) => {
+                chan.sed.send(data);
+            }
+            _ => {
+                println!("write2chan no chan");
+                return;
+            }
+        },
+        Err(err) => {
+            println!("write2chan err:{}", err);
+        }
+    }
 }
 ////---------------------------------------------------------------------------------------
 
 #[get("/read?<chan>")]
 pub async fn read(chan: String) -> Json<Rsb<String>> {
     let chan = "const".to_string(); //* 为以后多通道多终端预留 位置 */
-    return Json(Rsb::ok(String::new()));
+    let lock = Arc::clone(&MESSAGEMAP);
+    let map = lock.lock();
+    match map {
+        Ok(mut map) => match map.get_mut(&chan) {
+            Some(chan) => {
+                match chan.rcv.try_recv() {
+                    Ok(str) => {
+                        return Json(Rsb::ok(str));
+                    }
+                    Err(err) => {
+                        return Json(Rsb::err(err.to_string()));
+                    }
+                };
+            }
+            _ => {
+                return Json(Rsb::err("no chan".to_string()));
+            }
+        },
+        Err(err) => {
+            return Json(Rsb::err(err.to_string()));
+        }
+    }
 }
 
 #[get("/new-chan")]
@@ -51,6 +88,20 @@ pub async fn new_chan() -> Json<Rsb<String>> {
         }
     }
 }
+fn init_chan() {
+    let lock = Arc::clone(&MESSAGEMAP);
+    let map = lock.lock();
+    match map {
+        Ok(mut map) => {
+            let id = "const".to_string();
+            map.insert(id.clone(), data::message_chan::new());
+        }
+        Err(err) => {
+            println!("init err:{}", err);
+            panic!();
+        }
+    }
+}
 
 #[get("/do_command?<command>&<id>&<chan>")]
 pub async fn command(command: &str, id: String, chan: String) -> String {
@@ -59,13 +110,13 @@ pub async fn command(command: &str, id: String, chan: String) -> String {
         if let Some(s) = map.get_mut(&id) {
             match s.channel_session() {
                 //* 每条命令使用一条新的管道 */
-                Ok(ref mut c) => match do_command(c, command) {
-                    Ok(str) => match write2chan(chan, str) {
-                        Ok(_) => return "ok".to_string(),
-                        Err(err) => return err.to_string(),
-                    },
-                    Err(err) => return err.to_string(),
-                },
+                Ok(ref mut c) => {
+                    c.exec(command);
+                    let mut buf = Vec::new();
+                    let a = c.read(&mut buf);
+                    println!("{:?}", a);
+                    return "ok".to_string();
+                }
                 Err(err) => {
                     return err.to_string();
                 }
@@ -105,5 +156,6 @@ pub async fn new_session(user_info: Json<SessionData<'_>>) -> Json<Rsb<String>> 
 
 #[launch]
 fn rocket() -> _ {
+    init_chan();
     rocket::build().mount("/", routes![new_session, command, new_chan, read])
 }
