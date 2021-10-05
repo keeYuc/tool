@@ -25,19 +25,14 @@ lazy_static! {
 }
 ////---------------------------------------------------------------------------------------
 fn write2chan(chan: String, data: String) -> Result<()> {
-    // TODO
+    let chan = "const".to_string(); //* 为以后多通道多终端预留 位置 */
     Ok(())
 }
 ////---------------------------------------------------------------------------------------
 
-#[get("/index")]
-pub async fn index() -> &'static str {
-    "Hello, world!"
-}
-
 #[get("/read?<chan>")]
 pub async fn read(chan: String) -> Json<Rsb<String>> {
-    // TODO
+    let chan = "const".to_string(); //* 为以后多通道多终端预留 位置 */
     return Json(Rsb::ok(String::new()));
 }
 
@@ -63,6 +58,7 @@ pub async fn command(command: &str, id: String, chan: String) -> String {
     if let Ok(mut map) = map.lock() {
         if let Some(s) = map.get_mut(&id) {
             match s.channel_session() {
+                //* 每条命令使用一条新的管道 */
                 Ok(ref mut c) => match do_command(c, command) {
                     Ok(str) => match write2chan(chan, str) {
                         Ok(_) => return "ok".to_string(),
@@ -109,5 +105,5 @@ pub async fn new_session(user_info: Json<SessionData<'_>>) -> Json<Rsb<String>> 
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![index, new_session, command, new_chan, read])
+    rocket::build().mount("/", routes![new_session, command, new_chan, read])
 }
