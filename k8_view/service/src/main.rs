@@ -26,36 +26,36 @@ lazy_static! {
         Arc::new(Mutex::new(HashMap::new()));
 }
 ////---------------------------------------------------------------------------------------
-pub fn write2chan(mut channel: Channel, chan: String, data: String) {
+pub fn write2chan(mut channel: Channel, chan: String, command: String) {
     let chan = "const".to_string(); //* 为以后多通道多终端预留 位置 */
     let lock = Arc::clone(&MESSAGEMAP);
-    let map = lock.lock();
-    match map {
-        Ok(mut map) => match map.get_mut(&chan) {
-            Some(chan) => loop {
-                let mut buf =[0u8;10];
-                match channel.read(&mut buf) {
-                    Ok(n) => {
-                        println!("[{}]",n);
-                        if n == 0 {
-                            break;
+    channel.exec(&command);
+    loop {
+        let mut buf = [0u8; 1000];
+        match channel.read(&mut buf[..]) {
+            Ok(n) => {
+                println!("[{}]", n);
+                if n == 0 {
+                    break;
+                }
+                let mut result = String::new();
+                let a = String::from_utf8_lossy(&buf[..n]);
+                result.push_str(&a);
+                let map = lock.lock();
+                match map {
+                    Ok(ref map) => match map.get(&chan) {
+                        Some(chan) => {
+                            chan.sed.clone().send(result);
                         }
-                    }
-                    Err(_) => break,
+                        _ => break,
+                    },
+                    Err(err) => break,
                 }
-                unsafe {
-                    chan.sed.send(String::from(&buf));
-                }
-            },
-            _ => {
-                println!("write2chan no chan");
-                return;
             }
-        },
-        Err(err) => {
-            println!("write2chan err:{}", err);
+            Err(_) => break,
         }
     }
+    channel.close();
 }
 ////---------------------------------------------------------------------------------------
 
