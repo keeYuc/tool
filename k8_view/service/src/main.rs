@@ -67,14 +67,16 @@ pub async fn read(chan: String) -> Json<Rsb<String>> {
     match map {
         Ok(mut map) => match map.get_mut(&chan) {
             Some(chan) => {
-                match chan.rcv.try_recv() {
-                    Ok(str) => {
-                        return Json(Rsb::ok(str));
-                    }
-                    Err(err) => {
-                        return Json(Rsb::err(err.to_string()));
-                    }
-                };
+                let mut res = String::new();
+                loop {
+                    match chan.rcv.try_recv() {
+                        Ok(str) => {
+                            res += &str;
+                        }
+                        Err(_) => break,
+                    };
+                }
+                return Json(Rsb::ok(res));
             }
             _ => {
                 return Json(Rsb::err("no chan".to_string()));
