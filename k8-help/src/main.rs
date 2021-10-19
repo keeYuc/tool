@@ -1,6 +1,17 @@
 extern crate clap;
-
 use clap::{App, Arg};
+use std::io::{self, Read};
+use std::process::Command;
+
+fn do_command(n: String, c: String, g: String) {
+    let a = Command::new("sh")
+        .arg("-c").arg("ls\t-a")
+        //.arg("s")
+        .output()
+        .expect("failed to execute process")
+        .stdout;
+    println!("{:?}", String::from_utf8(a).unwrap())
+}
 
 fn main() {
     let matches = App::new("k8-quick")
@@ -32,16 +43,24 @@ fn main() {
                 .takes_value(true),
         )
         .get_matches();
+    let mut n = "gcp".to_string();
+    let mut c = "merchant".to_string();
+    let mut g = String::new();
+    if let Some(s) = matches.value_of("namespace") {
+        n = String::from(s)
+    }
+    if let Some(s) = matches.value_of("container") {
+        c = String::from(s)
+    }
+    if let Some(s) = matches.value_of("grep") {
+        g = String::from(s)
+    }
+    do_command(n, c, g);
+}
 
-    // You can check the value provided by positional arguments, or option arguments
-    if let Some(o) = matches.value_of("namespace") {
-        println!("Value for namespace: {}", o);
-    }
-
-    if let Some(c) = matches.value_of("container") {
-        println!("Value for container: {}", c);
-    }
-    if let Some(c) = matches.value_of("grep") {
-        println!("Value for grep: {}", c);
-    }
+fn read_in() -> io::Result<()> {
+    let mut buffer = String::new();
+    let stdin = io::stdin(); // We get `Stdin` here.
+    stdin.read_line(&mut buffer)?;
+    Ok(())
 }
