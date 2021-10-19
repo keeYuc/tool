@@ -6,11 +6,11 @@ pub struct Config {
     pub users: HashMap<String, User>,
     pub commands: Commands,
 }
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct User {
     pub username: String,
     pub ip: String,
-    pub port: i32,
+    pub port: String,
     pub path: String,
 }
 
@@ -31,7 +31,7 @@ impl Config {
         &mut self,
         username: String,
         ip: String,
-        port: i32,
+        port: String,
         path: String,
     ) -> Result<()> {
         self.users.insert(

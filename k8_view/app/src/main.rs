@@ -1,59 +1,131 @@
-use iced::{button, Align, Button, Column, Element, Sandbox, Settings, Text};
+use iced::{
+    button, text_input::State, Align, Button, Column, Element, Length, Sandbox, Settings, Text,
+    TextInput,
+};
 mod config;
 mod ssh;
+mod view;
 pub fn main() -> iced::Result {
-    //Counter::run(Settings::default())
-    Ok(())
+    App::run(Settings::default())
 }
 
 #[derive(Default)]
-struct Counter {
-    value: i32,
-    increment_button: button::State,
-    decrement_button: button::State,
+struct App {
+    user: view::UserInput,
+    tool: view::Tool,
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 enum Message {
-    IncrementPressed,
-    DecrementPressed,
+    UsernameInput(String),
+    PathInput(String),
+    IpInput(String),
+    PortInput(String),
+    UserSubmit,
+    UserNew,
+    UserShow,
 }
 
-impl Sandbox for Counter {
+impl Sandbox for App {
     type Message = Message;
 
     fn new() -> Self {
-        Self::default()
+        let mut t = App::default();
+        t.user.close = true;
+        t
     }
 
     fn title(&self) -> String {
-        String::from("Counter - Iced")
+        String::from("App - Iced")
     }
 
     fn update(&mut self, message: Message) {
         match message {
-            Message::IncrementPressed => {
-                self.value += 1;
+            Message::UsernameInput(str) => self.user.username.value = str,
+            Message::PathInput(str) => self.user.path.value = str,
+            Message::PortInput(str) => self.user.port.value = str,
+            Message::IpInput(str) => self.user.ip.value = str,
+            Message::UserSubmit => {
+                self.tool.close = false;
+                self.user = view::UserInput::default();
+                self.user.close = true;
             }
-            Message::DecrementPressed => {
-                self.value -= 1;
+            Message::UserNew => {
+                self.user.close = false;
+                self.tool.close = true
+            }
+            Message::UserShow=>{
+                
             }
         }
     }
 
     fn view(&mut self) -> Element<Message> {
-        Column::new()
-            .padding(20)
-            .align_items(Align::Center)
-            .push(
-                Button::new(&mut self.increment_button, Text::new("Increment"))
-                    .on_press(Message::IncrementPressed),
-            )
-            .push(Text::new(self.value.to_string()).size(50))
-            .push(
-                Button::new(&mut self.decrement_button, Text::new("Decrement"))
-                    .on_press(Message::DecrementPressed),
-            )
-            .into()
+        let mut app = Column::new().padding(20).align_items(Align::Center);
+        if !self.user.close {
+            app = app
+                .push(
+                    TextInput::new(
+                        &mut self.user.username.state,
+                        "username",
+                        &self.user.username.value,
+                        Message::UsernameInput,
+                    )
+                    .padding(10)
+                    .width(Length::Units(200)),
+                )
+                .push(
+                    TextInput::new(
+                        &mut self.user.path.state,
+                        "path",
+                        &self.user.path.value,
+                        Message::PathInput,
+                    )
+                    .padding(10)
+                    .width(Length::Units(200)),
+                )
+                .push(
+                    TextInput::new(
+                        &mut self.user.ip.state,
+                        "ip",
+                        &self.user.ip.value,
+                        Message::IpInput,
+                    )
+                    .padding(10)
+                    .width(Length::Units(200)),
+                )
+                .push(
+                    TextInput::new(
+                        &mut self.user.port.state,
+                        "port",
+                        &self.user.port.value,
+                        Message::PortInput,
+                    )
+                    .padding(10)
+                    .width(Length::Units(200)),
+                )
+                .push(
+                    button::Button::new(&mut self.user.button_state, Text::new("Add"))
+                        .on_press(Message::UserSubmit)
+                        .padding(10)
+                        .width(Length::Units(220)),
+                )
+        }
+        if !self.tool.close {
+            app = app
+                .push(
+                    button::Button::new(&mut self.tool.new_user_state, Text::new("NewUser"))
+                        .on_press(Message::UserNew)
+                        .padding(10)
+                        .width(Length::Units(220)),
+                )
+                .push(
+                    button::Button::new(&mut self.tool.show_user_state, Text::new("ShowUser"))
+                        .on_press(Message::UserShow)
+                        .padding(10)
+                        .width(Length::Units(220)),
+                )
+        }
+        app.into()
     }
 }

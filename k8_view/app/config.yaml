@@ -3,7 +3,7 @@ users:
   tx.cloud:
     username: keeyu
     ip: www.keeyuc.com
-    port: 22
+    port: "22"
     path: /Users/keeyu/ssh/new.pem
 commands:
   on_init: ls
