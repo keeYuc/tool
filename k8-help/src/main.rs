@@ -2,14 +2,13 @@ extern crate clap;
 use clap::{App, Arg};
 use std::io::{self, Read};
 use std::process::Command;
+use std::str;
 
 fn do_command(n: String, c: String, g: String) {
     let mut pod_command = format!("kubectl get pod -n {}", n);
     if g != String::new() {
         pod_command = format!("{}{}{}", pod_command, "|grep ", g)
     }
-    println!("{}", pod_command);
-    return;
     let a = Command::new("bash")
         .arg("-c")
         .arg(pod_command)
@@ -17,7 +16,9 @@ fn do_command(n: String, c: String, g: String) {
         .output()
         .expect("failed to execute process")
         .stdout;
-    println!("{:?}", String::from_utf8(a).unwrap())
+    let a: Vec<&str> = str::from_utf8(&a).unwrap().split('\n').collect();
+    //let a=String::from_utf8(a).unwrap().split('\n').collect();
+    println!("{:?}", a)
 }
 
 fn main() {
