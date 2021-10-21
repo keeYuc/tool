@@ -4,8 +4,15 @@ use std::io::{self, Read};
 use std::process::Command;
 
 fn do_command(n: String, c: String, g: String) {
-    let a = Command::new("sh")
-        .arg("-c").arg("ls\t-a")
+    let mut pod_command = format!("kubectl get pod -n {}", n);
+    if g != String::new() {
+        pod_command = format!("{}{}{}", pod_command, "|grep ", g)
+    }
+    println!("{}", pod_command);
+    return;
+    let a = Command::new("bash")
+        .arg("-c")
+        .arg(pod_command)
         //.arg("s")
         .output()
         .expect("failed to execute process")
