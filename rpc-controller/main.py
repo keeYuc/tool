@@ -1,6 +1,7 @@
 #!/Users/keeyu/homebrew/bin/python3
 
 import os
+import re
 
 
 class controller:
@@ -18,12 +19,19 @@ class controller:
 
     def __read(self, path):
         with open(path, 'r') as f:
-            return f.read()
+            return f.readlines()
+
+    def __match(self, lines):
+        for i in lines:
+            res = re.search('Invoke', i)
+            if res != None:
+                print(res)
 
     def test(self):
         print(self.files)
-        print(self.__read(self.files[0]))
+        print(self.files[1])
+        self.__match(self.__read(self.files[1]))
 
 
-a = controller(['balance'])
+a = controller(['merchant'])
 a.test()
