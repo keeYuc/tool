@@ -25,7 +25,7 @@ class controller:
         for i in lines:
             res = re.search('Invoke', i)
             if res != None:
-                print(res)
+                print(i)
 
     def test(self):
         print(self.files)
