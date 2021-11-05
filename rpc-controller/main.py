@@ -21,6 +21,9 @@ class controller:
         with open(path, 'r') as f:
             return f.readlines()
 
+    def __code_build(self):
+        pass
+
     def __match(self, lines):
         for i in lines:
             res = re.search('Invoke', i)
