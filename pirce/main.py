@@ -105,6 +105,12 @@ class bk_updater():
             ws['G{}'.format(start)] = '=RANK(E{},E7:E399,0)'.format(start)
             # 月排名
             ws['H{}'.format(start)] = '=RANK(F{},F7:F399,0)'.format(start)
+
+            ws['J{}'.format(start)] = '{}'.format(
+                self.f_map[k]['y_open_item']['tdate'])
+            ws['K{}'.format(start)] = '{}'.format(
+                self.f_map[k]['m_item']['tdate'])
+
             start += 1
         os.remove(path)
         wb.save(path)
