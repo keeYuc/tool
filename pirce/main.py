@@ -5,6 +5,8 @@ import requests
 import openpyxl
 import os
 import datetime
+import time
+import copy
 
 
 def count_time(func):
@@ -87,6 +89,8 @@ class bk_updater():
         path = '操作记录.xlsx'
         wb = openpyxl.load_workbook(path)
         ws = wb['板块强度']
+        wb['{}'.format(time.strftime(
+            "%Y-%m-%d %H:%M:%S", time.localtime()))] = copy.deepcopy(ws)
         start = 7
         for k in self.f_map:
             ws['A{}'.format(start)] = k
