@@ -4,7 +4,7 @@ use std::io::{self, Read};
 use std::process::Command;
 use std::str;
 
-fn do_command(n: String, c: String, g: String) {
+fn do_command(n: String, c: String) {
     let mut pod_command = format!("kubectl get pod -n {}", n);
     if g != String::new() {
         pod_command = format!("{}{}{}", pod_command, "|grep ", g)
@@ -42,33 +42,33 @@ fn main() {
                 .help("Sets a container for command")
                 .takes_value(true),
         )
-        .arg(
-            Arg::with_name("grep")
-                .short("g")
-                .long("grep")
-                .value_name("GREP")
-                .help("just grep")
-                .takes_value(true),
-        )
+        //.arg(
+        //    Arg::with_name("grep")
+        //        .short("g")
+        //        .long("grep")
+        //        .value_name("GREP")
+        //        .help("just grep")
+        //        .takes_value(true),
+        //)
         .get_matches();
     let mut n = "gcp".to_string();
     let mut c = "merchant".to_string();
-    let mut g = String::new();
+    //let mut g = String::new();
     if let Some(s) = matches.value_of("namespace") {
         n = String::from(s)
     }
     if let Some(s) = matches.value_of("container") {
         c = String::from(s)
     }
-    if let Some(s) = matches.value_of("grep") {
-        g = String::from(s)
-    }
-    do_command(n, c, g);
+    //if let Some(s) = matches.value_of("grep") {
+    //    g = String::from(s)
+    //}
+    do_command(n, c);
 }
 
-fn read_in() -> io::Result<()> {
-    let mut buffer = String::new();
-    let stdin = io::stdin(); // We get `Stdin` here.
-    stdin.read_line(&mut buffer)?;
-    Ok(())
-}
+//fn read_in() -> io::Result<()> {
+//    let mut buffer = String::new();
+//    let stdin = io::stdin(); // We get `Stdin` here.
+//    stdin.read_line(&mut buffer)?;
+//    Ok(())
+//}
