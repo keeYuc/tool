@@ -35,10 +35,30 @@ class Refiner():
         self.table_shop_tag = myclient[database]["shop_tag"]
         self.table_shop_district = myclient[database]["shop_district"]
         self.table_refine_comment = myclient[database]["refine_comment"]
+        self.table_avatar = myclient[database]["avatar"]
+        self.table_name = myclient[database]["name"]
+        # self.init_database()
         self.load_statement()
         self.load_commnet_avatar_shop_tag_district()
         self.load_image()
         self.statement_rebuild()
+
+    def init_database(self):
+        avatar_list = []
+        name_list = []
+        for i in self.table_comment.find(
+                {}, {"country": True, "user_name": True, "user_avatar": True}):
+            avatar_list.append({"avatar": i['user_avatar']})
+            name_list.append({'name': i['user_name'], 'country': i['country']})
+            if len(name_list) >= 1000:
+                self.table_avatar.insert_many(avatar_list)
+                self.table_name.insert_many(name_list)
+                avatar_list = []
+                name_list = []
+        if len(name_list) > 0:
+            self.table_avatar.insert_many(avatar_list)
+            self.table_name.insert_many(name_list)
+        print('init_database fin')
 
     def load_statement(self):
         self.statement_model = [

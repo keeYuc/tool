@@ -35,14 +35,38 @@ class Refiner():
         self.table_shop_tag = myclient[database]["shop_tag"]
         self.table_shop_district = myclient[database]["shop_district"]
         self.table_refine_comment = myclient[database]["refine_comment"]
+        self.table_avatar = myclient[database]["avatar"]
+        self.table_name = myclient[database]["name"]
+        # self.init_database()
         self.load_statement()
-        self.load_commnet_avatar_shop_tag_district()
         self.load_image()
+        self.load_commnet_shop_tag_district()
         self.statement_rebuild()
 
+    def init_database(self):
+        avatar_list = []
+        name_list = []
+        for i in self.table_comment.find(
+                {}, {"country": True, "user_name": True, "user_avatar": True}):
+            avatar_list.append({"avatar": i['user_avatar']})
+            name_list.append({'name': i['user_name'], 'country': i['country']})
+            if len(name_list) >= 1000:
+                self.table_avatar.insert_many(avatar_list)
+                self.table_name.insert_many(name_list)
+                avatar_list = []
+                name_list = []
+        if len(name_list) > 0:
+            self.table_avatar.insert_many(avatar_list)
+            self.table_name.insert_many(name_list)
+        print('init_database fin')
+
     def load_statement(self):
-        self.statement_model = [
-            '(store_name),,,,,(business_hours).....(tag)......(location).......(shopping_district).......(per_customer_transaction)']
+        self.statement_model = {
+            LOW: ['(store_name),,,,,(business_hours).....(tag)......(location).......(shopping_district).......(per_customer_transaction)'],
+            NORMAL: ['(store_name), , '],
+            HIGH: ['..(tag)..']
+        }
+
         self.statement_key = {
             KEY_STORE_NAME: self.__handler_store_name, KEY_B_HOUR: self.__handler_b_hour, KEY_TAG: self.__handler_tag, KEY_LOCATION: self.__handler_location, KEY_DISTRICT: self.__handler_district, KEY_PCT: self.__handler_pct}
 
@@ -79,28 +103,18 @@ class Refiner():
             self.district[district_id] = self.table_shop_district.find_one({
                 'district_id': district_id})
 
-    def load_commnet_avatar_shop_tag_district(self):
+    def load_commnet_shop_tag_district(self):
         comments_low = {}
         comments_normal = {}
         comments_high = {}
-        self.names = []
-        self.avatar = []
         self.comment = {}
         self.shop = {}
         self.tag = {}
         self.district = {}
-        self.statement_shop = {}
-        for i in self.table_comment.find().limit(1000):
-            for name in i['user_name'].strip().split(' '):
-                if len(name) < 10 and len(name) > 3:
-                    self.names.append(name)
-            if i['score'] in ['1.0', '2.0']:
-                comments_low[i['id']] = i
-            if i['score'] in ['5.0']:
-                comments_high[i['id']] = i
-            if i['score'] in ['4.0', '3.0']:
-                comments_normal[i['id']] = i
-            self.avatar.append(i['user_avatar'])
+        self.shop_types = {}
+        for i in self.table_comment.find({'store_id': {'$in': ['2113e27d-6ee2-48c1-aac2-81cd4bce8099']}}):
+            self.__load_comment_content(
+                i, comments_low, comments_high, comments_normal)
             self.__load_shop(i['store_id'])
             try:
                 self.__load_tag(self.shop[i['store_id']]['tag']['show'])
@@ -113,72 +127,59 @@ class Refiner():
         self.comment[LOW] = comments_low
         self.comment[NORMAL] = comments_normal
         self.comment[HIGH] = comments_high
-        self.avatar_index = [i for i in range(len(self.avatar))]
-        random.shuffle(self.avatar_index)
         print('load comments finish \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
             len(comments_high), len(comments_normal), len(comments_low), len(self.shop)))
 
-    def rand_name_EN(self):
-        name = ''
-        for i in range(random.randint(4, 10)):
-            if random.randint(1, 10) % 3 == 0:
-                name += chr(random.randint(65, 90))
-            else:
-                name += chr(random.randint(97, 122))
-        return name
+    def __load_shop_types(self, shop_id, type_):
+        if shop_id not in self.shop_types.keys():
+            self.shop_types[shop_id] = []
+        self.shop_types[shop_id].append(type_)
+
+    def __load_comment_content(self, i: dict, comments_low: dict, comments_high: dict, comments_normal: dict):
+        if i['score'] in ['1.0', '2.0']:
+            if i['store_id'] not in comments_low.keys():
+                comments_low[i['store_id']] = []
+            comments_low[i['store_id']].extend(
+                [item for item in i['content'].split('.') if item != ''])
+            self.__image_insert(LOW, comments_low[i['store_id']])
+            self.__new_statement(
+                LOW, i['store_id'], comments_low[i['store_id']])
+            self.__load_shop_types(i['store_id'], LOW)
+        if i['score'] in ['5.0']:
+            if i['store_id'] not in comments_high.keys():
+                comments_high[i['store_id']] = []
+            comments_high[i['store_id']].extend(
+                [item for item in i['content'].split('.') if item != ''])
+            self.__image_insert(HIGH, comments_high[i['store_id']])
+            self.__new_statement(
+                HIGH, i['store_id'], comments_high[i['store_id']])
+            self.__load_shop_types(i['store_id'], HIGH)
+        if i['score'] in ['4.0', '3.0']:
+            if i['store_id'] not in comments_normal.keys():
+                comments_normal[i['store_id']] = []
+            comments_normal[i['store_id']].extend(
+                [item for item in i['content'].split('.') if item != ''])
+            self.__image_insert(NORMAL, comments_normal[i['store_id']])
+            self.__new_statement(
+                NORMAL, i['store_id'], comments_normal[i['store_id']])
+            self.__load_shop_types(i['store_id'], NORMAL)
 
     def statement_rebuild(self):
-        index = 0
-        model = "same-shop"  # same-shop  statement
-        for i in self.comment:
-            for j in self.comment[i]:
-                tmp = [i for i in self.comment[i][j]
-                       ['content'].split('.') if i != '']
-                self.__image_insert(i, tmp)
-                self.comment[i][j]['user_avatar'] = self.avatar_random(
-                    index)
-                # self.__new_statement(
-                # self.comment[i][j]['store_id'], tmp)  # 语句模板
-                if model == "full-random":
-                    random.shuffle(tmp)
-                    tmp = self.__random_statement(tmp)
-                    self.comment[i][j]['content'] = self.__build(tmp)
-                elif model == "same-shop":
-                    self.__load_shop_statement(
-                        self.comment[i][j]['store_id'], i, tmp)
-                elif model == "statement":
-                    pass
-                index += 1
-        if model == "same-shop":
-            for i in self.comment:
-                for j in self.comment[i]:
-                    self.comment[i][j]['content'] = self.__build(self.__rand_shop_statement(
-                        self.comment[i][j]['store_id'], i))
-                    self.table_refine_comment.insert_one(
-                        self.comment[i][j])
+        for shop_id in self.shop:
+            for _ in range(self.choice_one(range(40, 50))):  # 生成几条评论
+                type_ = self.choice_one(self.shop_types[shop_id])
+                string = self.__build(self.__rand_shop_statement(
+                    shop_id, type_))
+                print('\n--------{}---------'.format(type_)+string)
+            return
 
     def __rand_shop_statement(self, shop_id, type):
         has = []
-        for _ in range(self.luck_num({2: 0.1, 3: 0.2, 4: 0.25, 5: 0.25, 6: 0.1, 7: 0.1})):
-            item = self.choice_one(self.statement_shop[shop_id][type])
+        for _ in range(self.luck_num({1: 0.1, 2: 0.3, 3: 0.3, 4: 0.2, 5: 0.1})):
+            item = self.choice_one(self.comment[type][shop_id])
             has.append(item)
+        random.shuffle(has)
         return list(set(has))
-
-    def __load_shop_statement(self, shop_id, type, list: list):
-        if shop_id not in self.statement_shop.keys():
-            self.statement_shop[shop_id] = {type: list}
-        elif type not in self.statement_shop[shop_id].keys():
-            self.statement_shop[shop_id][type] = list
-        else:
-            self.statement_shop[shop_id][type].extend(list)
-
-    def __random_statement(self, list: list):
-        # todo 改变乱序算法
-        hand = list[0: 1]
-        back = list[1:]
-        random.shuffle(back)
-        hand.extend(back)
-        return hand
 
     def __build(self, list: list):
         string = ''
@@ -195,19 +196,16 @@ class Refiner():
 
     def __image_insert(self, type_, list: list):
         images = self.image[type_]
-        if self.is_luck(0.8):  # 表情插入概率
-            size = random.randint(0, int(max(min(len(list)/2, 2), 1)))
+        if self.is_luck(0.5):  # 表情插入概率
+            size = random.randint(0, int(max(min(len(list)/2, 5), 1)))
             for _ in range(size):
                 list.append(self.choice_one(images) *
-                            self.luck_num({1: 0.75, 2: 0.15, 3: 0.1}))
-                random.shuffle(list)
+                            self.luck_num({1: 0.8, 2: 0.2}))
 
-    def avatar_random(self, index):
-        return self.avatar[self.avatar_index[index]]
-
-    def __new_statement(self, shop_id, list: list):
-        if self.is_luck(0.6):
-            model = self.choice_one(self.statement_model)
+    def __new_statement(self, type_, shop_id, list: list):
+        return
+        if self.is_luck(0.0):
+            model = self.choice_one(self.statement_model[type_])
             for key in self.statement_key:
                 if model.find(key) != -1:
                     model = self.statement_key[key](shop_id, model)
