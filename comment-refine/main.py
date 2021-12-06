@@ -1,17 +1,22 @@
 import pymongo
 import random
 import datetime
+import pandas as pd
+import view
+import config
 uri = "mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019"
 database = "content"
 HIGH = 'high'
 NORMAL = 'normal'
 LOW = 'low'
-KEY_STORE_NAME = '(store_name)'
-KEY_B_HOUR = '(business_hours)'
-KEY_TAG = '(tag)'
-KEY_LOCATION = '(location)'
-KEY_DISTRICT = '(shopping_district)'
-KEY_PCT = '(per_customer_transaction)'
+KEY_STORE_NAME = '{store_name}'
+KEY_B_HOUR = '{business_hours}'
+KEY_TAG = '{tag}'
+KEY_LOCATION = '{location}'
+KEY_DISTRICT = '{shopping_district}'
+KEY_PCT = '{per_customer_transaction}'
+KEY_STREET = '{street}'
+TR = 'TR'
 
 
 def count_time(prefix):
@@ -37,9 +42,9 @@ class Refiner():
         self.table_refine_comment = myclient[database]["refine_comment"]
         self.table_avatar = myclient[database]["avatar"]
         self.table_name = myclient[database]["name"]
-        # self.init_database()
         self.load_statement()
         self.load_image()
+        self.load_word()
         self.load_commnet_shop_tag_district()
         self.statement_rebuild()
 
@@ -60,18 +65,9 @@ class Refiner():
             self.table_name.insert_many(name_list)
         print('init_database fin')
 
-    def load_statement(self):
-        self.statement_model = {
-            LOW: ['(store_name),,,,,(business_hours).....(tag)......(location).......(shopping_district).......(per_customer_transaction)'],
-            NORMAL: ['(store_name), , '],
-            HIGH: ['..(tag)..']
-        }
-
-        self.statement_key = {
-            KEY_STORE_NAME: self.__handler_store_name, KEY_B_HOUR: self.__handler_b_hour, KEY_TAG: self.__handler_tag, KEY_LOCATION: self.__handler_location, KEY_DISTRICT: self.__handler_district, KEY_PCT: self.__handler_pct}
-
     def choice_one(self, list: list):
-        return list[random.randint(0, len(list)-1)]
+        return list[[random.randint(0, len(list)-1), random.randint(0,
+                                                                    len(list)-1), random.randint(0, len(list)-1)][random.randint(0, 2)]]
 
     def is_luck(self, rate):
         new = [i <= rate*100 for i in range(100)]
@@ -93,6 +89,9 @@ class Refiner():
     def __load_shop(self, shop_id):
         if shop_id not in self.shop.keys():
             self.shop[shop_id] = self.table_shop.find_one({'shop_id': shop_id})
+            self.sum_comment[shop_id] = 1
+        else:
+            self.sum_comment[shop_id] += 1
 
     def __load_tag(self, tag_id):
         if tag_id not in self.tag.keys():
@@ -112,10 +111,11 @@ class Refiner():
         self.tag = {}
         self.district = {}
         self.shop_types = {}
-        for i in self.table_comment.find({'store_id': {'$in': ['2113e27d-6ee2-48c1-aac2-81cd4bce8099']}}):
+        self.sum_comment = {}
+        for i in self.table_comment.find({'language': TR}):
+            self.__load_shop(i['store_id'])
             self.__load_comment_content(
                 i, comments_low, comments_high, comments_normal)
-            self.__load_shop(i['store_id'])
             try:
                 self.__load_tag(self.shop[i['store_id']]['tag']['show'])
             except:
@@ -164,14 +164,57 @@ class Refiner():
                 NORMAL, i['store_id'], comments_normal[i['store_id']])
             self.__load_shop_types(i['store_id'], NORMAL)
 
+    @ count_time("statement_rebuild")
     def statement_rebuild(self):
+        tmp = []
         for shop_id in self.shop:
-            for _ in range(self.choice_one(range(40, 50))):  # 生成几条评论
+            max, min = self.get_max_min(shop_id)
+            # max, min = 20, 30 #手动指定或者按照数量生成
+            names, avatars = self.get_database_avatar_name(
+                self.shop[shop_id]['country'], max)
+            for i in range(self.choice_one(range(min, max))):  # 生成几条评论
                 type_ = self.choice_one(self.shop_types[shop_id])
                 string = self.__build(self.__rand_shop_statement(
                     shop_id, type_))
-                print('\n--------{}---------'.format(type_)+string)
-            return
+                string = self.word_replace(
+                    string, self.shop[shop_id]['country'])
+                print('--------{}-----{}--{}--\n\n'.format(type_,
+                      names[i], avatars[i])+string)
+                tmp.append('--------{}-----{}--{}--\n\n'.format(type_,
+                                                                names[i], avatars[i])+string)
+        pd.DataFrame(tmp).to_csv('tmp.csv')
+
+    def get_max_min(self, shop_id):
+        sum = self.sum_comment[shop_id]
+        return sum+3, max(sum-3, 0)
+
+    def word_replace(self, statement: str, country):
+        for k in self.word[country]:
+            statement = statement.replace(
+                k, self.choice_one(self.word[country][k]))
+        return statement
+
+    def get_star(self, type_):
+        star = "1.0"
+        if type_ == HIGH:
+            star = "5.0"
+        elif type_ == NORMAL:
+            star = self.choice_one(["3.0", "4.0"])
+        elif type_ == LOW:
+            star = self.choice_one(["2.0", "1.0"])
+        return star
+
+    def get_database_avatar_name(self, country, size):
+        curosr = self.table_avatar.aggregate([{'$sample': {'size': size}}])
+        avatars = []
+        names = []
+        for i in curosr:
+            avatars.append(i['avatar'])
+        curosr = self.table_name.aggregate(
+            [{'$sample': {'size': size}}, {'$match': {'country': country}}])
+        for i in curosr:
+            names.append(i['name'])
+        return names, avatars
 
     def __rand_shop_statement(self, shop_id, type):
         has = []
@@ -203,18 +246,22 @@ class Refiner():
                             self.luck_num({1: 0.8, 2: 0.2}))
 
     def __new_statement(self, type_, shop_id, list: list):
-        return
-        if self.is_luck(0.0):
-            model = self.choice_one(self.statement_model[type_])
-            for key in self.statement_key:
-                if model.find(key) != -1:
-                    model = self.statement_key[key](shop_id, model)
-            list.append(model)
+        if self.is_luck(1):
+            for _ in range(self.luck_num({1: 0.1, 2: 0.4, 3: 0.5})):
+                model = self.choice_one(
+                    self.statement_model[self.shop[shop_id]['country']][type_])
+                for key in self.statement_key:
+                    if model.find(key) != -1:
+                        model = self.statement_key[key](shop_id, model)
+                list.append(model)
 
     def __handler_store_name(self, shop_id: str, model: str):
         return model.replace(KEY_STORE_NAME, self.shop[shop_id]['name'])
 
     def __handler_b_hour(self, shop_id: str, model: str):
+        return model
+
+    def __handler_street(self, shop_id: str, model: str):
         return model
 
     def __handler_tag(self, shop_id: str, model: str):
@@ -250,110 +297,83 @@ class Refiner():
             pass
         return model.replace(KEY_PCT, str(cfo))
 
+    def load_statement(self):
+        self.statement_model = {TR: {
+            LOW: config.tr_statement_1,
+            NORMAL: config.tr_statement_2,
+            HIGH: config.tr_statement_3,
+        }}
+
+        self.statement_key = {
+            KEY_STORE_NAME: self.__handler_store_name, KEY_B_HOUR: self.__handler_b_hour, KEY_TAG: self.__handler_tag, KEY_LOCATION: self.__handler_location, KEY_DISTRICT: self.__handler_district, KEY_PCT: self.__handler_pct, KEY_STREET: self.__handler_street}
+
     def load_image(self):
         self.image = {}
-        self.image[HIGH] = ['😀',
-                            '😄',
-                            '😁',
-                            '😊',
-                            '😇',
-                            '🥰',
-                            '😍',
-                            '😋',
-                            '😚',
-                            '🤗',
-                            '💖',
-                            '💯',
-                            '👍',
-                            '🤤',
-                            '😺',
-                            '🤞',
-                            '😀👍',
-                            '🙍',
-                            '🙆',
-                            '🍔',
-                            '🍕',
-                            '🍴',
-                            '🥄',
-                            '🔪',
-                            '🌝',
-                            '⭐',
-                            '🎉',
-                            '🏆',
-                            '🥇',
-                            '🙋‍♀️🥄',
-                            '🙆🍴',
-                            '😀',
-                            '😄',
-                            '😁',
-                            '😊',
-                            '😇',
-                            '🥰',
-                            '😍',
-                            '😋',
-                            '😚',
-                            '🤗',
-                            '😋👍',
-                            '😁👍',
-                            '😋🙋‍♀️']
-        self.image[NORMAL] = ['🙂',
-                              '😛',
-                              '😏',
-                              '🤣',
-                              '🤪',
-                              '🤗',
-                              '🤤',
-                              '🤓',
-                              '🤡',
-                              '😺',
-                              '✌',
-                              '😀☝',
-                              '😀👏',
-                              '👩',
-                              '🙋‍♀️',
-                              '🐵',
-                              '🍔',
-                              '🍕',
-                              '🍴',
-                              '🥄',
-                              '🔪',
-                              '🌝',
-                              '⭐',
-                              '🎉',
-                              '🙋‍♀️🥄',
-                              '🤤😀',
-                              '🤗😛']
-        self.image[LOW] = ['🤔',
-                           '🤕',
-                           '🤮',
-                           '🙁',
-                           '😭',
-                           '😖',
-                           '😩',
-                           '😤',
-                           '💢',
-                           '👎',
-                           '😑',
-                           '😩',
-                           '💩',
-                           '💥',
-                           '🤚',
-                           '🤮😭',
-                           '🤕💥',
-                           '😤💢',
-                           '🤔',
-                           '🤕',
-                           '🤮',
-                           '🙁',
-                           '😭',
-                           '😖',
-                           '😩',
-                           '😤',
-                           '💢',
-                           '👎',
-                           '😑',
-                           '😩',
-                           '💩']
+        self.image[HIGH] = config.image_1
+        self.image[NORMAL] = config.image_2
+        self.image[LOW] = config.image_3
+
+    def load_word(self):
+        self.word = {TR: config.tr_word}
+
+    def statistical_word(self):
+        sum = 0
+        statistical_word = {}
+        statistical_word_2 = {}
+        statistical_com_word = {}
+        for i in self.table_comment.find(
+                {'country': {'$in': [TR]}}, {"content": True, "_id": False}):
+            sum += 1
+            wards = []
+            index = 0
+            for j in i['content'].split('.'):
+                if j != '':
+                    for l in j.split(','):
+                        if l != '':
+                            for h in l.split(' '):
+                                if h != '':
+                                    wards.append(h)
+            while index < len(wards):
+                if wards[index]not in statistical_word.keys():
+                    statistical_word[wards[index]] = 1
+                else:
+                    statistical_word[wards[index]] += 1
+                if index > 0:
+                    string_2 = '{} {}'.format(
+                        wards[index-1], wards[index])
+                    if string_2 not in statistical_word_2.keys():
+                        statistical_word_2[string_2] = 1
+                    else:
+                        statistical_word_2[string_2] += 1
+                if index > 0 and index < len(wards)-1:
+                    string = '{} {} {}'.format(
+                        wards[index-1], wards[index], wards[index+1])
+                    if string not in statistical_com_word.keys():
+                        statistical_com_word[string] = 1
+                    else:
+                        statistical_com_word[string] += 1
+                index += 1
+        statistical_word = sorted(
+            statistical_word.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
+        statistical_word_2 = sorted(
+            statistical_word_2.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
+        statistical_com_word = sorted(
+            statistical_com_word.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
+        pd.DataFrame(statistical_com_word).to_csv('statistical_com_word.csv')
+        pd.DataFrame(statistical_word).to_csv('statistical_word.csv')
+        pd.DataFrame(statistical_word_2).to_csv('statistical_word_2.csv')
+        # list = []
+        # list_ = []
+        # for k, v in statistical_word:
+        #    list.append((k, v))
+        #    if len(list) >= 2000:
+        #        break
+        # for k, v in statistical_com_word:
+        #    list_.append((k, v))
+        #    if len(list_) >= 2000:
+        #        break
+        # view.build(list, 'statistical_word')
+        # view.build(list_, 'statistical_com_word')
 
 
 if __name__ == "__main__":
