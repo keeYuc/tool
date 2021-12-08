@@ -2,10 +2,17 @@ import pymongo
 import random
 import datetime
 import pandas as pd
-import view
 import config
-uri = "mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019"
+import grpc
+
+from protocol.seo import seo_service_pb2_grpc
+from protocol.seo import data_pb2
+#uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
+#uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+rpc_url = 'seo:9007'
 database = "content"
+database_crawler = "crawler"
 HIGH = 'high'
 NORMAL = 'normal'
 LOW = 'low'
@@ -35,31 +42,45 @@ class Refiner():
     @ count_time("__init__")
     def __init__(self) -> None:
         myclient = pymongo.MongoClient(uri)
-        self.table_comment = myclient[database]["comment"]
+        #self.table_comment = myclient[database]["comment"]
         self.table_shop = myclient[database]["shop"]
         self.table_shop_tag = myclient[database]["shop_tag"]
         self.table_shop_district = myclient[database]["shop_district"]
         self.table_refine_comment = myclient[database]["refine_comment"]
         self.table_avatar = myclient[database]["avatar"]
         self.table_name = myclient[database]["name"]
+        self.table_middleware_review = myclient[database_crawler]["middleware_review_ta"]
+        self.table_shop_map = myclient[database]["crawler_shop_id_map"]
+        # self.init_database()
+        self.load_shop_id()
+        self.load_connect()
         self.load_statement()
         self.load_image()
         self.load_word()
         self.load_commnet_shop_tag_district()
         self.statement_rebuild()
 
+    def create_comments(self, list: list):
+        serve = seo_service_pb2_grpc.SeoServiceStub(self.connect)
+        serve.CreateComments(data_pb2.CommentsReq(items=list))
+
     def init_database(self):
         avatar_list = []
         name_list = []
-        for i in self.table_comment.find(
-                {}, {"country": True, "user_name": True, "user_avatar": True}):
-            avatar_list.append({"avatar": i['user_avatar']})
-            name_list.append({'name': i['user_name'], 'country': i['country']})
+        for i in self.table_middleware_review.find(
+                {}, {"language": True, "user_name": True, "user_avatar": True}):
+            try:
+                avatar_list.append({"avatar": i['user_avatar']})
+                name_list.append(
+                    {'name': i['user_name'], 'country': i['language']})
+            except:
+                pass
             if len(name_list) >= 1000:
                 self.table_avatar.insert_many(avatar_list)
                 self.table_name.insert_many(name_list)
                 avatar_list = []
                 name_list = []
+                print('yes')
         if len(name_list) > 0:
             self.table_avatar.insert_many(avatar_list)
             self.table_name.insert_many(name_list)
@@ -85,6 +106,18 @@ class Refiner():
             new.append(1)
         random.shuffle(new)
         return self.choice_one(new)
+
+    def load_shop_id(self):
+        self.shop_ids = []
+        self.shop_id_map = {}
+        for i in self.table_shop_map.find(
+                {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
+            self.shop_ids.append(i['crawler_shop_id'])
+            self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
+            print('has load', i['merchant_shop_id'])
+
+    def get_shop_id_by_crawler(self, crawler_shop_id):
+        return self.shop_id_map[crawler_shop_id]
 
     def __load_shop(self, shop_id):
         if shop_id not in self.shop.keys():
@@ -112,18 +145,21 @@ class Refiner():
         self.district = {}
         self.shop_types = {}
         self.sum_comment = {}
-        for i in self.table_comment.find({'language': TR}):
-            self.__load_shop(i['store_id'])
-            self.__load_comment_content(
-                i, comments_low, comments_high, comments_normal)
-            try:
-                self.__load_tag(self.shop[i['store_id']]['tag']['show'])
-            except:
-                pass
-            try:
-                self.__load_district(self.shop[i['store_id']]['district_id'])
-            except:
-                pass
+        for store_id in self.shop_ids:
+            for i in self.table_middleware_review.find({'language': TR, 'store_id': {'$eq': store_id}}):
+                shop_id = self.get_shop_id_by_crawler(i['store_id'])
+                self.__load_shop(shop_id)
+                self.__load_comment_content(
+                    i, shop_id, comments_low, comments_high, comments_normal)
+                try:
+                    self.__load_tag(self.shop[shop_id]['tag']['show'])
+                except:
+                    pass
+                try:
+                    self.__load_district(self.shop[shop_id]['district_id'])
+                except:
+                    pass
+            print('has load comment shop_id :', shop_id)
         self.comment[LOW] = comments_low
         self.comment[NORMAL] = comments_normal
         self.comment[HIGH] = comments_high
@@ -135,58 +171,69 @@ class Refiner():
             self.shop_types[shop_id] = []
         self.shop_types[shop_id].append(type_)
 
-    def __load_comment_content(self, i: dict, comments_low: dict, comments_high: dict, comments_normal: dict):
-        if i['score'] in ['1.0', '2.0']:
-            if i['store_id'] not in comments_low.keys():
-                comments_low[i['store_id']] = []
-            comments_low[i['store_id']].extend(
-                [item for item in i['content'].split('.') if item != ''])
-            self.__image_insert(LOW, comments_low[i['store_id']])
+    def __load_comment_content(self, i: dict, shop_id: str, comments_low: dict, comments_high: dict, comments_normal: dict):
+        if i['review_score'] in [1, 2]:
+            if shop_id not in comments_low.keys():
+                comments_low[shop_id] = []
+            comments_low[shop_id].extend(
+                [item for item in i['review'].split('.') if item != ''])
+            self.__image_insert(LOW, comments_low[shop_id])
             self.__new_statement(
-                LOW, i['store_id'], comments_low[i['store_id']])
-            self.__load_shop_types(i['store_id'], LOW)
-        if i['score'] in ['5.0']:
-            if i['store_id'] not in comments_high.keys():
-                comments_high[i['store_id']] = []
-            comments_high[i['store_id']].extend(
-                [item for item in i['content'].split('.') if item != ''])
-            self.__image_insert(HIGH, comments_high[i['store_id']])
+                LOW, shop_id, comments_low[shop_id])
+            self.__load_shop_types(shop_id, LOW)
+        if i['review_score'] in [5]:
+            if shop_id not in comments_high.keys():
+                comments_high[shop_id] = []
+            comments_high[shop_id].extend(
+                [item for item in i['review'].split('.') if item != ''])
+            self.__image_insert(HIGH, comments_high[shop_id])
             self.__new_statement(
-                HIGH, i['store_id'], comments_high[i['store_id']])
-            self.__load_shop_types(i['store_id'], HIGH)
-        if i['score'] in ['4.0', '3.0']:
-            if i['store_id'] not in comments_normal.keys():
-                comments_normal[i['store_id']] = []
-            comments_normal[i['store_id']].extend(
-                [item for item in i['content'].split('.') if item != ''])
-            self.__image_insert(NORMAL, comments_normal[i['store_id']])
+                HIGH, shop_id, comments_high[shop_id])
+            self.__load_shop_types(shop_id, HIGH)
+        if i['review_score'] in [4, 3]:
+            if shop_id not in comments_normal.keys():
+                comments_normal[shop_id] = []
+            comments_normal[shop_id].extend(
+                [item for item in i['review'].split('.') if item != ''])
+            self.__image_insert(NORMAL, comments_normal[shop_id])
             self.__new_statement(
-                NORMAL, i['store_id'], comments_normal[i['store_id']])
-            self.__load_shop_types(i['store_id'], NORMAL)
+                NORMAL, shop_id, comments_normal[shop_id])
+            self.__load_shop_types(shop_id, NORMAL)
 
     @ count_time("statement_rebuild")
     def statement_rebuild(self):
-        tmp = []
+        sum = 0
         for shop_id in self.shop:
+            tmp = []
             max, min = self.get_max_min(shop_id)
             # max, min = 20, 30 #手动指定或者按照数量生成
             names, avatars = self.get_database_avatar_name(
-                self.shop[shop_id]['country'], max)
+                self.shop[shop_id]['country'], max*2)
             for i in range(self.choice_one(range(min, max))):  # 生成几条评论
                 type_ = self.choice_one(self.shop_types[shop_id])
                 string = self.__build(self.__rand_shop_statement(
                     shop_id, type_))
                 string = self.word_replace(
                     string, self.shop[shop_id]['country'])
-                print('--------{}-----{}--{}--\n\n'.format(type_,
-                      names[i], avatars[i])+string)
-                tmp.append('--------{}-----{}--{}--\n\n'.format(type_,
-                                                                names[i], avatars[i])+string)
-        pd.DataFrame(tmp).to_csv('tmp.csv')
+                print('has cache : ', len(tmp))
+                try:
+                    name = names[i]
+                    avatar = avatars[i]
+                    country = self.shop[shop_id]['country']
+                    tmp.append(data_pb2.Comment(
+                        user_name=name, user_avatar=avatar, score=self.get_star(type_), content=string, store_id=shop_id, country=country, status='valid', type='normal'))
+                except:
+                    print(i)
+                    print(len(names))
+                    print(len(avatars))
+                    return
+            self.create_comments(tmp)
+            sum += len(tmp)
+            print('has commit : ', sum)
 
     def get_max_min(self, shop_id):
         sum = self.sum_comment[shop_id]
-        return sum+3, max(sum-3, 0)
+        return sum, max(int(sum*0.5), 0)
 
     def word_replace(self, statement: str, country):
         for k in self.word[country]:
@@ -195,13 +242,13 @@ class Refiner():
         return statement
 
     def get_star(self, type_):
-        star = "1.0"
+        star = "1"
         if type_ == HIGH:
-            star = "5.0"
+            star = "5"
         elif type_ == NORMAL:
-            star = self.choice_one(["3.0", "4.0"])
+            star = self.choice_one(["3", "4"])
         elif type_ == LOW:
-            star = self.choice_one(["2.0", "1.0"])
+            star = self.choice_one(["2", "1"])
         return star
 
     def get_database_avatar_name(self, country, size):
@@ -316,7 +363,10 @@ class Refiner():
     def load_word(self):
         self.word = {TR: config.tr_word}
 
-    def statistical_word(self):
+    def load_connect(self):
+        self.connect = grpc.insecure_channel(rpc_url)
+
+    def statistical_word_frequency(self):
         sum = 0
         statistical_word = {}
         statistical_word_2 = {}
@@ -374,6 +424,35 @@ class Refiner():
         #        break
         # view.build(list, 'statistical_word')
         # view.build(list_, 'statistical_com_word')
+
+    def statistical_word_shop(self):
+        map = {}
+        for i in self.table_comment.find({'language': TR}):
+            s = i['content']
+            shop_id = i['store_id']
+            for word in config.tr_word_statistical:
+                c = s.count(word)
+                if c > 0:
+                    if shop_id not in map.keys():
+                        map[shop_id] = {word: c}
+                    else:
+                        map[shop_id][word] = c
+        pd.DataFrame(map).to_csv('map.csv')
+
+    def statistical_shop(self):
+        list = []
+        for shop in self.table_shop.find({'country': TR}):
+            item = {}
+            if 'shop_id' in shop.keys():
+                item['shop_id'] = shop['shop_id']
+            if 'priority' in shop.keys():
+                item['priority'] = shop['priority']
+            if 'name' in shop.keys():
+                item['name'] = shop['name']
+            if 'stars' in shop.keys():
+                item['stars'] = shop['stars']
+            list.append(item)
+        pd.DataFrame(list).to_csv('shop.csv')
 
 
 if __name__ == "__main__":
