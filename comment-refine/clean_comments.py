@@ -10,6 +10,6 @@ for shop in table_shop.find({}, {'shop_id': True, '_id': False}):
     count = table_commnet.count_documents(
         {'store_id': shop['shop_id'], 'status': 'valid'})
     table_shop.update_one({'shop_id': shop['shop_id']}, {
-                          '$set': {'comments': count}})
+                          '$set': {'comment_sum': count}})
     sum_ += 1
     print(sum_)

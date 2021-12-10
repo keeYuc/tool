@@ -1,0 +1,3 @@
+[submodule "comment-refine/protobuf"]
+	path = comment-refine/protobuf
+	url = https://git.mobvoyage.net/library/backend/protobuf.git
