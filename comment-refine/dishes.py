@@ -40,7 +40,7 @@ class dishes():
 
     def dishes_build(self):
         for shop_id in dishes_config.shop_ids:
-            
+            pass
 
     def dishes_import(self):
         pass
