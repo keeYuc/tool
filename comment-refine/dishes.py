@@ -1,5 +1,6 @@
 import os
 import grpc
+import dishes_config
 from protocol.file_center import file_center_service_pb2_grpc
 from protocol.file_center import image_pb2
 
@@ -38,9 +39,13 @@ class dishes():
         print('dishes import fin')
 
     def dishes_build(self):
-        pass
+        for shop_id in dishes_config.shop_ids:
+            
 
     def dishes_import(self):
+        pass
+
+    def insert_dishes_shop(self, shop_id, dishes):
         pass
 
 
