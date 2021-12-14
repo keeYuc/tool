@@ -2,8 +2,8 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import protocol.common_pb2 as common__pb2
-import protocol.seo.data_pb2 as data__pb2
+import common_pb2 as common__pb2
+import data_pb2 as data__pb2
 
 
 class SeoServiceStub(object):
@@ -16,50 +16,65 @@ class SeoServiceStub(object):
             channel: A grpc.Channel.
         """
         self.QueryShop = channel.unary_unary(
-            '/seo.SeoService/QueryShop',
-            request_serializer=common__pb2.QueryInfo.SerializeToString,
-            response_deserializer=data__pb2.Shops.FromString,
-        )
+                '/seo.SeoService/QueryShop',
+                request_serializer=common__pb2.QueryInfo.SerializeToString,
+                response_deserializer=data__pb2.Shops.FromString,
+                )
         self.QueryShopByDistance = channel.unary_unary(
-            '/seo.SeoService/QueryShopByDistance',
-            request_serializer=data__pb2.ByDistanceInfo.SerializeToString,
-            response_deserializer=data__pb2.Shops.FromString,
-        )
+                '/seo.SeoService/QueryShopByDistance',
+                request_serializer=data__pb2.ByDistanceInfo.SerializeToString,
+                response_deserializer=data__pb2.Shops.FromString,
+                )
         self.QueryComment = channel.unary_unary(
-            '/seo.SeoService/QueryComment',
-            request_serializer=common__pb2.QueryInfo.SerializeToString,
-            response_deserializer=data__pb2.Comments.FromString,
-        )
+                '/seo.SeoService/QueryComment',
+                request_serializer=common__pb2.QueryInfo.SerializeToString,
+                response_deserializer=data__pb2.Comments.FromString,
+                )
         self.CreateShop = channel.unary_unary(
-            '/seo.SeoService/CreateShop',
-            request_serializer=data__pb2.ShopReq.SerializeToString,
-            response_deserializer=data__pb2.ShopRsb.FromString,
-        )
+                '/seo.SeoService/CreateShop',
+                request_serializer=data__pb2.ShopReq.SerializeToString,
+                response_deserializer=data__pb2.ShopRsb.FromString,
+                )
         self.UpdateShop = channel.unary_unary(
-            '/seo.SeoService/UpdateShop',
-            request_serializer=data__pb2.ShopReq.SerializeToString,
-            response_deserializer=data__pb2.ShopRsb.FromString,
-        )
+                '/seo.SeoService/UpdateShop',
+                request_serializer=data__pb2.ShopReq.SerializeToString,
+                response_deserializer=data__pb2.ShopRsb.FromString,
+                )
         self.CreateComments = channel.unary_unary(
-            '/seo.SeoService/CreateComments',
-            request_serializer=data__pb2.CommentsReq.SerializeToString,
-            response_deserializer=data__pb2.CommentsRsb.FromString,
-        )
+                '/seo.SeoService/CreateComments',
+                request_serializer=data__pb2.CommentsReq.SerializeToString,
+                response_deserializer=data__pb2.CommentsRsb.FromString,
+                )
         self.UpdateComments = channel.unary_unary(
-            '/seo.SeoService/UpdateComments',
-            request_serializer=data__pb2.CommentsReq.SerializeToString,
-            response_deserializer=data__pb2.CommentsRsb.FromString,
-        )
+                '/seo.SeoService/UpdateComments',
+                request_serializer=data__pb2.CommentsReq.SerializeToString,
+                response_deserializer=data__pb2.CommentsRsb.FromString,
+                )
         self.QueryShopTag = channel.unary_unary(
-            '/seo.SeoService/QueryShopTag',
-            request_serializer=common__pb2.QueryInfo.SerializeToString,
-            response_deserializer=data__pb2.QueryShopTagResp.FromString,
-        )
+                '/seo.SeoService/QueryShopTag',
+                request_serializer=common__pb2.QueryInfo.SerializeToString,
+                response_deserializer=data__pb2.QueryShopTagResp.FromString,
+                )
         self.CreateShopTag = channel.unary_unary(
-            '/seo.SeoService/CreateShopTag',
-            request_serializer=data__pb2.CreateShopTagReq.SerializeToString,
-            response_deserializer=data__pb2.CreateShopTagResp.FromString,
-        )
+                '/seo.SeoService/CreateShopTag',
+                request_serializer=data__pb2.CreateShopTagReq.SerializeToString,
+                response_deserializer=data__pb2.CreateShopTagResp.FromString,
+                )
+        self.QueryShopDistrict = channel.unary_unary(
+                '/seo.SeoService/QueryShopDistrict',
+                request_serializer=common__pb2.QueryInfo.SerializeToString,
+                response_deserializer=data__pb2.QueryDistrictResp.FromString,
+                )
+        self.QueryShopTagExistShopByCity = channel.unary_unary(
+                '/seo.SeoService/QueryShopTagExistShopByCity',
+                request_serializer=data__pb2.QueryShopTagExistShopByCityReq.SerializeToString,
+                response_deserializer=data__pb2.QueryShopTagExistShopByCityResp.FromString,
+                )
+        self.QueryDistrictExistShopByCity = channel.unary_unary(
+                '/seo.SeoService/QueryDistrictExistShopByCity',
+                request_serializer=data__pb2.QueryDistrictExistShopByCityReq.SerializeToString,
+                response_deserializer=data__pb2.QueryDistrictExistShopByCityResp.FromString,
+                )
 
 
 class SeoServiceServicer(object):
@@ -119,214 +134,297 @@ class SeoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def QueryShopDistrict(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def QueryShopTagExistShopByCity(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def QueryDistrictExistShopByCity(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SeoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        'QueryShop': grpc.unary_unary_rpc_method_handler(
-            servicer.QueryShop,
-            request_deserializer=common__pb2.QueryInfo.FromString,
-            response_serializer=data__pb2.Shops.SerializeToString,
-        ),
-        'QueryShopByDistance': grpc.unary_unary_rpc_method_handler(
-            servicer.QueryShopByDistance,
-            request_deserializer=data__pb2.ByDistanceInfo.FromString,
-            response_serializer=data__pb2.Shops.SerializeToString,
-        ),
-        'QueryComment': grpc.unary_unary_rpc_method_handler(
-            servicer.QueryComment,
-            request_deserializer=common__pb2.QueryInfo.FromString,
-            response_serializer=data__pb2.Comments.SerializeToString,
-        ),
-        'CreateShop': grpc.unary_unary_rpc_method_handler(
-            servicer.CreateShop,
-            request_deserializer=data__pb2.ShopReq.FromString,
-            response_serializer=data__pb2.ShopRsb.SerializeToString,
-        ),
-        'UpdateShop': grpc.unary_unary_rpc_method_handler(
-            servicer.UpdateShop,
-            request_deserializer=data__pb2.ShopReq.FromString,
-            response_serializer=data__pb2.ShopRsb.SerializeToString,
-        ),
-        'CreateComments': grpc.unary_unary_rpc_method_handler(
-            servicer.CreateComments,
-            request_deserializer=data__pb2.CommentsReq.FromString,
-            response_serializer=data__pb2.CommentsRsb.SerializeToString,
-        ),
-        'UpdateComments': grpc.unary_unary_rpc_method_handler(
-            servicer.UpdateComments,
-            request_deserializer=data__pb2.CommentsReq.FromString,
-            response_serializer=data__pb2.CommentsRsb.SerializeToString,
-        ),
-        'QueryShopTag': grpc.unary_unary_rpc_method_handler(
-            servicer.QueryShopTag,
-            request_deserializer=common__pb2.QueryInfo.FromString,
-            response_serializer=data__pb2.QueryShopTagResp.SerializeToString,
-        ),
-        'CreateShopTag': grpc.unary_unary_rpc_method_handler(
-            servicer.CreateShopTag,
-            request_deserializer=data__pb2.CreateShopTagReq.FromString,
-            response_serializer=data__pb2.CreateShopTagResp.SerializeToString,
-        ),
+            'QueryShop': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryShop,
+                    request_deserializer=common__pb2.QueryInfo.FromString,
+                    response_serializer=data__pb2.Shops.SerializeToString,
+            ),
+            'QueryShopByDistance': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryShopByDistance,
+                    request_deserializer=data__pb2.ByDistanceInfo.FromString,
+                    response_serializer=data__pb2.Shops.SerializeToString,
+            ),
+            'QueryComment': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryComment,
+                    request_deserializer=common__pb2.QueryInfo.FromString,
+                    response_serializer=data__pb2.Comments.SerializeToString,
+            ),
+            'CreateShop': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateShop,
+                    request_deserializer=data__pb2.ShopReq.FromString,
+                    response_serializer=data__pb2.ShopRsb.SerializeToString,
+            ),
+            'UpdateShop': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateShop,
+                    request_deserializer=data__pb2.ShopReq.FromString,
+                    response_serializer=data__pb2.ShopRsb.SerializeToString,
+            ),
+            'CreateComments': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateComments,
+                    request_deserializer=data__pb2.CommentsReq.FromString,
+                    response_serializer=data__pb2.CommentsRsb.SerializeToString,
+            ),
+            'UpdateComments': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateComments,
+                    request_deserializer=data__pb2.CommentsReq.FromString,
+                    response_serializer=data__pb2.CommentsRsb.SerializeToString,
+            ),
+            'QueryShopTag': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryShopTag,
+                    request_deserializer=common__pb2.QueryInfo.FromString,
+                    response_serializer=data__pb2.QueryShopTagResp.SerializeToString,
+            ),
+            'CreateShopTag': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateShopTag,
+                    request_deserializer=data__pb2.CreateShopTagReq.FromString,
+                    response_serializer=data__pb2.CreateShopTagResp.SerializeToString,
+            ),
+            'QueryShopDistrict': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryShopDistrict,
+                    request_deserializer=common__pb2.QueryInfo.FromString,
+                    response_serializer=data__pb2.QueryDistrictResp.SerializeToString,
+            ),
+            'QueryShopTagExistShopByCity': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryShopTagExistShopByCity,
+                    request_deserializer=data__pb2.QueryShopTagExistShopByCityReq.FromString,
+                    response_serializer=data__pb2.QueryShopTagExistShopByCityResp.SerializeToString,
+            ),
+            'QueryDistrictExistShopByCity': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryDistrictExistShopByCity,
+                    request_deserializer=data__pb2.QueryDistrictExistShopByCityReq.FromString,
+                    response_serializer=data__pb2.QueryDistrictExistShopByCityResp.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        'seo.SeoService', rpc_method_handlers)
+            'seo.SeoService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
+
  # This class is part of an EXPERIMENTAL API.
-
-
 class SeoService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def QueryShop(request,
-                  target,
-                  options=(),
-                  channel_credentials=None,
-                  call_credentials=None,
-                  insecure=False,
-                  compression=None,
-                  wait_for_ready=None,
-                  timeout=None,
-                  metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryShop',
-                                             common__pb2.QueryInfo.SerializeToString,
-                                             data__pb2.Shops.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            common__pb2.QueryInfo.SerializeToString,
+            data__pb2.Shops.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def QueryShopByDistance(request,
-                            target,
-                            options=(),
-                            channel_credentials=None,
-                            call_credentials=None,
-                            insecure=False,
-                            compression=None,
-                            wait_for_ready=None,
-                            timeout=None,
-                            metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryShopByDistance',
-                                             data__pb2.ByDistanceInfo.SerializeToString,
-                                             data__pb2.Shops.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            data__pb2.ByDistanceInfo.SerializeToString,
+            data__pb2.Shops.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def QueryComment(request,
-                     target,
-                     options=(),
-                     channel_credentials=None,
-                     call_credentials=None,
-                     insecure=False,
-                     compression=None,
-                     wait_for_ready=None,
-                     timeout=None,
-                     metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryComment',
-                                             common__pb2.QueryInfo.SerializeToString,
-                                             data__pb2.Comments.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            common__pb2.QueryInfo.SerializeToString,
+            data__pb2.Comments.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def CreateShop(request,
-                   target,
-                   options=(),
-                   channel_credentials=None,
-                   call_credentials=None,
-                   insecure=False,
-                   compression=None,
-                   wait_for_ready=None,
-                   timeout=None,
-                   metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/CreateShop',
-                                             data__pb2.ShopReq.SerializeToString,
-                                             data__pb2.ShopRsb.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            data__pb2.ShopReq.SerializeToString,
+            data__pb2.ShopRsb.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def UpdateShop(request,
-                   target,
-                   options=(),
-                   channel_credentials=None,
-                   call_credentials=None,
-                   insecure=False,
-                   compression=None,
-                   wait_for_ready=None,
-                   timeout=None,
-                   metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/UpdateShop',
-                                             data__pb2.ShopReq.SerializeToString,
-                                             data__pb2.ShopRsb.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            data__pb2.ShopReq.SerializeToString,
+            data__pb2.ShopRsb.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def CreateComments(request,
-                       target,
-                       options=(),
-                       channel_credentials=None,
-                       call_credentials=None,
-                       insecure=False,
-                       compression=None,
-                       wait_for_ready=None,
-                       timeout=None,
-                       metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/CreateComments',
-                                             data__pb2.CommentsReq.SerializeToString,
-                                             data__pb2.CommentsRsb.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            data__pb2.CommentsReq.SerializeToString,
+            data__pb2.CommentsRsb.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def UpdateComments(request,
-                       target,
-                       options=(),
-                       channel_credentials=None,
-                       call_credentials=None,
-                       insecure=False,
-                       compression=None,
-                       wait_for_ready=None,
-                       timeout=None,
-                       metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/UpdateComments',
-                                             data__pb2.CommentsReq.SerializeToString,
-                                             data__pb2.CommentsRsb.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            data__pb2.CommentsReq.SerializeToString,
+            data__pb2.CommentsRsb.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def QueryShopTag(request,
-                     target,
-                     options=(),
-                     channel_credentials=None,
-                     call_credentials=None,
-                     insecure=False,
-                     compression=None,
-                     wait_for_ready=None,
-                     timeout=None,
-                     metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryShopTag',
-                                             common__pb2.QueryInfo.SerializeToString,
-                                             data__pb2.QueryShopTagResp.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            common__pb2.QueryInfo.SerializeToString,
+            data__pb2.QueryShopTagResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def CreateShopTag(request,
-                      target,
-                      options=(),
-                      channel_credentials=None,
-                      call_credentials=None,
-                      insecure=False,
-                      compression=None,
-                      wait_for_ready=None,
-                      timeout=None,
-                      metadata=None):
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/CreateShopTag',
-                                             data__pb2.CreateShopTagReq.SerializeToString,
-                                             data__pb2.CreateShopTagResp.FromString,
-                                             options, channel_credentials,
-                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            data__pb2.CreateShopTagReq.SerializeToString,
+            data__pb2.CreateShopTagResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def QueryShopDistrict(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryShopDistrict',
+            common__pb2.QueryInfo.SerializeToString,
+            data__pb2.QueryDistrictResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def QueryShopTagExistShopByCity(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryShopTagExistShopByCity',
+            data__pb2.QueryShopTagExistShopByCityReq.SerializeToString,
+            data__pb2.QueryShopTagExistShopByCityResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def QueryDistrictExistShopByCity(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryDistrictExistShopByCity',
+            data__pb2.QueryDistrictExistShopByCityReq.SerializeToString,
+            data__pb2.QueryDistrictExistShopByCityResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
