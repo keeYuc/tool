@@ -2,8 +2,8 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import common_pb2 as common__pb2
-import data_pb2 as data__pb2
+from protocol import common_pb2 as common__pb2
+from protocol.seo import data_pb2 as data__pb2
 
 
 class SeoServiceStub(object):

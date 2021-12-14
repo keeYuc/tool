@@ -1,5 +1,7 @@
-shop_ids = []
-tag_map = [('5adad7d516d74c5f81411016830cce30',		'Piyaz','Piyaz'),
-           ('5adad7d516d74c5f81411016830cce30',
+shop_ids = ['f674eae3-adae-467c-9b89-1c59deea75e2',
+            '14b0c6a6-8219-43bb-9097-3e0e8507930b']
+
+tag_map = [('9da320da366c46aeac136d37e5ee701f',		'Piyaz', 'Piyaz'),
+           ('9da320da366c46aeac136d37e5ee701f',
             'Ezogelin corba',	'Ezogelin corbası'),
-           ('2e60f73d963643fe8206f7831a2fc149',		'Piyaz', 'Piyaz')]
+           ('9da320da366c46aeac136d37e5ee701f',		'Piyaz', 'Piyaz')]

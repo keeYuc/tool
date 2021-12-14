@@ -6,15 +6,17 @@ import pymongo
 import dishes_config
 from protocol.file_center import file_center_service_pb2_grpc
 from protocol.file_center import image_pb2
+from protocol.seo import seo_service_pb2_grpc
+from protocol.seo import data_pb2
 
 rpc_url_fct = 'localhost:9007'
+rpc_url_seo = 'localhost:9007'
 url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 database = "content"
 
 
 class dishes():
     def __init__(self):
-        # pass
         myclient = pymongo.MongoClient(url)
         self.table_dishes_img = myclient[database]["dishes_img"]
         self.table_shop = myclient[database]["shop"]
@@ -46,23 +48,29 @@ class dishes():
 
     def dishes_import(self):
         sum_ = 0
+        con = grpc.insecure_channel(rpc_url_seo)
+        server = seo_service_pb2_grpc.SeoServiceStub(con)
         for shop_id in dishes_config.shop_ids:
             shop = self.table_shop.find_one({'shop_id': shop_id})
+            shop_dishes = []
             try:
                 rand_list = self.__rand_list(shop['tag']['all'])
-                shop_dishes = []
-                for _ in random.randint(5, 15):
-                    shop_dishes.append(
-                        self.tag_dishes[self.choice_one(rand_list)])
-                    sum_ += 1
-                # todo 调用更新接口更新shop
+                for _ in range(random.randint(5, 15)):
+                    shop_dishes.append(self.choice_one(self.tag_dishes[self.choice_one(rand_list)])
+                                       )
             except:
                 pass
+            if len(shop_dishes) > 0:
+                server.UpdateShop(data_pb2.ShopReq(
+                    shop_id=shop_id, special_dishes=shop_dishes))
+                sum_ += len(shop_dishes)
+                print(shop_id, 'has create :', len(shop_dishes))
+        print("dishes_import fin sum: ", sum_)
 
     def __rand_list(self, list_: list):
         rand_map = []
         for id_ in list_:
-            for _ in random.randint(0, 19):
+            for _ in range(random.randint(0, 19)):
                 rand_map.append(id_)
         return rand_map
 
@@ -76,15 +84,13 @@ class dishes():
             img = self.table_dishes_img.find_one({'name': i[2]})
             if i[0] not in self.tag_dishes.keys():
                 self.tag_dishes[i[0]] = [
-                    {'dishes_name': i[1], 'image':img['url']}]
+                    data_pb2.SpecialDish(name=i[1], image=img['url'])]
             else:
                 self.tag_dishes[i[0]].append(
-                    {'dishes_name': i[1], 'image': img['url']})
+                    data_pb2.SpecialDish(name=i[1], image=img['url']))
         print('dishes build fin')
-
-    def insert_dishes_shop(self, shop_id, dishes):
-        pass
+        return self
 
 
 if __name__ == '__main__':
-    dishes().dishes_build()
+    dishes().dishes_build().dishes_import()
