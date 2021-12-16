@@ -35,11 +35,14 @@ class dishes():
                     for l in k['google_address']:
                         for t in l['types']:
                             if t == 'administrative_area_level_4':
-                                self.table_shop.update_one(
-                                    {'shop_id': i['shop_id']}, {'$set': {'location.street': l['formatted_address']}})
-                                valid += 1
-                                yes = True
-                                break
+                                for item in l['address_components']:
+                                    for t_ in item['types']:
+                                        if t_ == 'administrative_area_level_4':
+                                            self.table_shop.update_one(
+                                                {'shop_id': i['shop_id']}, {'$set': {'location.street': item['long_name']}})
+                                            valid += 1
+                                            yes = True
+                                            break
                 if not yes:
                     print(i['shop_id'])
         print("update fin sum:", sum_, "   valid :", valid)

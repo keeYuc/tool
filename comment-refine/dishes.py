@@ -2,8 +2,8 @@ import os
 import grpc
 import time
 import random
+import pandas as pd
 import pymongo
-import dishes_config
 from protocol.file_center import file_center_service_pb2_grpc
 from protocol.file_center import image_pb2
 from protocol.seo import seo_service_pb2_grpc
@@ -22,7 +22,7 @@ class dishes():
         self.table_shop = myclient[database]["shop"]
         self.files = {}
         self.prefix = '.'
-        self.__load_path(['图片测试'], self.prefix)
+        self.__load_path(['菜品'], self.prefix)
 
     def __load_path(self, path, o):
         for i in path:
@@ -46,12 +46,12 @@ class dishes():
                     {'name': k, 'url': rsb.url, 'create_at': int(time.time())})
         print('dishes import fin')
 
-    def dishes_import(self):
+    def __dishes_import(self):
         sum_ = 0
         con = grpc.insecure_channel(rpc_url_seo)
         server = seo_service_pb2_grpc.SeoServiceStub(con)
-        for shop_id in dishes_config.shop_ids:
-            shop = self.table_shop.find_one({'shop_id': shop_id})
+        # for shop_id in dishes_config.shop_ids:
+        for shop in self.table_shop.find({'country': 'TR'}, {'tag': True, 'shop_id': True, '_id': False}):
             shop_dishes = []
             try:
                 rand_list = self.__rand_list(shop['tag']['all'])
@@ -62,9 +62,10 @@ class dishes():
                 pass
             if len(shop_dishes) > 0:
                 server.UpdateShop(data_pb2.ShopReq(
-                    shop_id=shop_id, special_dishes=shop_dishes))
+                    shop_id=shop['shop_id'], special_dishes=shop_dishes))
                 sum_ += len(shop_dishes)
-                print(shop_id, 'has create :', len(shop_dishes))
+                print(shop['shop_id'], 'has create :',
+                      len(shop_dishes), ' ', sum_)
         print("dishes_import fin sum: ", sum_)
 
     def __rand_list(self, list_: list):
@@ -80,17 +81,21 @@ class dishes():
 
     def dishes_build(self):
         self.tag_dishes = {}
-        for i in dishes_config.tag_map:
-            img = self.table_dishes_img.find_one({'name': i[2]})
-            if i[0] not in self.tag_dishes.keys():
-                self.tag_dishes[i[0]] = [
-                    data_pb2.SpecialDish(name=i[1], image=img['url'])]
-            else:
-                self.tag_dishes[i[0]].append(
-                    data_pb2.SpecialDish(name=i[1], image=img['url']))
+        for _, i in pd.read_csv(r'dishes.csv').iterrows():
+            img = self.table_dishes_img.find_one(
+                {'name': i['Photo file name']})
+            try:
+                if i['tag id'] not in self.tag_dishes.keys():
+                    self.tag_dishes[i['tag id']] = [
+                        data_pb2.SpecialDish(name=i['Dishes name'], image=img['url'])]
+                else:
+                    self.tag_dishes[i['tag id']].append(
+                        data_pb2.SpecialDish(name=i['Dishes name'], image=img['url']))
+            except:
+                print('没有这个图片 name :', i['Photo file name'])
         print('dishes build fin')
-        return self
+        self.__dishes_import()
 
 
 if __name__ == '__main__':
-    dishes().dishes_build().dishes_import()
+    dishes().dishes_build()
