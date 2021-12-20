@@ -36,14 +36,17 @@ class dishes():
         server = file_center_service_pb2_grpc.FileCenterServiceStub(con)
         self.url_map = {}
         for k in self.files:
-            with open(self.files[k], 'rb') as f:
-                s = f.read()
-                rsb = server.UploadImage(image_pb2.UploadImageReq(
-                    app_id="1", close_img_compress="false", img_content=s))
-
-                self.url_map[k] = rsb.url
-                self.table_dishes_img.insert_one(
-                    {'name': k, 'url': rsb.url, 'create_at': int(time.time())})
+            if self.table_dishes_img.count_documents({"name": k}) == 0:
+                try:
+                    with open(self.files[k], 'rb') as f:
+                        s = f.read()
+                        rsb = server.UploadImage(image_pb2.UploadImageReq(
+                            app_id="418515749146071139", close_img_compress="false", img_content=s))
+                        self.url_map[k] = rsb.url
+                        self.table_dishes_img.insert_one(
+                            {'name': k, 'url': rsb.url, 'create_at': int(time.time())})
+                except BaseException as err:
+                    print("err name :", k,"                      err:",err)
         print('dishes import fin')
 
     def __dishes_import(self):

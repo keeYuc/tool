@@ -1,0 +1,1487 @@
+{
+    "id" : "19319089",
+    "deviceSpecificInfo" : {
+        "browser" : {
+            "userAgent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
+            "name" : "Chrome",
+            "version" : "92.0.4515.159",
+            "platform" : "mac"
+        }
+    },
+    "entities" : {
+        "IMAGES" : {
+            "r_IzOTUzMzY0NDc0" : {
+                "photoId" : "r_IzOTUzMzY0NDc0",
+                "url" : "https://b.zmtcdn.com/data/pictures/9/19319089/9d15e7805cb59007ff62a456833b8b1c.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/pictures/9/19319089/9d15e7805cb59007ff62a456833b8b1c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Zomato",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/images/square_zomato_logo_new.svg",
+                "uploaderProfileUrl" : "",
+                "timestamp" : "Feb 03, 2020",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : ""
+            },
+            "r_M3MzI2ODM3NDQx" : {
+                "photoId" : "r_M3MzI2ODM3NDQx",
+                "url" : "https://b.zmtcdn.com/data/pictures/9/19319089/186f11b215f1663a253fcda37c7f86c5.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/pictures/9/19319089/186f11b215f1663a253fcda37c7f86c5.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Zomato",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/images/square_zomato_logo_new.svg",
+                "uploaderProfileUrl" : "",
+                "timestamp" : "Feb 08, 2020",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : ""
+            },
+            "r_TczNjEwNDU3MzU" : {
+                "photoId" : "r_TczNjEwNDU3MzU",
+                "url" : "https://b.zmtcdn.com/data/pictures/9/19319089/7b102fb66fb6d8e07eda9b0e7b261c78.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/pictures/9/19319089/7b102fb66fb6d8e07eda9b0e7b261c78.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Zomato",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/images/square_zomato_logo_new.svg",
+                "uploaderProfileUrl" : "",
+                "timestamp" : "Feb 08, 2020",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : ""
+            },
+            "u_zA5NwMTEwODg4N" : {
+                "photoId" : "u_zA5NwMTEwODg4N",
+                "url" : "https://b.zmtcdn.com/data/reviews_photos/3ad/310b17ef1564b9b6e879aa2ff69453ad_1623780378.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/reviews_photos/3ad/310b17ef1564b9b6e879aa2ff69453ad_1623780378.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Cihan Kacar",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/data/user_profile_pictures/da0/a985aca1702d2ec1e7120292bd05dda0.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "uploaderProfileUrl" : "https://www.zomato.com/tr/cihanstyle",
+                "timestamp" : "6 ay önce",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : ""
+            },
+            "u_wODk2ODI5ODQyN" : {
+                "photoId" : "u_wODk2ODI5ODQyN",
+                "url" : "https://b.zmtcdn.com/data/reviews_photos/5c6/23d8094d674249e9cd460bb1644375c6_1579941347.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/reviews_photos/5c6/23d8094d674249e9cd460bb1644375c6_1579941347.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Geziciobur",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/data/user_profile_pictures/c13/fbfcb409051455bfcbdfccbf516a7c13.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "uploaderProfileUrl" : "https://www.zomato.com/tr/users/geziciobur-42871045",
+                "timestamp" : "Jan 25, 2020",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : ""
+            },
+            "u_zNDE3MDMxMTI4O" : {
+                "photoId" : "u_zNDE3MDMxMTI4O",
+                "url" : "https://b.zmtcdn.com/data/reviews_photos/97f/e7287663657c745ca2926c146b19897f_1581871201.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/reviews_photos/97f/e7287663657c745ca2926c146b19897f_1581871201.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Ahu",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/data/user_profile_pictures/7d8/7f8ab0afb8ccf6a2f3f045172439c7d8.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "uploaderProfileUrl" : "https://www.zomato.com/tr/users/ahu-17070793",
+                "timestamp" : "Feb 16, 2020",
+                "likeCount" : 1,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : "e7287663657c745ca2926c146b19897f"
+            },
+            "u_jYwOTA1MDM3MTQ" : {
+                "photoId" : "u_jYwOTA1MDM3MTQ",
+                "url" : "https://b.zmtcdn.com/data/reviews_photos/393/7aa1800478fd85f847d502428e96a393_1631969024.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/reviews_photos/393/7aa1800478fd85f847d502428e96a393_1631969024.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "MELİKE YILMAZ",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/data/user_profile_pictures/912/6c9501e4b640376e5bbac84d29726912.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "uploaderProfileUrl" : "https://www.zomato.com/tr/users/melke-yilmaz-70984682",
+                "timestamp" : "2 ay önce",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : ""
+            },
+            "u_1NTc3MDg1NwMTA" : {
+                "photoId" : "u_1NTc3MDg1NwMTA",
+                "url" : "https://b.zmtcdn.com/data/reviews_photos/e60/b849feee7eab9e9fd8d39c15fa072e60_1623780326.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/reviews_photos/e60/b849feee7eab9e9fd8d39c15fa072e60_1623780326.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Cihan Kacar",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/data/user_profile_pictures/da0/a985aca1702d2ec1e7120292bd05dda0.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "uploaderProfileUrl" : "https://www.zomato.com/tr/cihanstyle",
+                "timestamp" : "6 ay önce",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : ""
+            },
+            "u_4Njc4OTc0NzMyN" : {
+                "photoId" : "u_4Njc4OTc0NzMyN",
+                "url" : "https://b.zmtcdn.com/data/reviews_photos/d49/e96751f32c11f75220f8ddca28b0ad49_1579837695.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/reviews_photos/d49/e96751f32c11f75220f8ddca28b0ad49_1579837695.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Oz Kiliclar",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/data/user_profile_pictures/2b7/6f33586365f69cc30329bd1676df62b7.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "uploaderProfileUrl" : "https://www.zomato.com/tr/users/oz-kiliclar-146886635",
+                "timestamp" : "Jan 24, 2020",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : ""
+            },
+            "u_0NjIwNTAyMTI1M" : {
+                "photoId" : "u_0NjIwNTAyMTI1M",
+                "url" : "https://b.zmtcdn.com/data/reviews_photos/b77/09c1f5af791c86436b87d17cfefc5b77_1639422694.jpg?output-format=webp",
+                "thumbUrl" : "https://b.zmtcdn.com/data/reviews_photos/b77/09c1f5af791c86436b87d17cfefc5b77_1639422694.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                "uploaderName" : "Nisa Şahin",
+                "uploaderProfilePic" : "https://b.zmtcdn.com/images/user_avatars/cupcake.png?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "uploaderProfileUrl" : "https://www.zomato.com/tr/Nisasahin",
+                "timestamp" : "16 saat önce",
+                "likeCount" : 0,
+                "commentCount" : 0,
+                "comments" : [],
+                "isLiked" : 0,
+                "hash" : "09c1f5af791c86436b87d17cfefc5b77"
+            }
+        },
+        "RATING" : {
+            "427315893" : {
+                "text" : "Mükemmel",
+                "ratingColor" : "#305d02",
+                "ratingId" : 427315893,
+                "rating" : 5,
+                "ratingV2" : "5",
+                "bgColorV2" : {
+                    "type" : "green",
+                    "tint" : "800"
+                },
+                "ratingV2Text" : "DINING",
+                "experience" : "dining"
+            },
+            "406657741" : {
+                "text" : "İyi",
+                "ratingColor" : "#5ba829",
+                "ratingId" : 406657741,
+                "rating" : 4,
+                "ratingV2" : "4",
+                "bgColorV2" : {
+                    "type" : "green",
+                    "tint" : "600"
+                },
+                "ratingV2Text" : "DINING",
+                "experience" : "dining"
+            }
+        },
+        "POSITIVE_TAGS" : {
+            "182466" : {
+                "id" : 182466,
+                "text" : "fresh food"
+            },
+            "182467" : {
+                "id" : 182467,
+                "text" : "good quality"
+            },
+            "352416" : {
+                "id" : 352416,
+                "text" : "cheap and affordable"
+            },
+            "564791" : {
+                "id" : 564791,
+                "text" : "served quickly"
+            }
+        },
+        "REVIEWS" : {
+            "87820935" : {
+                "status" : "success",
+                "message" : "",
+                "reviewId" : 87820935,
+                "reviewText" : "Pizzalarına bayıldım. Margherita ve pastra me yedik. İkisi de çok lezzetli. Malzemeleri bol bol koyulmuş. Yanında getirilen acı zeytinyağı pizzayı daha da lezzetli yapıyor. Çalışanlar güler yüzlü. Fakat zomatodaki menünün güncellenmesi gerekiyor. Hem fiyatlar artmış hem de şu an daha fazla pizza çeşidi var.",
+                "reviewTextSm" : "",
+                "userName" : "Nisa Şahin",
+                "userProfilePic" : "https://b.zmtcdn.com/images/user_avatars/cupcake.png?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "userProfileUrl" : "https://www.zomato.com/tr/Nisasahin",
+                "userImagePlaceholder" : "https://b.zmtcdn.com/images/placeholder_200.png?output-format=webp",
+                "reviewUserId" : 7305181,
+                "urbanspoonStatus" : 0,
+                "userReviewsCount" : 13,
+                "userFollowersCount" : 31,
+                "isFollowed" : false,
+                "timestamp" : "16 saat önce",
+                "likeCount" : 0,
+                "isLikedByUser" : false,
+                "comments" : [],
+                "managementComments" : [],
+                "moreManagementComments" : false,
+                "commentCount" : 0,
+                "moreComments" : false,
+                "reviewPhotos" : {
+                    "entities" : [
+                        {
+                            "entity_type" : "IMAGES",
+                            "entity_ids" : [
+                                "u_0NjIwNTAyMTI1M"
+                            ]
+                        }
+                    ]
+                },
+                "reviewTags" : [],
+                "reviewUrl" : "https://www.zoma.to/rwpqQoP",
+                "externalUrl" : "",
+                "externalHost" : "",
+                "externalHostText" : "",
+                "isEditable" : false,
+                "experience" : "dining",
+                "newRatingColor" : "#1C1C1C",
+                "ratingV2" : "5",
+                "bgColorV2" : {
+                    "type" : "green",
+                    "tint" : "800"
+                },
+                "ratingV2Text" : "DINING",
+                "rating" : {
+                    "entities" : [
+                        {
+                            "entity_type" : "RATING",
+                            "entity_ids" : [
+                                427315893
+                            ]
+                        }
+                    ]
+                }
+            },
+            "84441671" : {
+                "status" : "success",
+                "message" : "",
+                "reviewId" : 84441671,
+                "reviewText" : "",
+                "reviewTextSm" : "",
+                "userName" : "Melisa",
+                "userProfilePic" : "https://b.zmtcdn.com/images/user_avatars/cupcake.png?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
+                "userProfileUrl" : "https://www.zomato.com/tr/users/melisa-231458265",
+                "userImagePlaceholder" : "https://b.zmtcdn.com/images/placeholder_200.png?output-format=webp",
+                "reviewUserId" : 231458265,
+                "urbanspoonStatus" : 0,
+                "userReviewsCount" : 6,
+                "userFollowersCount" : 0,
+                "isFollowed" : false,
+                "timestamp" : "1 ay önce",
+                "likeCount" : 0,
+                "isLikedByUser" : false,
+                "comments" : [],
+                "managementComments" : [],
+                "moreManagementComments" : false,
+                "commentCount" : 0,
+                "moreComments" : false,
+                "reviewPhotos" : [],
+                "reviewTags" : {
+                    "positive" : {
+                        "182466" : "fresh food",
+                        "182467" : "good quality",
+                        "352416" : "cheap and affordable",
+                        "564791" : "served quickly"
+                    }
+                },
+                "reviewUrl" : "https://www.zoma.to/oQrNYYK",
+                "externalUrl" : "",
+                "externalHost" : "",
+                "externalHostText" : "",
+                "isEditable" : false,
+                "experience" : "dining",
+                "newRatingColor" : "#1C1C1C",
+                "ratingV2" : "4",
+                "bgColorV2" : {
+                    "type" : "green",
+                    "tint" : "600"
+                },
+                "ratingV2Text" : "DINING",
+                "positiveReviewTags" : {
+                    "entities" : [
+                        {
+                            "entity_type" : "POSITIVE_TAGS",
+                            "entity_ids" : [
+                                182466,
+                                182467,
+                                352416,
+                                564791
+                            ]
+                        }
+                    ]
+                },
+                "rating" : {
+                    "entities" : [
+                        {
+                            "entity_type" : "RATING",
+                            "entity_ids" : [
+                                406657741
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "RESTAURANTS" : {
+            "5915582" : {
+                "name" : "Minnesota Pizza ...",
+                "rating" : {
+                    "has_fake_reviews" : 0,
+                    "aggregate_rating" : "3.5",
+                    "rating_text" : "3.5",
+                    "rating_subtitle" : "İyi",
+                    "rating_color" : "9ACD32",
+                    "votes" : "80",
+                    "subtext" : "YORUM",
+                    "is_new" : false
+                },
+                "rating_new" : {
+                    "newlyOpenedObj" : null,
+                    "suspiciousReviewObj" : null,
+                    "ratings" : {
+                        "DINING" : {
+                            "rating_type" : "SINGLE_RATING",
+                            "rating" : "3.5",
+                            "reviewCount" : "80",
+                            "reviewTextSmall" : "80 Yorum",
+                            "subtext" : "80 Yorum",
+                            "color" : "#1C1C1C",
+                            "ratingV2" : "3.5",
+                            "subtitle" : "DEĞERLENDİRİLDİ",
+                            "sideSubTitle" : " Yorum",
+                            "bgColorV2" : {
+                                "type" : "green",
+                                "tint" : "500"
+                            }
+                        }
+                    }
+                },
+                "cuisines" : "Restoran Kafe, Pizza, İtalyan",
+                "location" : {
+                    "city_id" : 59,
+                    "city" : "İstanbul",
+                    "dark_kitchen" : false,
+                    "locality_verbose" : "Levent İş Kuleleri, Levent, Beşiktaş, İstanbul",
+                    "subzone_name" : "Levent Merkez",
+                    "latitude" : "41.0829186067",
+                    "longitude" : "29.0120336786",
+                    "map_url" : "https://maps.zomato.com/php/staticmap?center=41.0829186067,29.0120336786&maptype=zomato&markers=41.0829186067,29.0120336786,pin_res32&sensor=false&scale=2&zoom=16&language=tr&size=240x150&size=400x240",
+                    "address" : "Levent İş Kuleleri, Kule Çarşı, Levent Mahallesi, Meltem Sokak, No 17, Beşiktaş, İstanbul"
+                },
+                "thumb" : {
+                    "url" : "https://b.zmtcdn.com/data/pictures/chains/2/5915582/50b9ec75a058d5a5f5e49a3b95a8f26b_featured_v2.jpg?output-format=webp",
+                    "url_with_params" : "https://b.zmtcdn.com/data/pictures/chains/2/5915582/50b9ec75a058d5a5f5e49a3b95a8f26b_featured_v2.jpg?fit=around%7C108%3A108&crop=108%3A108%3B%2A%2C%2A&output-format=webp"
+                },
+                "url" : "https://www.zomato.com/tr/istanbul/minnesota-pizza-grill-levent-merkez-istanbul"
+            },
+            "19019677" : {
+                "name" : "Emporio Pizza & ...",
+                "rating" : {
+                    "has_fake_reviews" : 0,
+                    "aggregate_rating" : "4.5",
+                    "rating_text" : "4.5",
+                    "rating_subtitle" : "Harika",
+                    "rating_color" : "3F7E00",
+                    "votes" : "727",
+                    "subtext" : "YORUM",
+                    "is_new" : false
+                },
+                "rating_new" : {
+                    "newlyOpenedObj" : null,
+                    "suspiciousReviewObj" : null,
+                    "ratings" : {
+                        "DINING" : {
+                            "rating_type" : "SINGLE_RATING",
+                            "rating" : "4.5",
+                            "reviewCount" : "727",
+                            "reviewTextSmall" : "727 Yorum",
+                            "subtext" : "727 Yorum",
+                            "color" : "#1C1C1C",
+                            "ratingV2" : "4.5",
+                            "subtitle" : "DEĞERLENDİRİLDİ",
+                            "sideSubTitle" : " Yorum",
+                            "bgColorV2" : {
+                                "type" : "green",
+                                "tint" : "700"
+                            }
+                        }
+                    }
+                },
+                "cuisines" : "Pizza, İtalyan",
+                "location" : {
+                    "city_id" : 59,
+                    "city" : "İstanbul",
+                    "dark_kitchen" : false,
+                    "locality_verbose" : "Levent Merkez, İstanbul",
+                    "subzone_name" : "Levent Merkez",
+                    "latitude" : "41.0763660731",
+                    "longitude" : "29.0164499357",
+                    "map_url" : "https://maps.zomato.com/php/staticmap?center=41.0763660731,29.0164499357&maptype=zomato&markers=41.0763660731,29.0164499357,pin_res32&sensor=false&scale=2&zoom=16&language=tr&size=240x150&size=400x240",
+                    "address" : "Şair Nedim Caddesi No 3 Akaretler Beşiktaş "
+                },
+                "thumb" : {
+                    "url" : "https://b.zmtcdn.com/data/pictures/chains/7/18514747/21f286663b23ed9357f5a6ebb594bd71_featured_v2.jpg?output-format=webp",
+                    "url_with_params" : "https://b.zmtcdn.com/data/pictures/chains/7/18514747/21f286663b23ed9357f5a6ebb594bd71_featured_v2.jpg?fit=around%7C108%3A108&crop=108%3A108%3B%2A%2C%2A&output-format=webp"
+                },
+                "url" : "https://www.zomato.com/tr/istanbul/emporio-pizza-pasta-levent-merkez-istanbul"
+            },
+            "5903142" : {
+                "name" : "Gina",
+                "rating" : {
+                    "has_fake_reviews" : 0,
+                    "aggregate_rating" : "4.2",
+                    "rating_text" : "4.2",
+                    "rating_subtitle" : "Çok iyi",
+                    "rating_color" : "5BA829",
+                    "votes" : "162",
+                    "subtext" : "YORUM",
+                    "is_new" : false
+                },
+                "rating_new" : {
+                    "newlyOpenedObj" : null,
+                    "suspiciousReviewObj" : null,
+                    "ratings" : {
+                        "DINING" : {
+                            "rating_type" : "SINGLE_RATING",
+                            "rating" : "4.2",
+                            "reviewCount" : "162",
+                            "reviewTextSmall" : "162 Yorum",
+                            "subtext" : "162 Yorum",
+                            "color" : "#1C1C1C",
+                            "ratingV2" : "4.2",
+                            "subtitle" : "DEĞERLENDİRİLDİ",
+                            "sideSubTitle" : " Yorum",
+                            "bgColorV2" : {
+                                "type" : "green",
+                                "tint" : "700"
+                            }
+                        }
+                    }
+                },
+                "cuisines" : "İtalyan",
+                "location" : {
+                    "city_id" : 59,
+                    "city" : "İstanbul",
+                    "dark_kitchen" : false,
+                    "locality_verbose" : "Kanyon AVM, Levent, İstanbul",
+                    "subzone_name" : "Levent Merkez",
+                    "latitude" : "41.0781769497",
+                    "longitude" : "29.0100927651",
+                    "map_url" : "https://maps.zomato.com/php/staticmap?center=41.0781769497,29.0100927651&maptype=zomato&markers=41.0781769497,29.0100927651,pin_res32&sensor=false&scale=2&zoom=16&language=tr&size=240x150&size=400x240",
+                    "address" : "Kanyon AVM, Kat 1, Esentepe Mahallesi, Büyükdere Caddesi, No 185, Beşiktaş, İstanbul"
+                },
+                "thumb" : {
+                    "url" : "https://b.zmtcdn.com/data/pictures/2/5903142/482e556bbfbab8c3226d1fb1162250d1_featured_v2.jpg?output-format=webp",
+                    "url_with_params" : "https://b.zmtcdn.com/data/pictures/2/5903142/482e556bbfbab8c3226d1fb1162250d1_featured_v2.jpg?fit=around%7C108%3A108&crop=108%3A108%3B%2A%2C%2A&output-format=webp"
+                },
+                "url" : "https://www.zomato.com/tr/istanbul/gina-levent-merkez-istanbul"
+            },
+            "5903113" : {
+                "name" : "Sosa",
+                "rating" : {
+                    "has_fake_reviews" : 0,
+                    "aggregate_rating" : "4.1",
+                    "rating_text" : "4.1",
+                    "rating_subtitle" : "Çok iyi",
+                    "rating_color" : "5BA829",
+                    "votes" : "464",
+                    "subtext" : "YORUM",
+                    "is_new" : false
+                },
+                "rating_new" : {
+                    "newlyOpenedObj" : null,
+                    "suspiciousReviewObj" : null,
+                    "ratings" : {
+                        "DINING" : {
+                            "rating_type" : "SINGLE_RATING",
+                            "rating" : "4.1",
+                            "reviewCount" : "464",
+                            "reviewTextSmall" : "464 Yorum",
+                            "subtext" : "464 Yorum",
+                            "color" : "#1C1C1C",
+                            "ratingV2" : "4.1",
+                            "subtitle" : "DEĞERLENDİRİLDİ",
+                            "sideSubTitle" : " Yorum",
+                            "bgColorV2" : {
+                                "type" : "green",
+                                "tint" : "700"
+                            }
+                        }
+                    }
+                },
+                "cuisines" : "Sağlıklı Yemek",
+                "location" : {
+                    "city_id" : 59,
+                    "city" : "İstanbul",
+                    "dark_kitchen" : false,
+                    "locality_verbose" : "Kanyon AVM, Levent, İstanbul",
+                    "subzone_name" : "Levent Merkez",
+                    "latitude" : "41.0780414832",
+                    "longitude" : "29.0106794983",
+                    "map_url" : "https://maps.zomato.com/php/staticmap?center=41.0780414832,29.0106794983&maptype=zomato&markers=41.0780414832,29.0106794983,pin_res32&sensor=false&scale=2&zoom=16&language=tr&size=240x150&size=400x240",
+                    "address" : "Kanyon AVM, Kat 1, Esentepe Mahallesi, Büyükdere Caddesi, No 185, Beşiktaş, İstanbul"
+                },
+                "thumb" : {
+                    "url" : "https://b.zmtcdn.com/data/pictures/chains/3/5903113/982c2fdef1afb53b69b0f28391ea8785_featured_v2.jpg?output-format=webp",
+                    "url_with_params" : "https://b.zmtcdn.com/data/pictures/chains/3/5903113/982c2fdef1afb53b69b0f28391ea8785_featured_v2.jpg?fit=around%7C108%3A108&crop=108%3A108%3B%2A%2C%2A&output-format=webp"
+                },
+                "url" : "https://www.zomato.com/tr/istanbul/sosa-levent-merkez-istanbul"
+            },
+            "18305685" : {
+                "name" : "Suvla",
+                "rating" : {
+                    "has_fake_reviews" : 0,
+                    "aggregate_rating" : "4.5",
+                    "rating_text" : "4.5",
+                    "rating_subtitle" : "Harika",
+                    "rating_color" : "3F7E00",
+                    "votes" : "371",
+                    "subtext" : "YORUM",
+                    "is_new" : false
+                },
+                "rating_new" : {
+                    "newlyOpenedObj" : null,
+                    "suspiciousReviewObj" : null,
+                    "ratings" : {
+                        "DINING" : {
+                            "rating_type" : "SINGLE_RATING",
+                            "rating" : "4.5",
+                            "reviewCount" : "371",
+                            "reviewTextSmall" : "371 Yorum",
+                            "subtext" : "371 Yorum",
+                            "color" : "#1C1C1C",
+                            "ratingV2" : "4.5",
+                            "subtitle" : "DEĞERLENDİRİLDİ",
+                            "sideSubTitle" : " Yorum",
+                            "bgColorV2" : {
+                                "type" : "green",
+                                "tint" : "700"
+                            }
+                        }
+                    }
+                },
+                "cuisines" : "İtalyan",
+                "location" : {
+                    "city_id" : 59,
+                    "city" : "İstanbul",
+                    "dark_kitchen" : false,
+                    "locality_verbose" : "Kanyon AVM, Levent, İstanbul",
+                    "subzone_name" : "Levent Merkez",
+                    "latitude" : "41.0783616993",
+                    "longitude" : "29.0104149655",
+                    "map_url" : "https://maps.zomato.com/php/staticmap?center=41.0783616993,29.0104149655&maptype=zomato&markers=41.0783616993,29.0104149655,pin_res32&sensor=false&scale=2&zoom=16&language=tr&size=240x150&size=400x240",
+                    "address" : "Kanyon AVM, Kat Teras, Esentepe Mahallesi, Büyükdere Caddesi, No 185, Beşiktaş, İstanbul"
+                },
+                "thumb" : {
+                    "url" : "https://b.zmtcdn.com/data/pictures/5/18305685/18ca16514de16487468cd3652502dab7_featured_v2.jpg?output-format=webp",
+                    "url_with_params" : "https://b.zmtcdn.com/data/pictures/5/18305685/18ca16514de16487468cd3652502dab7_featured_v2.jpg?fit=around%7C108%3A108&crop=108%3A108%3B%2A%2C%2A&output-format=webp"
+                },
+                "url" : "https://www.zomato.com/tr/istanbul/suvla-levent-merkez-istanbul"
+            }
+        }
+    },
+    "hrefLangInfo" : [
+        {
+            "link" : "https://www.zomato.com/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "en",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/tr/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "tr",
+            "isSelected" : true
+        },
+        {
+            "link" : "https://www.zomato.com/hi/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "hi",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/es/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "es",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/pt/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "pt",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/id/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "id",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/pt/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "pt",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/es/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "es",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/cs/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "cs",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/sk/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "sk",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/pl/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "pl",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/it/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "it",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/vi/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "vi",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/ar/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "ar",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/bn/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "bn",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/te/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "te",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/ta/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "ta",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/kn/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "kn",
+            "isSelected" : false
+        },
+        {
+            "link" : "https://www.zomato.com/ma/webroutes/getPage?page_url=/tr/istanbul/nappo-pizza-levent-merkez-istanbul/info&amp;location=&amp;isMobile=0",
+            "hreflang" : "ma",
+            "isSelected" : false
+        }
+    ],
+    "langKeys" : {
+        "RES_INFO_TITLE" : "Mekan hakkında",
+        "ADDRESS_TITLE" : "Adres",
+        "FEATURED_IN_TITLE" : "Derlemelerde Yer Alıyor",
+        "RATE_EXPERIENCE_TITLE" : "Deneyimini paylaşmak için tıkla",
+        "WRITE_REVIEW_TITLE" : "Yorum yaz",
+        "CONTACT_TITLE" : "Aramak için bir telefon numarasına tıkla",
+        "REVIEW_INPUT_LABEL" : "Write your Review",
+        "REVIEW_ERROR_TOAST_MSG" : "Minimum {0} tag(s) required",
+        "IMAGE_UPLOADER_DRAG_DROP_LABEL" : "Drag & drop to upload or",
+        "IMAGE_UPLOADER_BROWSE_BUTTON_LABEL" : "Browse",
+        "CLEAR_TEXT" : "temizle",
+        "VIEW_GALLERY" : "Galeriye git",
+        "OUR_SPONSORS_TITLE" : "Sponsorlarımız",
+        "SIMILAR_RES_TITLE" : "Benzer Restoranlar",
+        "HISTOGRAM_TITLE" : "Güvenilir Değerlendirmeler",
+        "HISTOGRAM_DESC" : "Yalnızca kişisel deneyimlere dayanan %100 gerçek ve orijinal yorumlar",
+        "HISTOGRAM_TRENDS_TITLE" : "Son puanlamalar",
+        "MOST_RECENT" : "En güncel",
+        "PEOPLE_SAY" : "Öne Çıkanlara Gözat",
+        "ADD_REVIEW_TITLE" : "Yorum Yap",
+        "ORDER_TITLE" : "Online Sipariş Ver",
+        "REVIEWS_TITLE" : "Yorum",
+        "EVENT_TITLE" : "Etkinlikler",
+        "SEE_ALL_EVENTS_TITLE" : "Tüm etkinlikleri gör",
+        "OPENING_HOURS" : "Çalışma Saatleri",
+        "HAPPY_HOURS" : "Happy Hour",
+        "CHEF_DETAILS_TITLE" : "Şef Bilgileri",
+        "NO_MENU_TEXT" : "We don't have a menu for this restaurant yet",
+        "EMPTY_MENU_LIST_STRING" : "Burada boş!",
+        "NO_REVIEW_TEXT" : "Değerlendirmeleriniz ve yorumlarınız, insanların nerede yemek yiyeceğine karar vermesinde yardımcı olur",
+        "VIEW_ALL_REVIEWS_TITLE" : "Tüm değerlendirmeler",
+        "CALCULATE_COST_TEXT" : "İki kişilik fiyatı nasıl hesaplıyoruz?",
+        "FILTER_ALL_REVIEWS" : "Tüm değerlendirmeler",
+        "FILTER_FOLLOWING" : "Takip Ettiklerim",
+        "FILTER_POPULAR" : "Popüler",
+        "FILTER_MY_REVIEWS" : "Yorumlarım",
+        "FILTER_BLOGGERS_REVIEWS" : "Blog yazarları",
+        "FILTER_ORDER_REVIEWS" : "Yorum siparişi",
+        "SORT_NEWEST_FIRST" : "Yeniden eskiye",
+        "SORT_OLDEST_FIRST" : "Eskiden yeniye",
+        "SORT_HIGHEST_RATED" : "En yüksek puanlı",
+        "SORT_LOWEST_RATED" : "En düşük puanlı",
+        "POSITIVE_TAGS" : "POZİTİF",
+        "NEGATIVE_TAGS" : "NEGATİF",
+        "DAILY_MENU_TITLE" : "Günlük Menü",
+        "DELETE_REVIEW_TEXT" : "Bu yorumu silmek istediğinize emin misiniz? Bu işlem geri alınamaz",
+        "DIRECTION_TITLE" : "Yol Tarifi",
+        "BOOKMARK_TITLE" : "Yer işaretlerine ekle",
+        "SHARE_TITLE" : "Paylaş",
+        "CALL_TEXT" : "Ara",
+        "COPY_TEXT" : "Kopyala",
+        "PROMO_COPIED_TEXT" : "Kopyalandı",
+        "FEATURED_IN_TEXT" : "Derlemeler",
+        "REVIEWS_TEXT" : "yorum",
+        "FOLLOWERS_TEXT" : "Takipçiler",
+        "FOLLOW_TEXT" : "Takip et",
+        "LIKES_TEXT" : "Votes for helpful",
+        "COMMENTS_TEXT" : "Yorum",
+        "LIKE_TEXT" : "Helpful vote",
+        "COMMENT_TEXT" : "Yorum yap",
+        "LIKED_TEXT" : "Helpful",
+        "SEE_ALL_MENUS_TEXT" : "Tüm menüleri gör",
+        "SEE_FULL_MENU_TEXT" : "Tüm menüyü gör",
+        "UGC_DISABLED_ERROR" : "Sorry! You can only post content for operational restaurants",
+        "NUMBER_UNAVAILABLE" : "Telefon numarası mevcut değil",
+        "NO_SEARCH_RESULT_FOUND" : "Ne demek istediğini anlayamadık, aramayı yeniden düzenlemeyi dene.",
+        "TRENDING_SEARCHES" : "POPÜLER ARAMALAR",
+        "NO_TRENDING_SEARCH" : "No results found for POPÜLER ARAMALAR",
+        "TOP_RESTAURANTS" : "En İyi Restoranlar",
+        "SEARCH_PLACEHOLDER" : "Restoran, yemek veya mutfak türü ara",
+        "DETECT_LOCATION" : "Konumumu algıla",
+        "DETECT_LOCATION_SUBTITLE" : "Using GPS",
+        "ADD_ADDRESS" : "Adres ekle",
+        "SAVED_ADDRESSES" : "Kayıtlı adresler",
+        "POPULAR_LOCATIONS" : "Popüler lokasyonlar",
+        "LOCATION_NO_RESULT_SUB" : "Check for spelling errors or search for a nearby location",
+        "LOCATION_NO_RESULT" : "aradığınız kriterlere uygun sonuç bulunamadı.",
+        "SEARCH_MODAL_MOBILE_VIEW_TITLE" : "Select location",
+        "GEO_LOCATION_NO_BROWSER_SUPPORT" : "Seems like, Your browser does not support Geolocation.",
+        "GEO_LOCATION_PERMISSION_DENIED" : "Please enable location permission from settings and try again!",
+        "GEO_LOCATION_POSITION_UNAVAILABLE" : "We can't locate your position, please try again!",
+        "GEO_LOCATION_TIMEOUT" : "Request for location has timed out!",
+        "GEO_LOCATION_UNKNOWN_ERROR" : "An unknown error occurred, Please try again!",
+        "GEO_LOCATION_DEFAULT_ERROR" : "An unknown error occurred, Please try again!",
+        "PROFILE_LINK_NAME" : "Profil",
+        "NOTIFICATIONS_LINK_NAME" : "Bildirimler",
+        "BOOKMARKS_LINK_NAME" : "Yer İşaretleri",
+        "REVIEWS_LINK_NAME" : "Yorum",
+        "NETWORK_LINK_NAME" : "Network",
+        "FIND_FRIENDS_LINK_NAME" : "Arkadaşlarını bul",
+        "SETTINGS_LINK_NAME" : "Ayarlar",
+        "LOGOUT_LINK_NAME" : "Çıkış Yap",
+        "LOGIN_FAILED_TITLE" : "Giriş başarısız",
+        "SIGNUP_FAILED_TITLE" : "Kayıt başarısız",
+        "OTP_VERIFICATION_TITLE" : "Tek kullanımlık şifre doğrulama",
+        "LOGIN_TITLE" : "Giriş yap",
+        "SIGNUP_TITLE" : "Kaydol",
+        "SIGNUP_NAME_ERROR_MESSAGE" : "Lütfen geçerli bir isim gir",
+        "SIGNUP_EMPTY_EMAIL_ERROR_MESSAGE" : "Lütfen bir e-mail gir",
+        "SIGNUP_INVALID_EMAIL_ERROR_MESSAGE" : "Geçersiz Email",
+        "SIGNUP_PHONE_ERROR_MESSAGE" : "Lütfen telefon numarası gir",
+        "SIGNUP_FULL_NAME_LABEL" : "Ad Soyad",
+        "SIGNUP_EMAIL_LABEL" : "E-posta",
+        "SIGNUP_PHONE_LABEL" : "Telefon Numarası",
+        "TERMS_OF_SERVICE_TEXT" : "Servis Koşulları",
+        "PRIVACY_POLICY_TEXT" : "Gizlilik Politikası",
+        "CONTENT_POLICIES" : "İçerik Kuralları",
+        "AGREE_TO_ZOMATO_POLICY_TEXT" : "Zomato'nun {0}, {1} ve {2}'nı kabul ediyorum",
+        "CREATE_ACCOUNT_BUTTON_TEXT" : "Hesap Oluştur",
+        "ALREADY_HAVE_AN_ACCOUNT_TEXT" : "Zaten bir hesabın var mı? {0}",
+        "LOGIN_WITH_PHONE_ERROR" : "Telefon numarası ile giriş şu anda kullanılamıyor",
+        "NEW_TO_ZOMATO_TEXT" : "Zomato'da yeni misin?",
+        "SEND_OTP_TEXT" : "Tek kullanımlık şifre gönder",
+        "ERROR_MESSAAGE_BOX_TRY_OTHER_METHODS_TEXT" : "Diğer yöntemleri dene",
+        "ERROR_MESSAAGE_BOX_SKIP_FOR_NOW_TEXT" : "Şimdilik atla",
+        "NEW_OTP_HAS_BEEN_SENT_TEXT" : "Yeni bir tek kullanımlık şifre gönderdik",
+        "NOT_RECEIVED_OTP_TEXT" : "Tek kullanımlık şifren gelmedi mi?",
+        "RESEND_NOW_TEXT" : "Tekrar Gönder",
+        "TERMINATE_VERIFICATION_TEXT" : "Doğrulamayı sonlandırmak istediğinden emin misin?",
+        "YES_BUTTON_TEXT" : "Evet",
+        "NO_BUTTON_TEXT" : "Hayır",
+        "CONTINUE_WITH_GOOGLE_BUTTON_TEXT" : "Google ile devam et",
+        "ERROR_OCCURED_TEXT" : "Hata oluştu",
+        "OR_TEXT" : "ya da",
+        "OTP_TEXT_BOX_LABEL" : "OTP",
+        "OTP_TEXT_BOX_PROCEED_BUTTON" : "Proceed",
+        "OTP_NOT_RECEIVED_TEXT" : "Not received OTP? ",
+        "COOKIE_BANNER_TEXT" : "By using this site you agree to Zomato&apos;s use of cookies to give you a personalised experience. Please read the <a href='/cookiepolicy' target='_blank'> cookie policy </a> for more information or to delete/block them."
+    },
+    "location" : {
+        "addressId" : 0,
+        "entityId" : 59,
+        "entityType" : "city",
+        "locationType" : "",
+        "isOrderLocation" : 1,
+        "cityId" : 59,
+        "latitude" : "41.0089210000000000",
+        "longitude" : "28.9731530000000000",
+        "userDefinedLatitude" : 41.008921,
+        "userDefinedLongitude" : 28.973153,
+        "entityName" : "Istanbul",
+        "orderLocationName" : "Istanbul",
+        "cityName" : "İstanbul",
+        "countryId" : 208,
+        "countryName" : "Türkiye",
+        "displayTitle" : "Istanbul",
+        "o2Serviceable" : false,
+        "placeId" : "59648",
+        "cellId" : "1498213883171569664",
+        "deliverySubzoneId" : 59648,
+        "placeType" : "DSZ",
+        "placeName" : "Istanbul",
+        "isO2City" : true,
+        "fetchFromGoogle" : false,
+        "fetchedFromCookie" : false,
+        "locationPrompt" : [],
+        "isO2OnlyCity" : false,
+        "addressBlocker" : 0,
+        "address_template" : [],
+        "otherRestaurantsUrl" : ""
+    },
+    "pageConfig" : {
+        "openAppPill" : [],
+        "isLocationPopupFlowAllowed" : false,
+        "cacheMeta" : {
+            "cacheable" : false,
+            "max-age" : 172800,
+            "trackingData" : {
+                "identifier" : "19319089"
+            }
+        },
+        "showRatingV2" : true
+    },
+    "page_data" : {
+        "sections" : {
+            "SECTION_IMAGE_CAROUSEL" : {
+                "entities" : [
+                    {
+                        "entity_type" : "IMAGES",
+                        "entity_ids" : [
+                            "r_IzOTUzMzY0NDc0",
+                            "r_M3MzI2ODM3NDQx",
+                            "r_TczNjEwNDU3MzU",
+                            "u_zA5NwMTEwODg4N",
+                            "u_wODk2ODI5ODQyN",
+                            "u_jYwOTA1MDM3MTQ",
+                            "u_1NTc3MDg1NwMTA",
+                            "u_4Njc4OTc0NzMyN",
+                            "u_zNDE3MDMxMTI4O"
+                        ]
+                    }
+                ],
+                "has_more_photo" : true,
+                "obpImage" : {
+                    "entity_type" : "IMAGES",
+                    "entity_ids" : "u_zNDE3MDMxMTI4O"
+                },
+                "is_partner" : false
+            },
+            "SECTION_BASIC_INFO" : {
+                "res_id" : 19319089,
+                "name" : "Nappo Pizza",
+                "cuisine_string" : "İtalyan, Pizza",
+                "rating" : {
+                    "has_fake_reviews" : 0,
+                    "aggregate_rating" : "4.0",
+                    "rating_text" : "4.0",
+                    "rating_subtitle" : "Çok iyi",
+                    "rating_color" : "5BA829",
+                    "votes" : "44",
+                    "subtext" : "YORUM",
+                    "is_new" : false
+                },
+                "rating_new" : {
+                    "newlyOpenedObj" : null,
+                    "suspiciousReviewObj" : null,
+                    "ratings" : {
+                        "DINING" : {
+                            "rating_type" : "SINGLE_RATING",
+                            "rating" : "4.0",
+                            "reviewCount" : "44",
+                            "reviewTextSmall" : "44 Yorum",
+                            "subtext" : "44 Yorum",
+                            "color" : "#1C1C1C",
+                            "ratingV2" : "4.0",
+                            "subtitle" : "DEĞERLENDİRİLDİ",
+                            "sideSubTitle" : " Yorum",
+                            "bgColorV2" : {
+                                "type" : "green",
+                                "tint" : "600"
+                            }
+                        }
+                    }
+                },
+                "res_status_text" : "Şu anda açık",
+                "timing" : {
+                    "timing_desc" : "11:00 - 22:30 (Bugün)",
+                    "customised_timings" : {
+                        "opening_hours" : [
+                            {
+                                "timing" : "11:00 - 22:30",
+                                "days" : "Pts-Paz"
+                            }
+                        ]
+                    },
+                    "show_open_now" : true,
+                    "show_timing_info" : true
+                },
+                "is_delivery_only" : false,
+                "is_perm_closed" : false,
+                "is_temp_closed" : false,
+                "is_opening_soon" : 0,
+                "should_ban_ugc" : false,
+                "is_shelled" : false,
+                "media_alert" : 0,
+                "learn_more_text" : "Daha Fazlasını Keşfet",
+                "res_thumb" : "https://b.zmtcdn.com/data/pictures/9/19319089/107000c26b3a2665dcd588aee5a2b890_featured_v2.jpg?output-format=webp",
+                "disclaimer_text" : "",
+                "resUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+                "is_partner" : false
+            },
+            "SECTION_FEATURE_RAIL" : [],
+            "SECTION_RES_HEADER_DETAILS" : {
+                "LOCALITY" : {
+                    "text" : "Kanyon AVM, Levent, İstanbul",
+                    "url" : "https://www.zomato.com/istanbul/levent-merkez-restoranlar"
+                },
+                "CUISINES" : [
+                    {
+                        "deeplink" : "zomato://search?deeplink_filters=WyJ7XCJjb250ZXh0XCI6XCJhbGxcIn0iLCJ7XCJjdWlzaW5lX2lkXCI6W1wiNTVcIl19Il0%3D",
+                        "url" : "https://www.zomato.com/istanbul/restaurants/italyan/",
+                        "name" : "İtalyan"
+                    },
+                    {
+                        "deeplink" : "zomato://search?deeplink_filters=WyJ7XCJjb250ZXh0XCI6XCJhbGxcIn0iLCJ7XCJjdWlzaW5lX2lkXCI6W1wiODJcIl19Il0%3D",
+                        "url" : "https://www.zomato.com/istanbul/restaurants/pizza/",
+                        "name" : "Pizza"
+                    }
+                ],
+                "ESTABLISHMENTS" : []
+            },
+            "SECTION_RES_DETAILS" : {
+                "KNOWN_FOR" : [],
+                "CUISINES" : {
+                    "title" : "Mutfak türü",
+                    "cuisines" : [
+                        {
+                            "deeplink" : "zomato://search?deeplink_filters=WyJ7XCJjb250ZXh0XCI6XCJhbGxcIn0iLCJ7XCJjdWlzaW5lX2lkXCI6W1wiNTVcIl19Il0%3D",
+                            "url" : "https://www.zomato.com/istanbul/restaurants/italyan/",
+                            "name" : "İtalyan"
+                        },
+                        {
+                            "deeplink" : "zomato://search?deeplink_filters=WyJ7XCJjb250ZXh0XCI6XCJhbGxcIn0iLCJ7XCJjdWlzaW5lX2lkXCI6W1wiODJcIl19Il0%3D",
+                            "url" : "https://www.zomato.com/istanbul/restaurants/pizza/",
+                            "name" : "Pizza"
+                        }
+                    ]
+                },
+                "LOCALITY" : [],
+                "IMAGE_MENUS" : {
+                    "title" : "Menü",
+                    "menus" : [
+                        {
+                            "label" : "MenÜ",
+                            "subtitle" : "1 sayfa",
+                            "thumb" : "https://b.zmtcdn.com/data/menus/089/19319089/f42587bc91b67153b5cc9f917d1a7838.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                        }
+                    ]
+                },
+                "PEOPLE_LIKED" : [],
+                "TOP_DISHES" : [],
+                "CFT_DETAILS" : {
+                    "title" : "Ortalama Tutar",
+                    "cfts" : [
+                        {
+                            "title" : "₺230 iki kişi için (ortalama)Alkollü",
+                            "subtitle" : ""
+                        }
+                    ],
+                    "tooltip_text" : "İki kişilik fiyat hesaplaması şu şekilde yapılır: 1 adet başlangıç tabağı + 2 ana yemek + 2 alkolsüz içecek + 1 adet tatlı. Gerçek fiyat restorana gittiğinizde yemek istedikleriniz ve menü fiyatlarındaki değişime göre farklılık gösterebilir. Eğlence mekanları haricinde alkol alınmadığı varsayılmıştır.",
+                    "accepted_payments" : "Nakit, kredi kartı ve yemek kartları kabul edilir."
+                },
+                "HIGHLIGHTS" : {
+                    "title" : "Daha fazla bilgi",
+                    "highlights" : [
+                        {
+                            "type" : "AVAILABLE",
+                            "text" : "Şarap ve Bira"
+                        },
+                        {
+                            "type" : "AVAILABLE",
+                            "text" : "Tatlı ve Pasta"
+                        },
+                        {
+                            "type" : "AVAILABLE",
+                            "text" : "Vegan Seçenekler Mevcut"
+                        },
+                        {
+                            "type" : "AVAILABLE",
+                            "text" : "İç Mekan"
+                        },
+                        {
+                            "type" : "AVAILABLE",
+                            "text" : "Vejetaryen Dostu"
+                        }
+                    ]
+                },
+                "FIRE_SAFETY" : [],
+                "CHEF_DETAILS" : [],
+                "MAGIC_CELLS" : []
+            },
+            "SECTION_USER_ACTIONS" : {
+                "share" : {
+                    "url" : "http://zoma.to/r/19319089"
+                },
+                "review" : {
+                    "reviewed" : false
+                },
+                "photo" : [],
+                "bookmark" : {
+                    "count" : 332,
+                    "bookmarked" : false
+                }
+            },
+            "SECTION_RES_CONTACT" : {
+                "city_id" : 59,
+                "city_name" : "İstanbul",
+                "country_id" : 208,
+                "country_name" : "Turkey",
+                "zipcode" : "34394",
+                "is_dark_kitchen" : false,
+                "locality_verbose" : "Kanyon AVM, Levent, İstanbul",
+                "latitude" : "41.0781830153",
+                "longitude" : "29.0108025447",
+                "static_map_url" : "https://maps.zomato.com/php/staticmap?center=41.0781830153,29.0108025447&maptype=zomato&markers=41.0781830153,29.0108025447,pin_res32&sensor=false&scale=2&zoom=16&language=tr&size=240x150&size=400x240",
+                "address" : "Kanyon Avm, Kat G, Esentepe Mahallesi, Büyükdere Caddesi, No 185, Beşiktaş, İstanbul 34394",
+                "is_phone_available" : 1,
+                "phoneDetails" : {
+                    "title" : "Telefon Numaraları",
+                    "phoneStr" : "+902123535521"
+                },
+                "res_chain_text" : "",
+                "res_group_text" : "Kanyon AVM, Levent bölgesindeki 47 mekanı görüntüle",
+                "res_chain_url" : "",
+                "res_group_url" : "https://www.zomato.com/istanbul/restoranlar/in/kanyon-avm-levent",
+                "show_res_map" : true
+            },
+            "SECTION_REVIEW_HIGHLIGHTS" : {
+                "status" : "",
+                "message" : "",
+                "entities" : [
+                    {
+                        "entity_type" : "REVIEWS",
+                        "entity_ids" : [
+                            87820935,
+                            84441671
+                        ]
+                    }
+                ],
+                "pageReviewsText" : "",
+                "numberOfPages" : 0,
+                "numberOfReviews" : "",
+                "noReviewsText" : "",
+                "currentPage" : 1,
+                "currentFilter" : "reviews-dd",
+                "currentSort" : "dd"
+            },
+            "SECTION_SIMILAR_RES" : {
+                "entities" : [
+                    {
+                        "entity_type" : "RESTAURANTS",
+                        "entity_ids" : [
+                            5915582,
+                            19019677,
+                            5903142,
+                            5903113,
+                            18305685
+                        ]
+                    }
+                ]
+            },
+            "SECTION_OBP_TAGS" : [],
+            "SECTION_MAGIC_LINKS" : [
+                {
+                    "title" : "Nappo Pizza, Levent Merkez ile ilgili olarak",
+                    "magicLinks" : [
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/restaurants/in/kanyon-avm-levent",
+                            "title" : "Kanyon AVM, Levent restoranları",
+                            "displayName" : "Kanyon AVM, Levent restoranları"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul",
+                            "title" : "İstanbul restoranları",
+                            "displayName" : "İstanbul, İstanbul bölgesindeki restoranlar"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levent-merkez-restoranlar",
+                            "title" : "Levent Merkez restoranları",
+                            "displayName" : "Levent Merkez restoranları"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/best-levent-levent-restaurants",
+                            "title" : "En iyi Levent Merkez restoranları",
+                            "displayName" : "En iyi Levent Merkez restoranları"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levent-restoranlar",
+                            "title" : "Levent restoranları",
+                            "displayName" : "Levent restoranları"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/casual-dining",
+                            "title" : "Istanbul içindeki Yemek",
+                            "displayName" : "Istanbul içindeki Yemek"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/casual-dining-near-me",
+                            "title" : "yakınımdaki Yemek",
+                            "displayName" : "yakınımdaki Yemek"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levent-restoranlar/casual-dining",
+                            "title" : "Levent içindeki Yemek",
+                            "displayName" : "Levent içindeki Yemek"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levent-merkez-restoranlar/casual-dining",
+                            "title" : "Levent Merkez içindeki Yemek",
+                            "displayName" : "Levent Merkez içindeki Yemek"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul",
+                            "title" : "Istanbul içindeki ",
+                            "displayName" : "Istanbul içindeki "
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/restaurants-near-me",
+                            "title" : "yakınımdaki ",
+                            "displayName" : "yakınımdaki "
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levent-restoranlar",
+                            "title" : "Levent içindeki ",
+                            "displayName" : "Levent içindeki "
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levent-merkez-restoranlar",
+                            "title" : "Levent Merkez içindeki ",
+                            "displayName" : "Levent Merkez içindeki "
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul",
+                            "title" : "Istanbul içindeki ",
+                            "displayName" : "Istanbul içindeki "
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/restaurants-near-me",
+                            "title" : "yakınımdaki ",
+                            "displayName" : "yakınımdaki "
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levent-restoranlar",
+                            "title" : "Levent içindeki ",
+                            "displayName" : "Levent içindeki "
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levent-merkez-restoranlar",
+                            "title" : "Levent Merkez içindeki ",
+                            "displayName" : "Levent Merkez içindeki "
+                        },
+                        {
+                            "url" : "https://www.zomato.com/istanbul/newyear",
+                            "title" : "Istanbul'daki Yılbaşı Partileri",
+                            "displayName" : "Istanbul'daki Yılbaşı Partileri"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/istanbul/christmas",
+                            "title" : "Istanbul'da Noel'e Özel",
+                            "displayName" : "Istanbul'da Noel'e Özel"
+                        }
+                    ]
+                },
+                {
+                    "title" : "Levent Merkez çevresindeki popüler mekanlar",
+                    "magicLinks" : [
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/nispetiye-restoranları",
+                            "title" : "Nispetiye restoranları listesi",
+                            "displayName" : "Nispetiye restoranları"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/gültepe-restoranlar",
+                            "title" : "Gültepe restoranları listesi",
+                            "displayName" : "Gültepe restoranları"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/4-levent-restoranları",
+                            "title" : "4. Levent restoranları listesi",
+                            "displayName" : "4. Levent restoranları"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/levazım-restoranlar",
+                            "title" : "Levazım restoranları listesi",
+                            "displayName" : "Levazım restoranları"
+                        }
+                    ]
+                },
+                {
+                    "title" : "Bu sayfaya yönlendiren anahtar kelimeler",
+                    "magicLinks" : [
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+                            "title" : "",
+                            "displayName" : "nappo pizza menu"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+                            "title" : "",
+                            "displayName" : "nappo pizza levent merkez menu"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+                            "title" : "",
+                            "displayName" : "nappo pizza İstanbul"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+                            "title" : "",
+                            "displayName" : "nappo pizza İstanbul menu"
+                        },
+                        {
+                            "url" : "https://www.zomato.com/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+                            "title" : "",
+                            "displayName" : "nappo pizza  restaurant"
+                        }
+                    ]
+                },
+                {
+                    "title" : "Top Stores",
+                    "magicLinks" : []
+                }
+            ],
+            "SECTION_RATING_DATA" : {
+                "header" : "Rate your dining experience",
+                "options" : [
+                    {
+                        "value" : "dining",
+                        "label" : "Yemek"
+                    }
+                ],
+                "selected" : "dining"
+            },
+            "SECTION_BREADCRUMBS" : [
+                {
+                    "title" : "Ana Sayfa",
+                    "url" : "https://www.zomato.com"
+                },
+                {
+                    "title" : "Türkiye",
+                    "url" : "https://www.zomato.com/tr/turkey"
+                },
+                {
+                    "title" : "İstanbul",
+                    "url" : "https://www.zomato.com/tr/istanbul/restoranlar"
+                },
+                {
+                    "title" : "Levent",
+                    "url" : "https://www.zomato.com/tr/istanbul/levent-restoranlar"
+                },
+                {
+                    "title" : "Levent Merkez",
+                    "url" : "https://www.zomato.com/tr/istanbul/levent-merkez-restoranlar"
+                },
+                {
+                    "title" : "Kanyon AVM, Levent",
+                    "url" : "https://www.zomato.com/tr/istanbul/restaurants/in/kanyon-avm-levent"
+                },
+                {
+                    "title" : "Nappo Pizza",
+                    "url" : ""
+                }
+            ],
+            "SECTION_FOOTER" : {
+                "sectionTitle" : "ZOMATO'YU BERABER GELİŞTİRELİM",
+                "error" : {
+                    "title" : "Bu mekan için hata bildir",
+                    "subtitle" : "Zomato'yu güncel tutmamız için bize yardımcı olur musun?",
+                    "buttonText" : "Şimdi bildir",
+                    "errorModalData" : {
+                        "title" : "Bir hata bildir",
+                        "optionsSection" : {
+                            "title" : "Sorun nedir?",
+                            "options" : {
+                                "error_report_phone" : "Telefon no.",
+                                "error_report_address" : "Adres",
+                                "error_report_menu" : "Menü doğru/güncel değil",
+                                "error_report_other" : "Diğer"
+                            }
+                        },
+                        "emailSection" : {
+                            "title" : "E-posta (tercihe bağlı)",
+                            "errorMsg" : "Please enter a valid email"
+                        },
+                        "moreInfoSection" : {
+                            "title" : "Mesaj (tercihe bağlı)",
+                            "placeHolder" : "Eğer restoran sayfanızda  herhangi bir özellik ya da yazılı olmayan mutfak çeşidi gibi belirtmek istediğiniz bilgiler varsa lütfen burada belirtin."
+                        },
+                        "buttonText" : "Hata Bildir",
+                        "afterSubmitText" : "Teşekkürler, en kısa sürede ilgileneceğiz."
+                    }
+                },
+                "claim" : {
+                    "isClaimed" : true,
+                    "title" : "Bu işletmeyi sahiplen",
+                    "subtitle" : "Ücretsiz yönetim araçlarına ve restoranınızla ilgili analitik bilgilere ulaşmak için bu restoranı sahiplenin. Bunların yanı sıra restoran bilgilerinizi düzenleyebilir, sayfa görüntülenme sayılarına erişebilir, yazılan yorumlara restoran yanıtı verebilir ve daha fazlasını yapabilirsiniz.",
+                    "buttonText" : "İşletmenizi Sahiplenin",
+                    "url" : "https://www.zomato.com/partner_with_us/profile"
+                },
+                "resWidget" : {
+                    "buttonText" : "Restoran Widget'ı Al",
+                    "url" : "https://www.zomato.com/business/widgets/19319089"
+                },
+                "spoonback" : {
+                    "title" : "Food blogger mısın?",
+                    "buttonText" : "Bloguna bir Zomato spoonback ekle.",
+                    "url" : "https://www.zomato.com/spoonbacks/19319089"
+                }
+            },
+            "SECTION_FULL_PAGE_AD" : {
+                "ad" : null,
+                "incrementCount" : false
+            },
+            "SECTION_OPEN_APP_MODAL_INFO" : {
+                "backgroundImageUrl" : "https://b.zmtcdn.com/data/o2_assets/800315731f7ad44396cbac9e69d89f721613462226.png?output-format=webp",
+                "topRightIconUrl" : "https://b.zmtcdn.com/data/o2_assets/cd2a4c009a73c5bbb7831557f1a5b56d1613463455.png?output-format=webp",
+                "OPEN_APP_MODAL_CLICK_ACTION_TEXT" : "Order on App",
+                "OPEN_APP_MODAL_CLOSE_ACTION_TEXT" : "Not Now",
+                "OPEN_APP_MODAL_TITLE_TEXT" : "<span class='modal-title'>Upto </span><span class='modal-title-red'>50% off</span><span class='modal-title'> and </span><span class='modal-title-red'>free delivery </span><br /><span class='modal-title'>on your first order</span>",
+                "OPEN_APP_MODAL_DESCRIPTION_TEXT" : "Switch to the app for exclusive discounts,<br /> live order tracking and more.",
+                "OPEN_APP_MODAL_TRY_APP_TAG" : "TRY THE ZOMATO APP"
+            }
+        },
+        "navbarSection" : [
+            {
+                "name" : "restaurant",
+                "pageTitle" : " Nappo Pizza, Levent Merkez, İstanbul",
+                "pageDescription" : " Nappo Pizza, Levent Merkez, İstanbul; Nappo Pizza için Fotoğraf, Fiyat, Menü, Adres, Telefon, Yorumlar, Harita ve daha fazlası Zomato’da",
+                "resId" : 19319089,
+                "pageUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+                "title" : "Genel bakış",
+                "subType" : "restaurant",
+                "key" : "restaurant",
+                "ogTitle" : " Nappo Pizza, Levent Merkez, İstanbul",
+                "ogDescription" : " Nappo Pizza, Levent Merkez, İstanbul; Nappo Pizza için Fotoğraf, Fiyat, Menü, Adres, Telefon, Yorumlar, Harita ve daha fazlası Zomato’da",
+                "ogUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+                "ampHtmlUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul?amp=1",
+                "isFloodReliefRes" : false,
+                "isNoIndex" : false
+            },
+            {
+                "name" : "restaurant",
+                "pageTitle" : "Nappo Pizza Yorumları, Nappo Pizza, Levent Merkez, İstanbul için Kullanıcıların Yorumları",
+                "pageDescription" : "Nappo Pizza, Levent Merkez, İstanbul için Kullanıcıların Yorumları; Nappo Pizza, İstanbul için Kullanıcıların Yorumları Zomato'da",
+                "resId" : 19319089,
+                "pageUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/reviews",
+                "title" : "Yorum",
+                "subType" : "reviews",
+                "key" : "reviews",
+                "ogTitle" : "Nappo Pizza Yorumları, Nappo Pizza, Levent Merkez, İstanbul için Kullanıcıların Yorumları",
+                "ogDescription" : "Nappo Pizza, Levent Merkez, İstanbul için Kullanıcıların Yorumları; Nappo Pizza, İstanbul için Kullanıcıların Yorumları Zomato'da",
+                "ogUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/reviews",
+                "ampHtmlUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/reviews?amp=1",
+                "isFloodReliefRes" : false,
+                "isNoIndex" : false
+            },
+            {
+                "name" : "restaurant",
+                "pageTitle" : "Nappo Pizza,Levent Merkez Fotoğrafları, Nappo Pizza Resimleri",
+                "pageDescription" : "Nappo Pizza, Levent Merkez, İstanbul; Nappo Pizza Mekan Fotoğrafları Zomato'da",
+                "resId" : 19319089,
+                "pageUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/photos",
+                "title" : "Fotoğraf",
+                "subType" : "photos",
+                "key" : "photos",
+                "ogTitle" : "Nappo Pizza,Levent Merkez Fotoğrafları, Nappo Pizza Resimleri",
+                "ogDescription" : "Nappo Pizza, Levent Merkez, İstanbul; Nappo Pizza Mekan Fotoğrafları Zomato'da",
+                "ogUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/photos",
+                "ampHtmlUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/photos?amp=1",
+                "isFloodReliefRes" : false,
+                "isNoIndex" : false
+            },
+            {
+                "name" : "restaurant",
+                "pageTitle" : " Nappo Pizza Menü, Nappo Pizza, Levent Merkez, İstanbul için Menü",
+                "pageDescription" : "Nappo Pizza, Levent Merkez için Menü Görüntüle - Paket Servis, Al-Götür veya Yemeğe Çık için Zomato'da Nappo Pizza Menüsünü Görüntüle, Nappo Pizza Menü ve Fiyatları",
+                "resId" : 19319089,
+                "pageUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/menu",
+                "title" : "Menü",
+                "subType" : "menu",
+                "key" : "menu",
+                "ogTitle" : " Nappo Pizza Menü, Nappo Pizza, Levent Merkez, İstanbul için Menü",
+                "ogDescription" : "Nappo Pizza, Levent Merkez için Menü Görüntüle - Paket Servis, Al-Götür veya Yemeğe Çık için Zomato'da Nappo Pizza Menüsünü Görüntüle, Nappo Pizza Menü ve Fiyatları",
+                "ogUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/menu",
+                "ampHtmlUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul/menu?amp=1",
+                "isFloodReliefRes" : false,
+                "isNoIndex" : false
+            }
+        ],
+        "hasAds" : false,
+        "trackingDataLogin" : {
+            "googleAdsPayload" : {
+                "mobileProfileIconClick" : {
+                    "eventName" : "conversion",
+                    "payload" : {
+                        "send_to" : "AW-958674130/gEmzCLCZwfABENLpkMkD"
+                    }
+                },
+                "loginClick" : {
+                    "eventName" : "conversion",
+                    "payload" : {
+                        "send_to" : "AW-958674130/MOW8CIO6-uwBENLpkMkD"
+                    }
+                },
+                "signupClick" : {
+                    "eventName" : "conversion",
+                    "payload" : {
+                        "send_to" : "AW-958674130/M4gKCJi9-uwBENLpkMkD"
+                    }
+                },
+                "signupSuccess" : {
+                    "eventName" : "conversion",
+                    "payload" : {
+                        "send_to" : "AW-958674130/NWiMCPrDne0BENLpkMkD"
+                    }
+                }
+            }
+        }
+    },
+    "page_info" : {
+        "name" : "restaurant",
+        "pageTitle" : " Nappo Pizza, Levent Merkez, İstanbul",
+        "pageDescription" : " Nappo Pizza, Levent Merkez, İstanbul; Nappo Pizza için Fotoğraf, Fiyat, Menü, Adres, Telefon, Yorumlar, Harita ve daha fazlası Zomato’da",
+        "resId" : 19319089,
+        "pageUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+        "title" : "Genel bakış",
+        "subType" : "restaurant",
+        "key" : "restaurant",
+        "ogTitle" : " Nappo Pizza, Levent Merkez, İstanbul",
+        "ogDescription" : " Nappo Pizza, Levent Merkez, İstanbul; Nappo Pizza için Fotoğraf, Fiyat, Menü, Adres, Telefon, Yorumlar, Harita ve daha fazlası Zomato’da",
+        "ogUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul",
+        "ampHtmlUrl" : "/tr/istanbul/nappo-pizza-levent-merkez-istanbul?amp=1",
+        "isFloodReliefRes" : false,
+        "isNoIndex" : false,
+        "show_rating_v15" : true,
+        "isMobile" : 0,
+        "isOAuthV2Enabled" : false,
+        "gaPageType" : "Restaurant"
+    },
+    "shouldAddTaboolaScript" : false,
+    "store_list_id" : "f3a706d6-fa2a-44bd-ada9-528808cd5b5e",
+    "user" : []
+}
