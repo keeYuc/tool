@@ -9,8 +9,8 @@ from protocol.file_center import image_pb2
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
 
-rpc_url_fct = 'file-center.regoo:9000'
-rpc_url_seo = 'seo:9000'
+rpc_url_fct = 'localhost:9009'
+rpc_url_seo = 'localhost:9007'
 url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 database = "content"
 
@@ -22,7 +22,7 @@ class dishes():
         self.table_shop = myclient[database]["shop"]
         self.files = {}
         self.prefix = '.'
-        self.__load_path(['caip'], self.prefix)
+        self.__load_path(['cpp5'], self.prefix)
 
     def __load_path(self, path, o):
         for i in path:
@@ -46,7 +46,7 @@ class dishes():
                         self.table_dishes_img.insert_one(
                             {'name': k, 'url': rsb.url, 'create_at': int(time.time())})
                 except BaseException as err:
-                    print("err name :", k,"                      err:",err)
+                    print("err name :", k, "                      err:", err)
         print('dishes import fin')
 
     def __dishes_import(self):
@@ -56,13 +56,19 @@ class dishes():
         # for shop_id in dishes_config.shop_ids:
         for shop in self.table_shop.find({'country': 'TR'}, {'tag': True, 'shop_id': True, '_id': False}):
             shop_dishes = []
-            try:
+            if 'tag' in shop.keys():
                 rand_list = self.__rand_list(shop['tag']['all'])
-                for _ in range(random.randint(5, 15)):
-                    shop_dishes.append(self.choice_one(self.tag_dishes[self.choice_one(rand_list)])
-                                       )
-            except:
-                pass
+                sum = max(random.randint(5, 15), 5)
+                cs = 0
+                while sum > 0:
+                    cs += 1
+                    try:
+                        shop_dishes.append(self.choice_one(self.tag_dishes[self.choice_one(rand_list)])
+                                           )
+                        sum -= 1
+                    except BaseException as err:
+                        if cs >= 100:
+                            break
             if len(shop_dishes) > 0:
                 server.UpdateShop(data_pb2.ShopReq(
                     shop_id=shop['shop_id'], special_dishes=shop_dishes))
@@ -101,5 +107,5 @@ class dishes():
 
 
 if __name__ == '__main__':
-    dishes().img_import()
-    # dishes().dishes_build()
+    # dishes().img_import()
+    dishes().dishes_build()

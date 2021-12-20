@@ -8,8 +8,8 @@ import grpc
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
 #uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
-#uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+#uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
+uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 rpc_url = 'seo:9007'
 database = "content"
 database_crawler = "crawler"
