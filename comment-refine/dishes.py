@@ -22,7 +22,7 @@ class dishes():
         self.table_shop = myclient[database]["shop"]
         self.files = {}
         self.prefix = '.'
-        self.__load_path(['菜品'], self.prefix)
+        self.__load_path(['caip'], self.prefix)
 
     def __load_path(self, path, o):
         for i in path:
@@ -99,4 +99,4 @@ class dishes():
 
 if __name__ == '__main__':
     dishes().img_import()
-    #dishes().dishes_build()
+    # dishes().dishes_build()
