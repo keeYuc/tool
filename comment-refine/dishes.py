@@ -9,9 +9,9 @@ from protocol.file_center import image_pb2
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
 
-rpc_url_fct = 'localhost:9007'
-rpc_url_seo = 'localhost:9007'
-url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+rpc_url_fct = 'file-center.regoo:9000'
+rpc_url_seo = 'seo:9000'
+url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 database = "content"
 
 
@@ -98,4 +98,5 @@ class dishes():
 
 
 if __name__ == '__main__':
-    dishes().dishes_build()
+    dishes().img_import()
+    #dishes().dishes_build()
