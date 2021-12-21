@@ -4,9 +4,11 @@ import datetime
 import pandas as pd
 import config
 import grpc
-
+from concurrent.futures import ThreadPoolExecutor
+import threading
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
+import time
 #uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 #uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
 uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
@@ -59,6 +61,7 @@ class Refiner():
         self.load_word()
         self.load_commnet_shop_tag_district()
         self.statement_rebuild()
+        self.lock = threading.Lock()
 
     def create_comments(self, list: list):
         serve = seo_service_pb2_grpc.SeoServiceStub(self.connect)
@@ -114,7 +117,7 @@ class Refiner():
                 {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
             self.shop_ids.append(i['crawler_shop_id'])
             self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
-            print('has load', i['merchant_shop_id'])
+            print('has load', i['merchant_shop_id'], '   ', len(self.shop_ids))
 
     def get_shop_id_by_crawler(self, crawler_shop_id):
         return self.shop_id_map[crawler_shop_id]
@@ -123,6 +126,7 @@ class Refiner():
         if shop_id not in self.shop.keys():
             self.shop[shop_id] = self.table_shop.find_one({'shop_id': shop_id})
             self.sum_comment[shop_id] = 1
+            print('has load shop len:',len(self.shop))
         else:
             self.sum_comment[shop_id] += 1
 
@@ -145,26 +149,32 @@ class Refiner():
         self.district = {}
         self.shop_types = {}
         self.sum_comment = {}
+        #with ThreadPoolExecutor(max_workers=3) as t:
         for store_id in self.shop_ids:
             for i in self.table_middleware_review.find({'language': TR, 'store_id': {'$eq': store_id}}):
-                shop_id = self.get_shop_id_by_crawler(i['store_id'])
-                self.__load_shop(shop_id)
-                self.__load_comment_content(
-                    i, shop_id, comments_low, comments_high, comments_normal)
-                try:
-                    self.__load_tag(self.shop[shop_id]['tag']['show'])
-                except:
-                    pass
-                try:
-                    self.__load_district(self.shop[shop_id]['district_id'])
-                except:
-                    pass
-            print('has load comment shop_id :', shop_id)
+                self.__load__(i, comments_low,
+                            comments_high, comments_normal)
         self.comment[LOW] = comments_low
         self.comment[NORMAL] = comments_normal
         self.comment[HIGH] = comments_high
         print('load comments finish \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
             len(comments_high), len(comments_normal), len(comments_low), len(self.shop)))
+
+    def __load__(self, i, comments_low, comments_high, comments_normal):
+        print("start")
+        shop_id = self.get_shop_id_by_crawler(i['store_id'])
+        self.__load_shop(shop_id)
+        self.__load_comment_content(
+            i, shop_id, comments_low, comments_high, comments_normal)
+        try:
+            self.__load_tag(self.shop[shop_id]['tag']['show'])
+        except:
+            pass
+        try:
+            self.__load_district(self.shop[shop_id]['district_id'])
+        except:
+            pass
+        print("end")
 
     def __load_shop_types(self, shop_id, type_):
         if shop_id not in self.shop_types.keys():
@@ -203,6 +213,7 @@ class Refiner():
     @ count_time("statement_rebuild")
     def statement_rebuild(self):
         sum = 0
+        cs = 0
         for shop_id in self.shop:
             tmp = []
             max, min = self.get_max_min(shop_id)
@@ -222,14 +233,13 @@ class Refiner():
                     country = self.shop[shop_id]['country']
                     tmp.append(data_pb2.Comment(
                         user_name=name, user_avatar=avatar, score=self.get_star(type_), content=string, store_id=shop_id, country=country, status='valid', type='normal'))
-                except:
-                    print(i)
-                    print(len(names))
-                    print(len(avatars))
-                    return
+                except BaseException as err:
+                    print(err)
+                    print(i, len(names), len(avatars))
             self.create_comments(tmp)
             sum += len(tmp)
-            print('has commit : ', sum)
+            cs += 1
+            print('has commit : {}has create shop len : {}'.format(sum, cs))
 
     def get_max_min(self, shop_id):
         sum = self.sum_comment[shop_id]
