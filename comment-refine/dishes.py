@@ -12,6 +12,7 @@ from protocol.seo import data_pb2
 rpc_url_fct = 'localhost:9009'
 rpc_url_seo = 'localhost:9007'
 url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+#url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 database = "content"
 
 
@@ -56,19 +57,27 @@ class dishes():
         # for shop_id in dishes_config.shop_ids:
         for shop in self.table_shop.find({'country': 'TR'}, {'tag': True, 'shop_id': True, '_id': False}):
             shop_dishes = []
+            shop_names = set()
             if 'tag' in shop.keys():
-                rand_list = self.__rand_list(shop['tag']['all'])
+                rand_list = self.__rand_list(
+                    set(shop['tag']['all']) & self.tag_ids)
                 sum = max(random.randint(5, 15), 5)
                 cs = 0
-                while sum > 0:
+                while len(rand_list) > 0:
                     cs += 1
                     try:
-                        shop_dishes.append(self.choice_one(self.tag_dishes[self.choice_one(rand_list)])
-                                           )
-                        sum -= 1
-                    except BaseException as err:
-                        if cs >= 100:
+                        if len(shop_dishes) > sum or cs > 200:
+                            print('has use cishu ', cs)
                             break
+                        else:
+                            data = self.choice_one(self.tag_dishes[self.choice_one(
+                                rand_list)]
+                            )
+                            if data.name not in shop_names:
+                                shop_dishes.append(data)
+                                shop_names.add(data.name)
+                    except BaseException as err:
+                        pass
             if len(shop_dishes) > 0:
                 server.UpdateShop(data_pb2.ShopReq(
                     shop_id=shop['shop_id'], special_dishes=shop_dishes))
@@ -77,8 +86,10 @@ class dishes():
                       len(shop_dishes), ' ', sum_)
         print("dishes_import fin sum: ", sum_)
 
-    def __rand_list(self, list_: list):
+    def __rand_list(self, list_):
         rand_map = []
+        if len(list_) == 0:
+            return rand_map
         for id_ in list_:
             for _ in range(random.randint(0, 19)):
                 rand_map.append(id_)
@@ -90,6 +101,7 @@ class dishes():
 
     def dishes_build(self):
         self.tag_dishes = {}
+        self.tag_ids = []
         for _, i in pd.read_csv(r'dishes.csv').iterrows():
             img = self.table_dishes_img.find_one(
                 {'name': i['Photo file name']})
@@ -100,8 +112,11 @@ class dishes():
                 else:
                     self.tag_dishes[i['tag id']].append(
                         data_pb2.SpecialDish(name=i['Dishes name'], image=img['url']))
+
+                self.tag_ids.append(i['tag id'])
             except:
                 print('没有这个图片 name :', i['Photo file name'])
+        self.tag_ids = set(self.tag_ids)
         print('dishes build fin')
         self.__dishes_import()
 
