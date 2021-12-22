@@ -26,3 +26,4 @@ with ThreadPoolExecutor(max_workers=3) as t:
 
 wait(list, return_when=ALL_COMPLETED)
 print(len(a))
+print(type('stradfaf'))
