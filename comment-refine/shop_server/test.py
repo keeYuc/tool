@@ -1,19 +1,28 @@
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 import time
 import threading
 
+
+def fuck():
+    pass
+
+
 lock = threading.Lock()
-a={}
+a = {}
+
+
 def tet(i):
     lock.acquire()
     print(i)
-    a[i]=i
+    a[i] = i
     lock.release()
 
 
+list = []
 with ThreadPoolExecutor(max_workers=3) as t:
     for i in range(100):
-        t.submit(tet,(i))
+        list.append(t.submit(tet, (i)))
 
+
+wait(list, return_when=ALL_COMPLETED)
 print(len(a))
-time.sleep(3)
