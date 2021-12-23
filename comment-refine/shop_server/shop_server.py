@@ -20,8 +20,8 @@ def count_time(prefix):
 
 class ShopServer:
     def __init__(self):
-        # url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-        url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+        url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+        #url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
         database = "content"
         database_crawler = "crawler"
         myclient = pymongo.MongoClient(url)
@@ -33,6 +33,7 @@ class ShopServer:
         self.service = []
         self.valid_shops = 0
         self.sum_shops = 0
+        self.load_reflect()
         self.load_shop()
         self.import_service()
 
@@ -46,6 +47,19 @@ class ShopServer:
             self.shop_ids.append(i['crawler_shop_id'])
             self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
         print('load fin len :', len(self.shop_ids))
+
+    def load_reflect(self):
+        self.service_reflect = {}
+        for index, i in pd.read_csv(r'reflect.csv').iterrows():
+            self.service_reflect[i['服务']] = i['二级']
+
+    def reflect_service(self, s, list):
+        if s not in self.service_reflect.keys():
+            print('没有这个服务 : ', s)
+        else:
+            rs = self.service_reflect[s]
+            if rs != '':
+                list.append(rs)
 
     def __do_import(self, crawler_shop_id):
         service = []
@@ -63,13 +77,13 @@ class ShopServer:
             if data != None:
                 for i in data['page_data']['sections']['SECTION_RES_DETAILS']['HIGHLIGHTS']['highlights']:
                     if i['type'] == 'AVAILABLE':
-                        service.append(i['text'])
+                        self.reflect_service(i['text'], service)
             else:
                 print(
                     'this id cannot find in database crawler_shop_id: {} shop_id: {}'.format(crawler_shop_id, self.shop_id_map[crawler_shop_id]))
         if len(service) > 0:
-            # self.table_shop.update_one(
-            #    {'shop_id': self.shop_id_map[crawler_shop_id]}, {"$set": {'service': service}})
+            self.table_shop.update_one(
+                {'shop_id': self.shop_id_map[crawler_shop_id]}, {"$set": {'service': service}})
             self.lock.acquire()
             self.valid_shops += 1
             self.service.extend(service)

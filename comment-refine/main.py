@@ -4,15 +4,15 @@ import datetime
 import pandas as pd
 import config
 import grpc
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 import threading
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
 import time
 #uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-#uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
-uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
-rpc_url = 'seo:9007'
+uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
+# uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+rpc_url = 'seo:9000'
 database = "content"
 database_crawler = "crawler"
 HIGH = 'high'
@@ -44,7 +44,7 @@ class Refiner():
     @ count_time("__init__")
     def __init__(self) -> None:
         myclient = pymongo.MongoClient(uri)
-        #self.table_comment = myclient[database]["comment"]
+        # self.table_comment = myclient[database]["comment"]
         self.table_shop = myclient[database]["shop"]
         self.table_shop_tag = myclient[database]["shop_tag"]
         self.table_shop_district = myclient[database]["shop_district"]
@@ -113,8 +113,10 @@ class Refiner():
     def load_shop_id(self):
         self.shop_ids = []
         self.shop_id_map = {}
+        # for i in self.table_shop_map.find(
+        #        {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
         for i in self.table_shop_map.find(
-                {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
+                {}, {'crawler_shop_id': True, 'merchant_shop_id': True}).limit(100):
             self.shop_ids.append(i['crawler_shop_id'])
             self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
             print('has load', i['merchant_shop_id'], '   ', len(self.shop_ids))
@@ -126,7 +128,7 @@ class Refiner():
         if shop_id not in self.shop.keys():
             self.shop[shop_id] = self.table_shop.find_one({'shop_id': shop_id})
             self.sum_comment[shop_id] = 1
-            print('has load shop len:',len(self.shop))
+            print('has load shop len:', len(self.shop))
         else:
             self.sum_comment[shop_id] += 1
 
@@ -149,32 +151,35 @@ class Refiner():
         self.district = {}
         self.shop_types = {}
         self.sum_comment = {}
-        #with ThreadPoolExecutor(max_workers=3) as t:
-        for store_id in self.shop_ids:
-            for i in self.table_middleware_review.find({'language': TR, 'store_id': {'$eq': store_id}}):
-                self.__load__(i, comments_low,
-                            comments_high, comments_normal)
-        self.comment[LOW] = comments_low
-        self.comment[NORMAL] = comments_normal
-        self.comment[HIGH] = comments_high
-        print('load comments finish \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
-            len(comments_high), len(comments_normal), len(comments_low), len(self.shop)))
+        with ThreadPoolExecutor(max_workers=3) as t:
+            for store_id in self.shop_ids:
+                for i in self.table_middleware_review.find({'language': TR, 'store_id': {'$eq': store_id}}):
+                    self.__load__(t,i, comments_low,
+                                comments_high, comments_normal)
+            self.comment[LOW] = comments_low
+            self.comment[NORMAL] = comments_normal
+            self.comment[HIGH] = comments_high
+            print('load comments finish \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
+                len(comments_high), len(comments_normal), len(comments_low), len(self.shop)))
 
-    def __load__(self, i, comments_low, comments_high, comments_normal):
-        print("start")
+    def __load__(self,t, i, comments_low, comments_high, comments_normal):
+        wait_list = []
         shop_id = self.get_shop_id_by_crawler(i['store_id'])
-        self.__load_shop(shop_id)
+        wait_list.append(t.submit(self.__load_shop, (shop_id)))
+        try:
+            wait_list.append(
+                t.submit(self.__load_tag, (self.shop[shop_id]['tag']['show'])))
+        except:
+            pass
+        try:
+            wait_list.append(t.submit(self.__load_district,
+                                (self.shop[shop_id]['district_id'])))
+        except:
+            pass
+        wait(wait_list, return_when=ALL_COMPLETED)
         self.__load_comment_content(
             i, shop_id, comments_low, comments_high, comments_normal)
-        try:
-            self.__load_tag(self.shop[shop_id]['tag']['show'])
-        except:
-            pass
-        try:
-            self.__load_district(self.shop[shop_id]['district_id'])
-        except:
-            pass
-        print("end")
+
 
     def __load_shop_types(self, shop_id, type_):
         if shop_id not in self.shop_types.keys():
