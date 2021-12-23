@@ -3,7 +3,7 @@ import getopt
 import sys
 
 
-class PortForward():
+class PortExec():
     def __init__(self):
         self.namespace = 'gcp'
         self.container = 'crawler'
@@ -58,4 +58,4 @@ class PortForward():
 
 
 if __name__ == '__main__':
-    PortForward().run()
+    PortExec().run()
