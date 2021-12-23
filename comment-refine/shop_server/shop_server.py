@@ -20,7 +20,8 @@ def count_time(prefix):
 
 class ShopServer:
     def __init__(self):
-        url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+        # url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+        url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
         database = "content"
         database_crawler = "crawler"
         myclient = pymongo.MongoClient(url)
@@ -81,12 +82,18 @@ class ShopServer:
 
     @ count_time('import_service')
     def import_service(self):
-        with ThreadPoolExecutor(max_workers=1) as t:
+        with ThreadPoolExecutor(max_workers=10) as t:
             wait_list = []
             for crawler_shop_id in self.shop_ids:
                 wait_list.append(t.submit(self.__do_import, (crawler_shop_id)))
             wait(wait_list, return_when=ALL_COMPLETED)
-            pd.DataFrame(set(self.service)).to_csv('shop_service.csv')
+        tmp = {}
+        for i in self.service:
+            if i not in tmp.keys():
+                tmp[i] = [1]
+            else:
+                tmp[i][0] += 1
+        pd.DataFrame(tmp).to_csv('shop_service.csv')
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 import time
 import threading
+import pandas as pd
 
 
 def fuck():
@@ -27,3 +28,7 @@ with ThreadPoolExecutor(max_workers=3) as t:
 wait(list, return_when=ALL_COMPLETED)
 print(len(a))
 print(type('stradfaf'))
+
+
+a = {'a': [1], 'b': [2]}
+pd.DataFrame(a).to_csv('shop_service.csv')
