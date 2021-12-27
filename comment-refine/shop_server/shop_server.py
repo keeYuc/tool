@@ -51,14 +51,14 @@ class ShopServer:
     def load_reflect(self):
         self.service_reflect = {}
         for index, i in pd.read_csv(r'reflect.csv').iterrows():
-            self.service_reflect[i['服务']] = i['二级']
+            self.service_reflect[i['服务']] = str(i['二级'])
 
     def reflect_service(self, s, list):
         if s not in self.service_reflect.keys():
             print('没有这个服务 : ', s)
         else:
             rs = self.service_reflect[s]
-            if rs != '':
+            if rs != 'nan':
                 list.append(rs)
 
     def __do_import(self, crawler_shop_id):
@@ -71,7 +71,7 @@ class ShopServer:
             if type(org) == type(''):
                 js = json.loads(org)
                 for i in js['redux']['api']['responses']['/data/1.0/restaurant/{}/overview'.format(crawler_shop_id)]['data']['detailCard']['tagTexts']['features']['tags']:
-                    service.append(i['tagValue'])
+                    self.reflect_service(i['tagValue'], service)
         else:
             data = self.table_data_zom.find_one(
                 {'id': crawler_shop_id, 'page_data': True, '_id': False})
@@ -86,6 +86,7 @@ class ShopServer:
         if len(service) > 0:
             self.table_shop.update_one(
                 {'shop_id': self.shop_id_map[crawler_shop_id]}, {"$set": {'service': service}})
+            print(service)
             self.lock.acquire()
             self.valid_shops += 1
             self.service.extend(service)
@@ -102,7 +103,16 @@ class ShopServer:
             wait_list = []
             for crawler_shop_id in self.shop_ids:
                 wait_list.append(t.submit(self.__do_import, (crawler_shop_id)))
+                #wait_list.append(t.submit(self.add_create_at,
+                #                          (self.shop_id_map[crawler_shop_id])))
             wait(wait_list, return_when=ALL_COMPLETED)
+
+    def add_create_at(self, shop_id):
+        print(shop_id)
+        i = self.table_shop.find_one({'shop_id': shop_id}, {
+                                     '_id': False, 'update_at': True})
+        self.table_shop.update_one({'shop_id': shop_id}, {
+            '$set': {'create_at': i['update_at']}})
 
 
 if __name__ == '__main__':

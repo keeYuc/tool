@@ -19,8 +19,8 @@ def count_time(prefix):
 
 class TagImport():
     def __init__(self):
-        url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-        #url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+        #url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+        url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
         database = "content"
         myclient = pymongo.MongoClient(url)
         self.table_tag = myclient[database]["shop_tag"]
