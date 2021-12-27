@@ -30,8 +30,14 @@ class TagImport():
     def __load(self):
         for index, i in pd.read_csv(r'tag.csv').iterrows():
             print(index+1)
-            self.table_tag.update_one({'tag_id': i['tag id']}, {
-                                      '$set': {'image': i['photo']}})
+            update_info = {
+                '$set': {}}
+            if 'photo' in i.keys() and str(i['photo']) != 'nan':
+                update_info['$set']['image'] = i['photo']
+            if 'name' in i.keys() and i['name'] != 'nan':
+                update_info['$set']['name'] = i['name']
+            if len(update_info['$set']) > 0:
+                self.table_tag.update_one({'tag_id': i['tag id']}, update_info)
 
 
 if __name__ == '__main__':
