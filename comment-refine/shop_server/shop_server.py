@@ -53,7 +53,7 @@ class ShopServer:
         for index, i in pd.read_csv(r'reflect.csv').iterrows():
             self.service_reflect[i['服务']] = str(i['二级'])
 
-    def reflect_service(self, s, list):
+    def reflect_service(self, s, list: list):
         if s not in self.service_reflect.keys():
             print('没有这个服务 : ', s)
         else:
@@ -62,6 +62,9 @@ class ShopServer:
                 list.append(rs)
 
     def __do_import(self, crawler_shop_id):
+        self.lock.acquire()
+        self.sum_shops += 1
+        self.lock.release()
         service = []
         data = self.table_data_trip.find_one(
             {'id': crawler_shop_id}, {'original_detail': True, '_id': False})
@@ -85,15 +88,11 @@ class ShopServer:
                     'this id cannot find in database crawler_shop_id: {} shop_id: {}'.format(crawler_shop_id, self.shop_id_map[crawler_shop_id]))
         if len(service) > 0:
             self.table_shop.update_one(
-                {'shop_id': self.shop_id_map[crawler_shop_id]}, {"$set": {'service': service}})
-            print(service)
+                {'shop_id': self.shop_id_map[crawler_shop_id]}, {"$set": {'service': list(set(service))}})
             self.lock.acquire()
+            print(self.shop_id_map[crawler_shop_id])
             self.valid_shops += 1
-            self.service.extend(service)
             self.lock.release()
-        self.lock.acquire()
-        self.sum_shops += 1
-        self.lock.release()
         print('valid shops :{} sum: {}'.format(
             self.valid_shops, self.sum_shops))
 
@@ -102,8 +101,8 @@ class ShopServer:
         with ThreadPoolExecutor(max_workers=10) as t:
             wait_list = []
             for crawler_shop_id in self.shop_ids:
-                wait_list.append(t.submit(self.__do_import, (crawler_shop_id)))
-                #wait_list.append(t.submit(self.add_create_at,
+                wait_list.append(t.submit(self.__do_import, crawler_shop_id))
+                # wait_list.append(t.submit(self.add_create_at,
                 #                          (self.shop_id_map[crawler_shop_id])))
             wait(wait_list, return_when=ALL_COMPLETED)
 

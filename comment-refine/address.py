@@ -37,12 +37,15 @@ class dishes():
             item.join()
 
     def street_import(self, skip, limit):
-        for i in self.table_shop.find({}, {'_id': False, 'loction': True, 'shop_id': True}).skip(int(skip)).limit(int(limit)):
+        for i in self.table_shop.find({}, {'_id': False, 'location': True, 'shop_id': True}).skip(int(skip)).limit(int(limit)):
             self.lock.acquire()
             self.sum_ += 1
             self.lock.release()
             print(self.sum_, "   ", self.valid)
-            if 'street' not in i['loction'].keys():
+            if 'location' not in i.keys():
+                continue
+            if 'street' not in i['location'].keys():
+                print(i['shop_id'])
                 for j in self.table_shop_map.find({'merchant_shop_id': i['shop_id']}, {'_id': False, 'crawler_shop_id': True, 'merchant_shop_id': True}):
                     yes = False
                     for k in self.table_address.find({'id': j['crawler_shop_id']}):
@@ -53,7 +56,7 @@ class dishes():
                                         for t_ in item['types']:
                                             if t_ == 'administrative_area_level_4':
                                                 self.table_shop.update_one(
-                                                {'shop_id': i['shop_id']}, {'$set': {'location.street': item['long_name']}})
+                                                    {'shop_id': i['shop_id']}, {'$set': {'location.street': item['long_name']}})
                                                 self.lock.acquire()
                                                 self.valid += 1
                                                 self.lock.release()

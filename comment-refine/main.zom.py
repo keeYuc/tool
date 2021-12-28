@@ -51,7 +51,7 @@ class Refiner():
         self.table_refine_comment = myclient[database]["refine_comment"]
         self.table_avatar = myclient[database]["avatar"]
         self.table_name = myclient[database]["name"]
-        self.table_middleware_review = myclient[database_crawler]["middleware_review_ta"]
+        self.table_middleware_review = myclient[database_crawler]["middleware_review_zomato"]
         self.table_shop_map = myclient[database]["crawler_shop_id_map"]
         # self.init_database()
         self.lock = threading.Lock()
@@ -71,11 +71,11 @@ class Refiner():
         avatar_list = []
         name_list = []
         for i in self.table_middleware_review.find(
-                {}, {"language": True, "user_name": True, "user_avatar": True}):
+                {}, {"language": True, "userName": True, "userProfilePic": True}):
             try:
-                avatar_list.append({"avatar": i['user_avatar']})
+                avatar_list.append({"avatar": i['userProfilePic']})
                 name_list.append(
-                    {'name': i['user_name'], 'country': i['language']})
+                    {'name': i['userName'], 'country': i['language']})
             except:
                 pass
             if len(name_list) >= 1000:
