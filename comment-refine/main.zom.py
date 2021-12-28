@@ -9,9 +9,9 @@ import threading
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
 import time
-#uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 #uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
-uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+#uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 rpc_url = 'seo:9000'
 database = "content"
 database_crawler = "crawler"
@@ -113,10 +113,10 @@ class Refiner():
     def load_shop_id(self):
         self.shop_ids = []
         self.shop_id_map = {}
+        #for i in self.table_shop_map.find(
+        #        {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
         for i in self.table_shop_map.find(
-                {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}).limit(1):
-            # for i in self.table_shop_map.find(
-            #        {}, {'crawler_shop_id': True, 'merchant_shop_id': True}).limit(100):
+                {'crawler_shop_id': '5923858'}, {'crawler_shop_id': True, 'merchant_shop_id': True}).limit(100):
             self.shop_ids.append(i['crawler_shop_id'])
             self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
             print('has load', i['merchant_shop_id'], '   ', len(self.shop_ids))
@@ -171,9 +171,9 @@ class Refiner():
         shop_id = self.get_shop_id_by_crawler(store_id)
         self.__load__(shop_id)
         for i in self.table_middleware_review.find({'language': TR, 'store_id': {'$eq': store_id}}):
-            self.__load_comment_content(i, store_id)
-        print('load comments finish \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
-            len(self.comment[HIGH]), len(self.comment[NORMAL]), len(self.comment[LOW]), len(self.shop)))
+            self.__load_comment_content(i, shop_id)
+        print('load comments finish id: {} \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
+            shop_id, len(self.comment[HIGH][shop_id]), len(self.comment[NORMAL][shop_id]), len(self.comment[LOW][shop_id]), len(self.shop)))
 
     def __load__(self, shop_id):
         print('开始处理 id: ', shop_id)
@@ -193,29 +193,30 @@ class Refiner():
         self.shop_types[shop_id].append(type_)
 
     def __load_comment_content(self, i: dict, shop_id: str):
-        if i['review_score'] in [1, 2]:
+        self.sum_comment[shop_id] += 1
+        if round(float(i['ratingV2'])) in [0, 1, 2]:
             if shop_id not in self.comment[LOW].keys():
                 self.comment[LOW][shop_id] = []
             self.comment[LOW][shop_id].extend(
-                [item for item in i['review'].split('.') if item != ''])
+                [item for item in i['reviewText'].split('.') if item != ''])
             self.__image_insert(LOW, self.comment[LOW][shop_id])
             self.__new_statement(
                 LOW, shop_id, self.comment[LOW][shop_id])
             self.__load_shop_types(shop_id, LOW)
-        if i['review_score'] in [5]:
+        if round(float(i['ratingV2'])) in [5]:
             if shop_id not in self.comment[HIGH].keys():
                 self.comment[HIGH][shop_id] = []
             self.comment[HIGH][shop_id].extend(
-                [item for item in i['review'].split('.') if item != ''])
+                [item for item in i['reviewText'].split('.') if item != ''])
             self.__image_insert(HIGH, self.comment[HIGH][shop_id])
             self.__new_statement(
                 HIGH, shop_id, self.comment[HIGH][shop_id])
             self.__load_shop_types(shop_id, HIGH)
-        if i['review_score'] in [4, 3]:
+        if round(float(i['ratingV2'])) in [4, 3]:
             if shop_id not in self.comment[NORMAL].keys():
                 self.comment[NORMAL][shop_id] = []
             self.comment[NORMAL][shop_id].extend(
-                [item for item in i['review'].split('.') if item != ''])
+                [item for item in i['reviewText'].split('.') if item != ''])
             self.__image_insert(NORMAL, self.comment[NORMAL][shop_id])
             self.__new_statement(
                 NORMAL, shop_id, self.comment[NORMAL][shop_id])
@@ -247,7 +248,8 @@ class Refiner():
                 except BaseException as err:
                     print(err)
                     print(i, len(names), len(avatars))
-            self.create_comments(tmp)
+            # self.create_comments(tmp)
+            print(tmp)
             sum += len(tmp)
             cs += 1
             print('has commit : {}has create shop len : {}'.format(sum, cs))
@@ -386,94 +388,6 @@ class Refiner():
 
     def load_connect(self):
         self.connect = grpc.insecure_channel(rpc_url)
-
-    def statistical_word_frequency(self):
-        sum = 0
-        statistical_word = {}
-        statistical_word_2 = {}
-        statistical_com_word = {}
-        for i in self.table_comment.find(
-                {'country': {'$in': [TR]}}, {"content": True, "_id": False}):
-            sum += 1
-            wards = []
-            index = 0
-            for j in i['content'].split('.'):
-                if j != '':
-                    for l in j.split(','):
-                        if l != '':
-                            for h in l.split(' '):
-                                if h != '':
-                                    wards.append(h)
-            while index < len(wards):
-                if wards[index]not in statistical_word.keys():
-                    statistical_word[wards[index]] = 1
-                else:
-                    statistical_word[wards[index]] += 1
-                if index > 0:
-                    string_2 = '{} {}'.format(
-                        wards[index-1], wards[index])
-                    if string_2 not in statistical_word_2.keys():
-                        statistical_word_2[string_2] = 1
-                    else:
-                        statistical_word_2[string_2] += 1
-                if index > 0 and index < len(wards)-1:
-                    string = '{} {} {}'.format(
-                        wards[index-1], wards[index], wards[index+1])
-                    if string not in statistical_com_word.keys():
-                        statistical_com_word[string] = 1
-                    else:
-                        statistical_com_word[string] += 1
-                index += 1
-        statistical_word = sorted(
-            statistical_word.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
-        statistical_word_2 = sorted(
-            statistical_word_2.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
-        statistical_com_word = sorted(
-            statistical_com_word.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
-        pd.DataFrame(statistical_com_word).to_csv('statistical_com_word.csv')
-        pd.DataFrame(statistical_word).to_csv('statistical_word.csv')
-        pd.DataFrame(statistical_word_2).to_csv('statistical_word_2.csv')
-        # list = []
-        # list_ = []
-        # for k, v in statistical_word:
-        #    list.append((k, v))
-        #    if len(list) >= 2000:
-        #        break
-        # for k, v in statistical_com_word:
-        #    list_.append((k, v))
-        #    if len(list_) >= 2000:
-        #        break
-        # view.build(list, 'statistical_word')
-        # view.build(list_, 'statistical_com_word')
-
-    def statistical_word_shop(self):
-        map = {}
-        for i in self.table_comment.find({'language': TR}):
-            s = i['content']
-            shop_id = i['store_id']
-            for word in config.tr_word_statistical:
-                c = s.count(word)
-                if c > 0:
-                    if shop_id not in map.keys():
-                        map[shop_id] = {word: c}
-                    else:
-                        map[shop_id][word] = c
-        pd.DataFrame(map).to_csv('map.csv')
-
-    def statistical_shop(self):
-        list = []
-        for shop in self.table_shop.find({'country': TR}):
-            item = {}
-            if 'shop_id' in shop.keys():
-                item['shop_id'] = shop['shop_id']
-            if 'priority' in shop.keys():
-                item['priority'] = shop['priority']
-            if 'name' in shop.keys():
-                item['name'] = shop['name']
-            if 'stars' in shop.keys():
-                item['stars'] = shop['stars']
-            list.append(item)
-        pd.DataFrame(list).to_csv('shop.csv')
 
 
 if __name__ == "__main__":

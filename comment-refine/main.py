@@ -171,9 +171,9 @@ class Refiner():
         shop_id = self.get_shop_id_by_crawler(store_id)
         self.__load__(shop_id)
         for i in self.table_middleware_review.find({'language': TR, 'store_id': {'$eq': store_id}}):
-            self.__load_comment_content(i, store_id)
-        print('load comments finish \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
-            len(self.comment[HIGH]), len(self.comment[NORMAL]), len(self.comment[LOW]), len(self.shop)))
+            self.__load_comment_content(i, shop_id)
+        print('load comments finish id: {} \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
+            shop_id, len(self.comment[HIGH][shop_id]), len(self.comment[NORMAL][shop_id]), len(self.comment[LOW][shop_id]), len(self.shop)))
 
     def __load__(self, shop_id):
         print('开始处理 id: ', shop_id)
