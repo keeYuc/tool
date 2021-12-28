@@ -9,9 +9,9 @@ import threading
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
 import time
-uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+#uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 #uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
-#uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 rpc_url = 'seo:9000'
 database = "content"
 database_crawler = "crawler"
@@ -113,10 +113,10 @@ class Refiner():
     def load_shop_id(self):
         self.shop_ids = []
         self.shop_id_map = {}
-        #for i in self.table_shop_map.find(
-        #        {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
         for i in self.table_shop_map.find(
-                {'crawler_shop_id': '5923858'}, {'crawler_shop_id': True, 'merchant_shop_id': True}).limit(100):
+                {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
+        #for i in self.table_shop_map.find(
+        #        {'crawler_shop_id': '5923858'}, {'crawler_shop_id': True, 'merchant_shop_id': True}).limit(100):
             self.shop_ids.append(i['crawler_shop_id'])
             self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
             print('has load', i['merchant_shop_id'], '   ', len(self.shop_ids))
@@ -248,8 +248,7 @@ class Refiner():
                 except BaseException as err:
                     print(err)
                     print(i, len(names), len(avatars))
-            # self.create_comments(tmp)
-            print(tmp)
+            self.create_comments(tmp)
             sum += len(tmp)
             cs += 1
             print('has commit : {}has create shop len : {}'.format(sum, cs))
