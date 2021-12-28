@@ -53,7 +53,7 @@ class Refiner():
         self.table_name = myclient[database]["name"]
         self.table_middleware_review = myclient[database_crawler]["middleware_review_zomato"]
         self.table_shop_map = myclient[database]["crawler_shop_id_map"]
-        # self.init_database()
+        #self.init_database()
         self.lock = threading.Lock()
         self.load_shop_id()
         self.load_connect()
@@ -83,7 +83,6 @@ class Refiner():
                 self.table_name.insert_many(name_list)
                 avatar_list = []
                 name_list = []
-                print('yes')
         if len(name_list) > 0:
             self.table_avatar.insert_many(avatar_list)
             self.table_name.insert_many(name_list)
