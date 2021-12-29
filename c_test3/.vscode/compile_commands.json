@@ -1,0 +1,6 @@
+[
+{
+  "directory": "C:\\Users\\mohang\\code\\other\\tool\\c_test3",
+  "arguments": ["gcc.exe", "-c", "-m64", "-o", "build\\.objs\\test\\mingw\\x86_64\\debug\\test.cpp.obj", "test.cpp"],
+  "file": "test.cpp"
+}]
