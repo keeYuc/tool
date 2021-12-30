@@ -2,8 +2,8 @@ import pymongo
 import grpc
 import datetime
 import json
-url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-# url = mongodb://sms:hyy9JZFCnV@gcp-card-documentdb.cluster-ctckgm6c9ap0.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
+#url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+url = 'mongodb://sms:hyy9JZFCnV@gcp-card-documentdb.cluster-ctckgm6c9ap0.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 database = "sms"
 
 
