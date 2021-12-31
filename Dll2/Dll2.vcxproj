@@ -30,6 +30,10 @@
     <ClInclude Include="src\include\pch.h" />
     <ClInclude Include="src\include\PluginTCalcFunc.h" />
     <ClInclude Include="src\include\TCalcFuncSets.h" />
+    <ClInclude Include="src\main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="src\main.lib" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -87,6 +91,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Users\mohang\code\other\tool\Dll2\src\include;$(IncludePath)</IncludePath>
     <SourcePath>C:\Users\mohang\code\other\tool\Dll2\src;$(SourcePath)</SourcePath>
+    <LibraryPath>C:\msys64\mingw32\i686-w64-mingw32\lib;C:\Users\mohang\code\other\tool\Dll2\src;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -110,6 +115,8 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\mohang\code\other\tool\Dll2\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
