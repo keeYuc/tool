@@ -1,12 +1,32 @@
 #include "pch.h"
 #include "TCalcFuncSets.h"
+#include "main.h"
 #include<iostream>
 //生成的dll及相关依赖dll请拷贝到通达信安装目录的T0002/dlls/下面,再在公式管理器进行绑定
 
+
+
+
+
 void TestPlugin1(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)
 {
-    for (int i = 0;i < DataLen;i++)
-        pfOUT[i] = i;
+    for (int i = 0; i < DataLen; i++)
+    {
+        pfOUT[i] = 999;
+    }
+    auto a = new GoSlice;
+    a->cap = DataLen;
+    a->len = DataLen;
+    a->data = pfINa;
+    auto b = new GoSlice;
+    b->cap = DataLen;
+    b->len = DataLen;
+    b->data = pfINb;
+    auto c = new GoSlice;
+    c->cap = DataLen;
+    c->len = DataLen;
+    c->data = pfINc;
+    SendData(*a, *b, *c);
 }
 
 void TestPlugin2(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)

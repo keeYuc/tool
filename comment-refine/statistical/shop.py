@@ -1,10 +1,51 @@
 import pymongo
 import grpc
 import datetime
+import threading
 import json
-#url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+# url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 url = 'mongodb://sms:hyy9JZFCnV@gcp-card-documentdb.cluster-ctckgm6c9ap0.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 database = "content"
+myclient = pymongo.MongoClient(url)
+table_shop_map = myclient[database]["crawler_shop_id_map"]
+table_shop = myclient[database]["shop"]
+
+
+class Grouper:
+    def __init__(self):
+        myclient = pymongo.MongoClient(url)
+        self.table_shop_map = myclient[database]["crawler_shop_id_map"]
+        self.table_shop = myclient[database]["shop"]
+        self.lock = threading.Lock()
+
+
+def tmp():
+    for data in table_shop_map.find({}, {'merchant_shop_id': True, 'platform': True}):
+        get_shop(data['merchant_shop_id'])
+
+
+def get_shop(shop_id):
+    shop = {}
+    data = table_shop.find_one({'shop_id': shop_id})
+    if data != None:
+        shop['shop_id'] = shop_id
+        shop['name'] = data['name']
+        shop['url'] = 'todo'
+        shop['priority'] = 'todo'
+        shop['comment_num'] = data['comment_num']
+        shop['middleware_comment_num'] = 'todo'
+        shop['image_num'] = 'todo'
+        shop['tag_num'] = 'todo'
+        if 'location' in data.keys():
+            if 'city' in data['location'].keys():
+                shop['city'] = data['location']['city']
+            if 'street' in data.keys():
+                shop['street'] = data['location']['street']
+
+        if 'district_id' in data.keys():
+            shop['district'] = 'todo'
+    else:
+        return
 
 
 def count_time(prefix):
@@ -17,47 +58,3 @@ def count_time(prefix):
             print('{} 共计: {}秒'.format(prefix, total_time))
         return int_time
     return count_time__
-
-
-class Cleaner:
-    def __init__(self):
-        myclient = pymongo.MongoClient(url)
-        self.table_shop = myclient[database]["shop"]
-        self.table_shop_map = myclient[database]["crawler_shop_id_map"]
-        self.table_comment = myclient[database]["comment"]
-        self.back = []
-
-    def run(self):
-        self.__clean_shop_comment()
-        self.__clean_shop_comment_by_map()
-        self.__save()
-
-    def __update_by_shop_id(self, shop_id):
-        self.table_comment.update_many(
-            {'store_id': shop_id, 'type': 'normal'}, {'$set': {
-                'type': 'import'
-            }})
-        self.back.append(shop_id)
-        print('has change shop len :{}'.format(len(self.back)))
-
-    @count_time('__clean_shop_comment')
-    def __clean_shop_comment(self):
-        for shop in self.table_shop.find(
-                {'data_source': 'import'}, {'_id': False,  'shop_id': True}):
-            shop_id = shop['shop_id']
-            self.__update_by_shop_id(shop_id)
-
-    @count_time('__clean_shop_comment_by_map')
-    def __clean_shop_comment_by_map(self):
-        for shop in self.table_shop_map.find(
-                {}, {'_id': False,  'merchant_shop_id': True}):
-            shop_id = shop['merchant_shop_id']
-            self.__update_by_shop_id(shop_id)
-
-    def __save(self):
-        with open('back.json', 'w') as fd:
-            json.dump(self.back, fd)
-
-
-if __name__ == '__main__':
-    Cleaner().run()

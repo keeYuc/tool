@@ -11,6 +11,8 @@ if is_mode("debug") then
 else
     target("tdx")
     set_kind("shared")
+    add_linkdirs("$(projectdir)/lib")
+    add_links("main")
     add_includedirs("src/include")
     add_files("src/*.cpp")
     set_toolchains("gcc")

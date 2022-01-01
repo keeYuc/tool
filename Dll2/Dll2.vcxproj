@@ -27,13 +27,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\framework.h" />
+    <ClInclude Include="src\include\main.h" />
     <ClInclude Include="src\include\pch.h" />
     <ClInclude Include="src\include\PluginTCalcFunc.h" />
     <ClInclude Include="src\include\TCalcFuncSets.h" />
-    <ClInclude Include="src\main.h" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="src\main.lib" />
+    <Library Include="lib\main.lib" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -91,7 +91,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Users\mohang\code\other\tool\Dll2\src\include;$(IncludePath)</IncludePath>
     <SourcePath>C:\Users\mohang\code\other\tool\Dll2\src;$(SourcePath)</SourcePath>
-    <LibraryPath>C:\msys64\mingw32\i686-w64-mingw32\lib;C:\Users\mohang\code\other\tool\Dll2\src;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\mohang\code\other\tool\Dll2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -117,6 +117,7 @@
       <EnableUAC>false</EnableUAC>
       <AdditionalDependencies>main.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Users\mohang\code\other\tool\Dll2\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -136,6 +137,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -151,6 +153,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -170,6 +173,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
