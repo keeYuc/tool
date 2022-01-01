@@ -40,11 +40,15 @@ func (d DoubleStars) LevelDay(tdx *model.Tdx) (float32, int32) {
 	if tdx.InB[tdx.Len-1-1] > tdx.InB[tdx.Len-1-2] || tdx.InB[tdx.Len-1] > tdx.InB[tdx.Len-1-2] { // 回调缩量
 		return 1, 8
 	}
-	//15 日最低价下标
-	low_index := tool.GetMinIndex(tdx.InA, level)
+	min := tool.GetMin(tdx.InA, level*2)
+	if (tdx.InA[tdx.Len-1]-min)/min > 0.1 { //30日最大涨幅小于10%
+		return (tdx.InA[tdx.Len-1] - min) / min, 9
+	}
+	//15 日最低价反向数量
+	low_index := tool.GetMinCount(tdx.InA, level)
 	up := tool.GetUpSum(tdx.InC, low_index)
-	if up/tdx.InA[tdx.Len-1] > 0.1 { //15日内5日均线上升总幅度小于10%
-		return up, 9
+	if up/tdx.InA[tdx.Len-1] > 0.035 { //15日内5日均线上升总幅度小于%
+		return up, 10
 	}
 	return 0, 0
 }

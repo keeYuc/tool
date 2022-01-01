@@ -51,7 +51,7 @@ func GetMax(l []float32, long int) float32 { //最高价
 	return r
 }
 
-func GetMinIndex(l []float32, long int) (low_index int) { //最低价
+func GetMinCount(l []float32, long int) (low_index int) { //最低倒数序号
 	var r float32 = 999999
 	count := len(l)
 	if count > long {
@@ -60,10 +60,24 @@ func GetMinIndex(l []float32, long int) (low_index int) { //最低价
 	for index, i := range l[len(l)-count:] {
 		if i < r {
 			r = i
-			low_index = len(l) - count + index
+			low_index = count - index + 1
 		}
 	}
 	return low_index
+}
+
+func GetMin(l []float32, long int) float32 { //最低
+	var r float32 = 999999
+	count := len(l)
+	if count > long {
+		count = long
+	}
+	for _, i := range l[len(l)-count:] {
+		if i < r {
+			r = i
+		}
+	}
+	return r
 }
 
 func GetUpSum(l []float32, long int) (r float32) {
