@@ -27,13 +27,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\framework.h" />
-    <ClInclude Include="src\include\main.h" />
     <ClInclude Include="src\include\pch.h" />
+    <ClInclude Include="src\include\plug.h" />
     <ClInclude Include="src\include\PluginTCalcFunc.h" />
     <ClInclude Include="src\include\TCalcFuncSets.h" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\main.lib" />
+    <Library Include="lib\plug.lib" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -115,7 +115,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>plug.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Users\mohang\code\other\tool\Dll2\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>

@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "TCalcFuncSets.h"
-#include "main.h"
+#include "plug.h"
 #include<iostream>
 //生成的dll及相关依赖dll请拷贝到通达信安装目录的T0002/dlls/下面,再在公式管理器进行绑定
 
@@ -10,23 +10,26 @@
 
 void TestPlugin1(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)
 {
-    for (int i = 0; i < DataLen; i++)
-    {
-        pfOUT[i] = 999;
-    }
     auto a = new GoSlice;
-    a->cap = DataLen;
     a->len = DataLen;
+    a->cap = DataLen;
     a->data = pfINa;
     auto b = new GoSlice;
-    b->cap = DataLen;
     b->len = DataLen;
+    b->cap = DataLen;
     b->data = pfINb;
     auto c = new GoSlice;
-    c->cap = DataLen;
     c->len = DataLen;
+    c->cap = DataLen;
     c->data = pfINc;
-    SendData(*a, *b, *c);
+    auto flag = DoubleStarsDay(DataLen, *a, *b, *c);
+    for (int i = 0; i < DataLen; i++)
+    {
+        pfOUT[i] = flag.r0;
+        if (i==DataLen-1){
+            pfOUT[i] = flag.r1;
+        }
+    }
 }
 
 void TestPlugin2(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)

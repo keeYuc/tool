@@ -5,22 +5,32 @@ import (
 )
 import (
 	"app/model"
-	"app/pattern"
-
-	"honnef.co/go/tools/pattern"
+	"app/patterns"
 )
 
 func main() {
 }
 
 //export DoubleStarsDay
-func DoubleStarsDay(tdx model.Tdx) bool {
-	return pattern.DoubleStars{}.LevelDay(&tdx)
+func DoubleStarsDay(dataLen int, a, b, c []float32) (float32, int32) {
+	tdx := model.Tdx{
+		Len: dataLen,
+		InA: a,
+		InB: b,
+		InC: c,
+	}
+	return patterns.DoubleStars{}.LevelDay(&tdx)
 }
 
 //export DoubleStarsM15
-func DoubleStarsM15(tdx model.Tdx) bool {
-	return pattern.DoubleStars{}.LevelM15(&tdx)
+func DoubleStarsM15(dataLen int, a, b, c []float32) float32 {
+	tdx := model.Tdx{
+		Len: dataLen,
+		InA: a,
+		InB: b,
+		InC: c,
+	}
+	return patterns.DoubleStars{}.LevelM15(&tdx)
 }
 
 ////* test data

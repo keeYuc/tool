@@ -41,12 +41,12 @@
     <ClInclude Include="src\include\TCalcFuncSets.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\main.h">
+    <ClInclude Include="src\include\plug.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\main.lib">
+    <Library Include="lib\plug.lib">
       <Filter>lib</Filter>
     </Library>
   </ItemGroup>

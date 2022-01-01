@@ -1,16 +1,15 @@
 package tool
 
-//---------------------ma---------------------------
 type Ma struct {
 	Len     int
 	History chan float32
 	Value   float32
 }
 
-func NewMa(len int) Ma {
+func NewMa(long int) Ma { //生长的均线
 	return Ma{
-		Len:     len,
-		History: make(chan float32, len+1),
+		Len:     long,
+		History: make(chan float32, long+1),
 		Value:   0.0,
 	}
 }
@@ -27,13 +26,61 @@ func (m *Ma) Get() float32 {
 	return m.Value / float32(m.Len)
 }
 
-//---------------------ma---------------------------
+func PureLastMa(l []float32, long int) (r float32) { //最后均线
+	count := len(l)
+	if count > long {
+		count = long
+	}
+	for _, i := range l[len(l)-count:] {
+		r += i
+	}
+	return r / float32(count)
+}
 
-//---------------------grow---------------------------
-func GetGrow(l []float32, shift int) float32 {
+func GetMax(l []float32, long int) float32 { //最高价
+	var r float32 = -1
+	count := len(l)
+	if count > long {
+		count = long
+	}
+	for _, i := range l[len(l)-count:] {
+		if i > r {
+			r = i
+		}
+	}
+	return r
+}
+
+func GetMinIndex(l []float32, long int) (low_index int) { //最低价
+	var r float32 = 999999
+	count := len(l)
+	if count > long {
+		count = long
+	}
+	for index, i := range l[len(l)-count:] {
+		if i < r {
+			r = i
+			low_index = len(l) - count + index
+		}
+	}
+	return low_index
+}
+
+func GetUpSum(l []float32, long int) (r float32) {
+	count := len(l)
+	if count > long {
+		count = long
+	}
+	for _, i := range l[len(l)-count:] {
+		if i > 0 {
+			r += i
+		}
+	}
+	return
+}
+
+func GetGrow(l []float32, shift int) float32 { //涨幅
 	last := l[len(l)-1-shift-1]
 	this := l[len(l)-1-shift]
 	return (this - last) * 100 / last
 }
-
-//---------------------grow---------------------------

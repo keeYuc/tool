@@ -25,15 +25,59 @@ func Test_Ma(t *testing.T) {
 }
 
 func Test_Grow(t *testing.T) {
-	l := []float32{1, 2, 3}
-	// 50
-	grow := GetGrow(l, 0)
-	if grow != 50 {
-		t.Error(grow)
-	}
-	//100
-	grow = GetGrow(l, 1)
+	l := []float32{1, 1.2, 2, 3}
+	//// 50
+	//grow := GetGrow(l, 0)
+	//if grow != 50 {
+	//	t.Error(grow)
+	//}
+	////100
+	//grow = GetGrow(l, 1)
+	//if grow != 100 {
+	//	t.Error(grow)
+	//}
+	grow := GetGrow(l, 2)
 	if grow != 100 {
 		t.Error(grow)
+	}
+}
+
+func Test_PureMa(t *testing.T) {
+	l := []float32{1, 2, 3}
+	ma := PureLastMa(l, 1)
+	if ma != 3 {
+		t.Error(ma)
+	}
+	ma = PureLastMa(l, 2)
+	if ma != 2.5 {
+		t.Error(ma)
+	}
+	ma = PureLastMa(l, 3)
+	if ma != 2 {
+		t.Error(ma)
+	}
+	ma = PureLastMa(l, 4)
+	if ma != 2 {
+		t.Error(ma)
+	}
+}
+
+func Test_Max(t *testing.T) {
+	l := []float32{100, 1, 2, 3, 2}
+	m := GetMax(l, 2)
+	if m != 3 {
+		t.Error(m)
+	}
+	m = GetMax(l, 3)
+	if m != 3 {
+		t.Error(m)
+	}
+	m = GetMax(l, 5)
+	if m != 100 {
+		t.Error(m)
+	}
+	m = GetMax(l, 15)
+	if m != 100 {
+		t.Error(m)
 	}
 }
