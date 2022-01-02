@@ -56,3 +56,6 @@ func (d DoubleStars) LevelM15(tdx *model.Tdx) float32 {
 	//close a60 macd
 	return 0
 }
+
+
+
