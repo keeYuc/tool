@@ -3,49 +3,14 @@ import grpc
 import datetime
 import threading
 import json
-# url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-url = 'mongodb://sms:hyy9JZFCnV@gcp-card-documentdb.cluster-ctckgm6c9ap0.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+import time
+import pandas as pd
+from concurrent.futures import ThreadPoolExecutor, ALL_COMPLETED, wait
+url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+#url = 'mongodb://sms:hyy9JZFCnV@gcp-card-documentdb.cluster-ctckgm6c9ap0.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+domain = 'os.disoo.co/'
 database = "content"
-myclient = pymongo.MongoClient(url)
-table_shop_map = myclient[database]["crawler_shop_id_map"]
-table_shop = myclient[database]["shop"]
-
-
-class Grouper:
-    def __init__(self):
-        myclient = pymongo.MongoClient(url)
-        self.table_shop_map = myclient[database]["crawler_shop_id_map"]
-        self.table_shop = myclient[database]["shop"]
-        self.lock = threading.Lock()
-
-
-def tmp():
-    for data in table_shop_map.find({}, {'merchant_shop_id': True, 'platform': True}):
-        get_shop(data['merchant_shop_id'])
-
-
-def get_shop(shop_id):
-    shop = {}
-    data = table_shop.find_one({'shop_id': shop_id})
-    if data != None:
-        shop['shop_id'] = shop_id
-        shop['name'] = data['name']
-        shop['url'] = 'todo'
-        shop['priority'] = 'todo'
-        shop['comment_num'] = data['comment_num']
-        shop['middleware_comment_num'] = 'todo'
-        shop['image_num'] = 'todo'
-        shop['tag_num'] = 'todo'
-        if 'location' in data.keys():
-            if 'city' in data['location'].keys():
-                shop['city'] = data['location']['city']
-            if 'street' in data.keys():
-                shop['street'] = data['location']['street']
-
-        if 'district_id' in data.keys():
-            shop['district'] = 'todo'
-    else:
-        return
+database_crawler = "crawler"
 
 
 def count_time(prefix):
@@ -58,3 +23,100 @@ def count_time(prefix):
             print('{} 共计: {}秒'.format(prefix, total_time))
         return int_time
     return count_time__
+
+
+state_map = {'Adana': 'Adana',
+             'Adıyaman': 'Adiyaman',
+             'Afyonkarahisar': 'Afyonkarahisar',
+             'Ankara': 'Ankara',
+             'Antalya': 'Antalya',
+             'Bursa': 'Bursa',
+             'Eskişehir': 'Eskisehir',
+             'Gaziantep': 'Gaziantep',
+             'Konya': 'Konya',
+             'Muğla': 'Mugla',
+             'İstanbul': 'Istanbul',
+             'İzmir': 'Izmir',
+             'Bingöl': 'Bingol',
+             'Çanakkale': 'Canakkale',
+             'Çeşme': 'Cesme'}
+
+
+class Grouper:
+    def __init__(self):
+        myclient = pymongo.MongoClient(url)
+        self.table_shop_map = myclient[database]["crawler_shop_id_map"]
+        self.table_shop = myclient[database]["shop"]
+        self.table_district = myclient[database]['shop_district']
+        self.table_comment_zom = myclient[database_crawler]['middleware_review_zomato']
+        self.table_comment_trip = myclient[database_crawler]['middleware_review_ta']
+        self.shops = {}
+        self.lock = threading.Lock()
+
+    @count_time('run')
+    def run(self):
+        with ThreadPoolExecutor(max_workers=20) as t:
+            wait_list = []
+            for data in self.table_shop_map.find({}, {'merchant_shop_id': True, 'crawler_shop_id': True, 'platform': True}):
+                wait_list.append(t.submit(self.get_shop, data['merchant_shop_id'],
+                                          data['crawler_shop_id'], data['platform']))
+                print('has commit job : {}'.format(len(wait_list)))
+            while len(self.shops) < len(wait_list):
+                print('has fin job : {}'.format(len(self.shops)))
+                time.sleep(1)
+            wait(wait_list, return_when=ALL_COMPLETED)
+        pd.DataFrame(self.shops).to_csv('shop_message.csv')
+
+    def get_shop(self, shop_id, crawler_shop_id, platform):
+        shop = {}
+        data = self.table_shop.find_one({'shop_id': shop_id})
+        if data != None:
+            shop['shop_id'] = shop_id
+            shop['name'] = data['name']
+            if 'priority' in data.keys():
+                shop['priority'] = data['priority']
+            if 'comment_sum' in data.keys():
+                shop['comment_sum'] = data['comment_sum']
+            shop['middleware_comment_num'] = self.get_middleware_comment_num(
+                crawler_shop_id, platform)
+            if 'detail_images' in data.keys():
+                shop['detail_image_num'] = len(data['detail_images'])
+            if 'tag' in data.keys():
+                shop['tag_num'] = len(data['tag']['all'])
+            if 'location' in data.keys():
+                if 'city' in data['location'].keys():
+                    shop['city'] = data['location']['city']
+                if 'street' in data['location'].keys():
+                    shop['street'] = data['location']['street']
+                if 'state' in data['location'].keys():
+                    shop['url'] = self.get_url(
+                        data['location']['state'], data['seo_key'])
+            if 'district_id' in data.keys():
+                shop['district'] = self.get_district(data['district_id'])
+        else:
+            return
+        self.shops[shop_id] = shop
+
+    def get_url(self, state, seo_key):
+        if state in state_map.keys():
+            state = state_map[state]
+        return domain + 'tr-tr-{}/{}/'.format(state, seo_key)
+
+    def get_district(self, district_id):
+        district = self.table_district.find_one(
+            {'district_id': district_id})
+        try:
+            return district['name']
+        except:
+            return ''
+
+    def get_middleware_comment_num(self, crawler_shop_id, platform):
+        if platform == 'tripadvisor':
+            return self.table_comment_trip.count_documents({'store_id': crawler_shop_id})
+        elif platform == 'zomato':
+            return self.table_comment_zom.count_documents(
+                {'store_id': crawler_shop_id})
+
+
+if __name__ == '__main__':
+    Grouper().run()
