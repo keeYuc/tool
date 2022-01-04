@@ -51,6 +51,23 @@ func GetMax(l []float32, long int) float32 { //最高价
 	return r
 }
 
+func GetMaxAndShift(l []float32, long int) (float32, int) { //最高价
+	var r float32 = -1
+	var i int = len(l)
+	count := i
+	if count > long {
+		count = long
+	}
+
+	for index, value := range l[len(l)-count:] {
+		if value > r {
+			r = value
+			i = count - index - 1
+		}
+	}
+	return r, i
+}
+
 func GetMinCount(l []float32, long int) (low_index int) { //最低倒数序号
 	var r float32 = 999999
 	count := len(l)
@@ -60,7 +77,7 @@ func GetMinCount(l []float32, long int) (low_index int) { //最低倒数序号
 	for index, i := range l[len(l)-count:] {
 		if i < r {
 			r = i
-			low_index = count - index + 1
+			low_index = count - index - 1
 		}
 	}
 	return low_index
@@ -80,6 +97,22 @@ func GetMin(l []float32, long int) float32 { //最低
 	return r
 }
 
+func GetMinAndShift(l []float32, long int) (float32, int) { //最低
+	var r float32 = 999999
+	var i int = len(l)
+	count := i
+	if count > long {
+		count = long
+	}
+	for index, value := range l[len(l)-count:] {
+		if value < r {
+			r = value
+			i = count - index - 1
+		}
+	}
+	return r, i
+}
+
 func GetUpSum(l []float32, long int) (r float32) {
 	count := len(l)
 	if count > long {
@@ -97,4 +130,16 @@ func GetGrow(l []float32, shift int) float32 { //涨幅
 	last := l[len(l)-1-shift-1]
 	this := l[len(l)-1-shift]
 	return (this - last) * 100 / last
+}
+
+func GetGrowPure(l []float32, shift int) float32 { //涨
+	last := l[len(l)-1-shift-1]
+	this := l[len(l)-1-shift]
+	return (this - last)
+}
+
+func GetGrowPureIn(l []float32, a int, b int) float32 { //涨
+	last := l[len(l)-1-a]
+	this := l[len(l)-1-b]
+	return (this - last)
 }

@@ -11,40 +11,29 @@ import (
 func main() {
 }
 
-//export DoubleStarsDay
-func DoubleStarsDay(dataLen int, a, b, c []float32) (float32, int32) {
-	tdx := model.Tdx{
-		Len: dataLen,
-		InA: a,
-		InB: b,
-		InC: c,
+//export SingleStar
+func SingleStar(dataLen int, a, b, c []float32) (float32, int32) {
+	if dataLen < 5 {
+		return 1, 1
 	}
-	return patterns.DoubleStars{}.LevelDay(&tdx)
+	tdx := model.Exchange(dataLen, a, b, c)
+	return patterns.SingleStar(&tdx)
 }
 
-//export DoubleStarsM15
-func DoubleStarsM15(dataLen int, a, b, c []float32) float32 {
-	tdx := model.Tdx{
-		Len: dataLen,
-		InA: a,
-		InB: b,
-		InC: c,
+//export DoubleStars
+func DoubleStars(dataLen int, a, b, c []float32) (float32, int32) {
+	if dataLen < 5 {
+		return 1, 1
 	}
-	return patterns.DoubleStars{}.LevelM15(&tdx)
+	tdx := model.Exchange(dataLen, a, b, c)
+	return patterns.DoubleStars(&tdx)
 }
 
-////* test data
-////export SendData
-//func SendData(a, b, c []float32) {
-//	data := map[string][]float32{
-//		"a": a,
-//		"b": b,
-//		"c": c,
-//	}
-//	res, _ := json.Marshal(data)
-//	buf := new(bytes.Buffer)
-//	buf.Write(res)
-//	req, _ := http.NewRequest(http.MethodPost, "http://localhost:8080/debug/", buf)
-//	client := http.Client{}
-//	client.Do(req)
-//}
+//export ThreeStars
+func ThreeStars(dataLen int, a, b, c []float32) (float32, int32) {
+	if dataLen < 5 {
+		return 1, 1
+	}
+	tdx := model.Exchange(dataLen, a, b, c)
+	return patterns.ThreeStars(&tdx)
+}

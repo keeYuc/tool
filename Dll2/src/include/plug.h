@@ -69,13 +69,26 @@ extern "C" {
 #endif
 
 
-/* Return type for DoubleStarsDay */
-struct DoubleStarsDay_return {
+/* Return type for SingleStar */
+struct SingleStar_return {
 	GoFloat32 r0;
 	GoInt32 r1;
 };
-extern __declspec(dllexport) struct DoubleStarsDay_return DoubleStarsDay(GoInt dataLen, GoSlice a, GoSlice b, GoSlice c);
-extern __declspec(dllexport) GoFloat32 DoubleStarsM15(GoInt dataLen, GoSlice a, GoSlice b, GoSlice c);
+extern __declspec(dllexport) struct SingleStar_return SingleStar(GoInt dataLen, GoSlice a, GoSlice b, GoSlice c);
+
+/* Return type for DoubleStars */
+struct DoubleStars_return {
+	GoFloat32 r0;
+	GoInt32 r1;
+};
+extern __declspec(dllexport) struct DoubleStars_return DoubleStars(GoInt dataLen, GoSlice a, GoSlice b, GoSlice c);
+
+/* Return type for ThreeStars */
+struct ThreeStars_return {
+	GoFloat32 r0;
+	GoInt32 r1;
+};
+extern __declspec(dllexport) struct ThreeStars_return ThreeStars(GoInt dataLen, GoSlice a, GoSlice b, GoSlice c);
 
 #ifdef __cplusplus
 }

@@ -7,8 +7,8 @@
 
 
 
-
-void TestPlugin1(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)
+//双星模式
+void SingleStar(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)
 {
     auto a = new GoSlice;
     a->len = DataLen;
@@ -22,31 +22,78 @@ void TestPlugin1(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* p
     c->len = DataLen;
     c->cap = DataLen;
     c->data = pfINc;
-    auto flag = DoubleStarsDay(DataLen, *a, *b, *c);
+    auto flag = SingleStar(DataLen, *a, *b, *c);
     for (int i = 0; i < DataLen; i++)
     {
         pfOUT[i] = flag.r0;
-        if (i==DataLen-1){
+        if (i == DataLen - 1)
+        {
             pfOUT[i] = flag.r1;
         }
     }
 }
 
-void TestPlugin2(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)
+void DoubleStars(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)
 {
-    for (int i = 0;i < DataLen;i++)
+    auto a = new GoSlice;
+    a->len = DataLen;
+    a->cap = DataLen;
+    a->data = pfINa;
+    auto b = new GoSlice;
+    b->len = DataLen;
+    b->cap = DataLen;
+    b->data = pfINb;
+    auto c = new GoSlice;
+    c->len = DataLen;
+    c->cap = DataLen;
+    c->data = pfINc;
+    auto flag = DoubleStars(DataLen, *a, *b, *c);
+    for (int i = 0; i < DataLen; i++)
     {
-        pfOUT[i] = pfINa[i] + pfINb[i] + pfINc[i];
-        pfOUT[i] = pfOUT[i] / 3;
+        pfOUT[i] = flag.r0;
+        if (i == DataLen - 1)
+        {
+            pfOUT[i] = flag.r1;
+        }
     }
 }
+
+
+// 三星模式
+
+void ThreeStars(int DataLen, float* pfOUT, float* pfINa, float* pfINb, float* pfINc)
+{
+    auto a = new GoSlice;
+    a->len = DataLen;
+    a->cap = DataLen;
+    a->data = pfINa;
+    auto b = new GoSlice;
+    b->len = DataLen;
+    b->cap = DataLen;
+    b->data = pfINb;
+    auto c = new GoSlice;
+    c->len = DataLen;
+    c->cap = DataLen;
+    c->data = pfINc;
+    auto flag = ThreeStars(DataLen, *a, *b, *c);
+    for (int i = 0; i < DataLen; i++)
+    {
+        pfOUT[i] = flag.r0;
+        if (i == DataLen - 1)
+        {
+            pfOUT[i] = flag.r1;
+        }
+    }
+}
+
 
 
 //加载的函数
 PluginTCalcFuncInfo g_CalcFuncSets[] =
 {
-    {1, (pPluginFUNC) &TestPlugin1},
-    {2, (pPluginFUNC) &TestPlugin2},
+    {1, (pPluginFUNC) &SingleStar},
+    {2, (pPluginFUNC) &DoubleStars},
+    {3, (pPluginFUNC) &ThreeStars},
     {0, NULL},
 };
 
