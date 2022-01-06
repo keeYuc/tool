@@ -81,3 +81,15 @@ func Test_Max(t *testing.T) {
 		t.Error(m)
 	}
 }
+
+func change(l []int) {
+	l[1] = 99
+}
+
+func Test_Slice(t *testing.T) {
+	arr := []int{1, 2}
+	change(arr)
+	if arr[1] != 99 {
+		t.Error(arr)
+	}
+}

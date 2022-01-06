@@ -1,5 +1,15 @@
 package model
 
+const (
+	H = "H"
+	L = "L"
+)
+
+type Fx struct {
+	K    Pure
+	Type string
+}
+
 type Pure struct {
 	C     float32
 	H     float32
@@ -14,6 +24,13 @@ type IndexRange struct {
 
 func (p *Pure) Contain(next *Pure) bool {
 	return p.H >= next.H && p.L <= next.H
+}
+
+func (p *Pure) CalcValueH() float32 {
+	return p.C*0.3 + p.H*0.7
+}
+func (p *Pure) CalcValueL() float32 {
+	return p.C*0.3 + p.L*0.7
 }
 
 type Tdx struct {

@@ -15,14 +15,16 @@ service_map = {}
 
 
 def create_service(p, en, tr):
+    now = int(round(time.time() * 1000))
     item = {
         'service_id': str(uuid.uuid4()),
         'name': en,
         'name_tr': tr,
-        'update_at': 1,
-        'create_at': 1,
+        'update_at': now,
+        'create_at': now,
         'is_delete': false
     }
+    print(item)
     # table_service.insert_one()
     return {}
 
