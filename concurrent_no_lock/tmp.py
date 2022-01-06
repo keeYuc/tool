@@ -4,11 +4,9 @@ import datetime
 import pandas as pd
 import config
 import grpc
-from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
-import threading
+
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
-import time
 #uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 #uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
 uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
@@ -44,7 +42,7 @@ class Refiner():
     @ count_time("__init__")
     def __init__(self) -> None:
         myclient = pymongo.MongoClient(uri)
-        # self.table_comment = myclient[database]["comment"]
+        #self.table_comment = myclient[database]["comment"]
         self.table_shop = myclient[database]["shop"]
         self.table_shop_tag = myclient[database]["shop_tag"]
         self.table_shop_district = myclient[database]["shop_district"]
@@ -54,7 +52,6 @@ class Refiner():
         self.table_middleware_review = myclient[database_crawler]["middleware_review_ta"]
         self.table_shop_map = myclient[database]["crawler_shop_id_map"]
         # self.init_database()
-        self.lock = threading.Lock()
         self.load_shop_id()
         self.load_connect()
         self.load_statement()
@@ -110,30 +107,25 @@ class Refiner():
         random.shuffle(new)
         return self.choice_one(new)
 
+    @ count_time("load_shop_id")
     def load_shop_id(self):
         self.shop_ids = []
         self.shop_id_map = {}
         for i in self.table_shop_map.find(
                 {'merchant_shop_id': {'$in': config.shop_ids}}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
-            # for i in self.table_shop_map.find(
-            #        {}, {'crawler_shop_id': True, 'merchant_shop_id': True}).limit(100):
             self.shop_ids.append(i['crawler_shop_id'])
             self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
-            print('has load', i['merchant_shop_id'], '   ', len(self.shop_ids))
+            print('has load', i['merchant_shop_id'])
 
     def get_shop_id_by_crawler(self, crawler_shop_id):
         return self.shop_id_map[crawler_shop_id]
 
     def __load_shop(self, shop_id):
-        data = self.table_shop.find_one({'shop_id': shop_id})
-        self.lock.acquire()
         if shop_id not in self.shop.keys():
-            self.shop[shop_id] = data
+            self.shop[shop_id] = self.table_shop.find_one({'shop_id': shop_id})
             self.sum_comment[shop_id] = 1
         else:
             self.sum_comment[shop_id] += 1
-        self.lock.release()
-        print('has load shop len:', len(self.shop))
 
     def __load_tag(self, tag_id):
         if tag_id not in self.tag.keys():
@@ -146,85 +138,73 @@ class Refiner():
 
     @ count_time("load_commnet_shop_tag_district")
     def load_commnet_shop_tag_district(self):
-        print('start 1')
         comments_low = {}
         comments_normal = {}
         comments_high = {}
         self.comment = {}
-        self.comment[LOW] = {}
-        self.comment[NORMAL] = {}
-        self.comment[HIGH] = {}
         self.shop = {}
         self.tag = {}
         self.district = {}
         self.shop_types = {}
         self.sum_comment = {}
-        print('start 2')
-        with ThreadPoolExecutor(max_workers=10) as t:
-            wait_list = []
-            print('start 3')
-            for store_id in self.shop_ids:
-                wait_list.append(t.submit(self.__do_load, store_id))
-            wait(wait_list, return_when=ALL_COMPLETED)
-
-    def __do_load(self, store_id):
-        shop_id = self.get_shop_id_by_crawler(store_id)
-        self.__load__(shop_id)
-        for i in self.table_middleware_review.find({'language': TR, 'store_id': {'$eq': store_id}}):
-            self.__load_comment_content(i, shop_id)
-        print('load comments finish id: {} \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
-            shop_id, len(self.comment[HIGH][shop_id]), len(self.comment[NORMAL][shop_id]), len(self.comment[LOW][shop_id]), len(self.shop)))
-
-    def __load__(self, shop_id):
-        print('开始处理 id: ', shop_id)
-        self.__load_shop(shop_id)
-        try:
-            self.__load_tag(self.shop[shop_id]['tag']['show'])
-        except:
-            pass
-        try:
-            self.__load_district(self.shop[shop_id]['district_id'])
-        except:
-            pass
+        for store_id in self.shop_ids:
+            for i in self.table_middleware_review.find({'language': TR, 'store_id': {'$eq': store_id}}):
+                shop_id = self.get_shop_id_by_crawler(i['store_id'])
+                self.__load_shop(shop_id)
+                self.__load_comment_content(
+                    i, shop_id, comments_low, comments_high, comments_normal)
+                try:
+                    self.__load_tag(self.shop[shop_id]['tag']['show'])
+                except:
+                    pass
+                try:
+                    self.__load_district(self.shop[shop_id]['district_id'])
+                except:
+                    pass
+            print('has load comment shop_id :', shop_id)
+        self.comment[LOW] = comments_low
+        self.comment[NORMAL] = comments_normal
+        self.comment[HIGH] = comments_high
+        print('load comments finish \nhigh_len: {}\nnormal_len: {}\nlow_len: {}\nshop_len: {}'.format(
+            len(comments_high), len(comments_normal), len(comments_low), len(self.shop)))
 
     def __load_shop_types(self, shop_id, type_):
         if shop_id not in self.shop_types.keys():
             self.shop_types[shop_id] = []
         self.shop_types[shop_id].append(type_)
 
-    def __load_comment_content(self, i: dict, shop_id: str):
+    def __load_comment_content(self, i: dict, shop_id: str, comments_low: dict, comments_high: dict, comments_normal: dict):
         if i['review_score'] in [1, 2]:
-            if shop_id not in self.comment[LOW].keys():
-                self.comment[LOW][shop_id] = []
-            self.comment[LOW][shop_id].extend(
+            if shop_id not in comments_low.keys():
+                comments_low[shop_id] = []
+            comments_low[shop_id].extend(
                 [item for item in i['review'].split('.') if item != ''])
-            self.__image_insert(LOW, self.comment[LOW][shop_id])
+            self.__image_insert(LOW, comments_low[shop_id])
             self.__new_statement(
-                LOW, shop_id, self.comment[LOW][shop_id])
+                LOW, shop_id, comments_low[shop_id])
             self.__load_shop_types(shop_id, LOW)
         if i['review_score'] in [5]:
-            if shop_id not in self.comment[HIGH].keys():
-                self.comment[HIGH][shop_id] = []
-            self.comment[HIGH][shop_id].extend(
+            if shop_id not in comments_high.keys():
+                comments_high[shop_id] = []
+            comments_high[shop_id].extend(
                 [item for item in i['review'].split('.') if item != ''])
-            self.__image_insert(HIGH, self.comment[HIGH][shop_id])
+            self.__image_insert(HIGH, comments_high[shop_id])
             self.__new_statement(
-                HIGH, shop_id, self.comment[HIGH][shop_id])
+                HIGH, shop_id, comments_high[shop_id])
             self.__load_shop_types(shop_id, HIGH)
         if i['review_score'] in [4, 3]:
-            if shop_id not in self.comment[NORMAL].keys():
-                self.comment[NORMAL][shop_id] = []
-            self.comment[NORMAL][shop_id].extend(
+            if shop_id not in comments_normal.keys():
+                comments_normal[shop_id] = []
+            comments_normal[shop_id].extend(
                 [item for item in i['review'].split('.') if item != ''])
-            self.__image_insert(NORMAL, self.comment[NORMAL][shop_id])
+            self.__image_insert(NORMAL, comments_normal[shop_id])
             self.__new_statement(
-                NORMAL, shop_id, self.comment[NORMAL][shop_id])
+                NORMAL, shop_id, comments_normal[shop_id])
             self.__load_shop_types(shop_id, NORMAL)
 
     @ count_time("statement_rebuild")
     def statement_rebuild(self):
         sum = 0
-        cs = 0
         for shop_id in self.shop:
             tmp = []
             max, min = self.get_max_min(shop_id)
@@ -244,13 +224,14 @@ class Refiner():
                     country = self.shop[shop_id]['country']
                     tmp.append(data_pb2.Comment(
                         user_name=name, user_avatar=avatar, score=self.get_star(type_), content=string, store_id=shop_id, country=country, status='valid', type='normal'))
-                except BaseException as err:
-                    print(err)
-                    print(i, len(names), len(avatars))
+                except:
+                    print(i)
+                    print(len(names))
+                    print(len(avatars))
+                    return
             self.create_comments(tmp)
             sum += len(tmp)
-            cs += 1
-            print('has commit : {}has create shop len : {}'.format(sum, cs))
+            print('has commit : ', sum)
 
     def get_max_min(self, shop_id):
         sum = self.sum_comment[shop_id]

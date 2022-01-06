@@ -6,9 +6,10 @@ import json
 import time
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, ALL_COMPLETED, wait
-url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-#url = 'mongodb://sms:hyy9JZFCnV@gcp-card-documentdb.cluster-ctckgm6c9ap0.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
-domain = 'os.disoo.co/'
+# url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+# url = 'mongodb://sms:hyy9JZFCnV@gcp-card-documentdb.cluster-ctckgm6c9ap0.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+domain = 'www.yummyadvisor.com/'
 database = "content"
 database_crawler = "crawler"
 
@@ -61,41 +62,42 @@ class Grouper:
                 wait_list.append(t.submit(self.get_shop, data['merchant_shop_id'],
                                           data['crawler_shop_id'], data['platform']))
                 print('has commit job : {}'.format(len(wait_list)))
-            while len(self.shops) < len(wait_list):
-                print('has fin job : {}'.format(len(self.shops)))
-                time.sleep(1)
             wait(wait_list, return_when=ALL_COMPLETED)
-        pd.DataFrame(self.shops).to_csv('shop_message.csv')
+            print('has len ：{}'.format(len(self.shops)))
+        pd.DataFrame(self.shops).T.to_csv('shop_message.csv')
 
     def get_shop(self, shop_id, crawler_shop_id, platform):
         shop = {}
         data = self.table_shop.find_one({'shop_id': shop_id})
         if data != None:
-            shop['shop_id'] = shop_id
-            shop['name'] = data['name']
-            if 'priority' in data.keys():
-                shop['priority'] = data['priority']
-            if 'comment_sum' in data.keys():
-                shop['comment_sum'] = data['comment_sum']
-            shop['middleware_comment_num'] = self.get_middleware_comment_num(
-                crawler_shop_id, platform)
-            if 'detail_images' in data.keys():
-                shop['detail_image_num'] = len(data['detail_images'])
-            if 'tag' in data.keys():
-                shop['tag_num'] = len(data['tag']['all'])
-            if 'location' in data.keys():
-                if 'city' in data['location'].keys():
-                    shop['city'] = data['location']['city']
-                if 'street' in data['location'].keys():
-                    shop['street'] = data['location']['street']
-                if 'state' in data['location'].keys():
-                    shop['url'] = self.get_url(
-                        data['location']['state'], data['seo_key'])
-            if 'district_id' in data.keys():
-                shop['district'] = self.get_district(data['district_id'])
+            try:
+                shop['shop_id'] = shop_id
+                shop['name'] = data['name']
+                if 'priority' in data.keys():
+                    shop['priority'] = data['priority']
+                if 'comment_sum' in data.keys():
+                    shop['comment_sum'] = data['comment_sum']
+                shop['middleware_comment_num'] = self.get_middleware_comment_num(
+                    crawler_shop_id, platform)
+                if 'detail_images' in data.keys():
+                    shop['detail_image_num'] = len(data['detail_images'])
+                if 'tag' in data.keys():
+                    shop['tag_num'] = len(data['tag']['all'])
+                if 'location' in data.keys():
+                    if 'city' in data['location'].keys():
+                        shop['city'] = data['location']['city']
+                    if 'street' in data['location'].keys():
+                        shop['street'] = data['location']['street']
+                    if 'state' in data['location'].keys():
+                        shop['url'] = self.get_url(
+                            data['location']['state'], data['seo_key'])
+                if 'district_id' in data.keys():
+                    shop['district'] = self.get_district(data['district_id'])
+            except:
+                pass
+            self.shops[shop_id] = shop
         else:
             return
-        self.shops[shop_id] = shop
 
     def get_url(self, state, seo_key):
         if state in state_map.keys():
