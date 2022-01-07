@@ -55,10 +55,20 @@ class SeoServiceStub(object):
                 request_serializer=common__pb2.QueryInfo.SerializeToString,
                 response_deserializer=data__pb2.QueryShopTagResp.FromString,
                 )
+        self.QueryShopService = channel.unary_unary(
+                '/seo.SeoService/QueryShopService',
+                request_serializer=common__pb2.QueryInfo.SerializeToString,
+                response_deserializer=data__pb2.QueryShopServiceResp.FromString,
+                )
         self.CreateShopTag = channel.unary_unary(
                 '/seo.SeoService/CreateShopTag',
                 request_serializer=data__pb2.CreateShopTagReq.SerializeToString,
                 response_deserializer=data__pb2.CreateShopTagResp.FromString,
+                )
+        self.CreateShopService = channel.unary_unary(
+                '/seo.SeoService/CreateShopService',
+                request_serializer=data__pb2.ShopServiceReq.SerializeToString,
+                response_deserializer=data__pb2.ShopServiceResp.FromString,
                 )
         self.QueryShopDistrict = channel.unary_unary(
                 '/seo.SeoService/QueryShopDistrict',
@@ -74,6 +84,16 @@ class SeoServiceStub(object):
                 '/seo.SeoService/QueryDistrictExistShopByCity',
                 request_serializer=data__pb2.QueryDistrictExistShopByCityReq.SerializeToString,
                 response_deserializer=data__pb2.QueryDistrictExistShopByCityResp.FromString,
+                )
+        self.QueryAllStateAndStreet = channel.unary_unary(
+                '/seo.SeoService/QueryAllStateAndStreet',
+                request_serializer=data__pb2.StateAndStreetReq.SerializeToString,
+                response_deserializer=data__pb2.StateAndStreetRsb.FromString,
+                )
+        self.QueryValidAssemble = channel.unary_unary(
+                '/seo.SeoService/QueryValidAssemble',
+                request_serializer=data__pb2.ValidAssembleReq.SerializeToString,
+                response_deserializer=data__pb2.ValidAssembleResp.FromString,
                 )
 
 
@@ -128,7 +148,19 @@ class SeoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def QueryShopService(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def CreateShopTag(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateShopService(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -147,6 +179,18 @@ class SeoServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def QueryDistrictExistShopByCity(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def QueryAllStateAndStreet(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def QueryValidAssemble(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -195,10 +239,20 @@ def add_SeoServiceServicer_to_server(servicer, server):
                     request_deserializer=common__pb2.QueryInfo.FromString,
                     response_serializer=data__pb2.QueryShopTagResp.SerializeToString,
             ),
+            'QueryShopService': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryShopService,
+                    request_deserializer=common__pb2.QueryInfo.FromString,
+                    response_serializer=data__pb2.QueryShopServiceResp.SerializeToString,
+            ),
             'CreateShopTag': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateShopTag,
                     request_deserializer=data__pb2.CreateShopTagReq.FromString,
                     response_serializer=data__pb2.CreateShopTagResp.SerializeToString,
+            ),
+            'CreateShopService': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateShopService,
+                    request_deserializer=data__pb2.ShopServiceReq.FromString,
+                    response_serializer=data__pb2.ShopServiceResp.SerializeToString,
             ),
             'QueryShopDistrict': grpc.unary_unary_rpc_method_handler(
                     servicer.QueryShopDistrict,
@@ -214,6 +268,16 @@ def add_SeoServiceServicer_to_server(servicer, server):
                     servicer.QueryDistrictExistShopByCity,
                     request_deserializer=data__pb2.QueryDistrictExistShopByCityReq.FromString,
                     response_serializer=data__pb2.QueryDistrictExistShopByCityResp.SerializeToString,
+            ),
+            'QueryAllStateAndStreet': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryAllStateAndStreet,
+                    request_deserializer=data__pb2.StateAndStreetReq.FromString,
+                    response_serializer=data__pb2.StateAndStreetRsb.SerializeToString,
+            ),
+            'QueryValidAssemble': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryValidAssemble,
+                    request_deserializer=data__pb2.ValidAssembleReq.FromString,
+                    response_serializer=data__pb2.ValidAssembleResp.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -362,6 +426,23 @@ class SeoService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def QueryShopService(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryShopService',
+            common__pb2.QueryInfo.SerializeToString,
+            data__pb2.QueryShopServiceResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def CreateShopTag(request,
             target,
             options=(),
@@ -375,6 +456,23 @@ class SeoService(object):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/CreateShopTag',
             data__pb2.CreateShopTagReq.SerializeToString,
             data__pb2.CreateShopTagResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateShopService(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/seo.SeoService/CreateShopService',
+            data__pb2.ShopServiceReq.SerializeToString,
+            data__pb2.ShopServiceResp.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -426,5 +524,39 @@ class SeoService(object):
         return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryDistrictExistShopByCity',
             data__pb2.QueryDistrictExistShopByCityReq.SerializeToString,
             data__pb2.QueryDistrictExistShopByCityResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def QueryAllStateAndStreet(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryAllStateAndStreet',
+            data__pb2.StateAndStreetReq.SerializeToString,
+            data__pb2.StateAndStreetRsb.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def QueryValidAssemble(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/seo.SeoService/QueryValidAssemble',
+            data__pb2.ValidAssembleReq.SerializeToString,
+            data__pb2.ValidAssembleResp.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

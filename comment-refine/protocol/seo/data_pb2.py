@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\025app/protocol/grpc/seo',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0eseo/data.proto\x12\x03seo\"y\n\x0e\x42yDistanceInfo\x12$\n\x0b\x63oordinates\x18\x01 \x01(\x0b\x32\x0f.seo.coordinate\x12\x14\n\x0cmax_distance\x18\x02 \x01(\x03\x12\x0e\n\x06status\x18\x03 \x01(\t\x12\r\n\x05limit\x18\x04 \x01(\x03\x12\x0c\n\x04skip\x18\x05 \x01(\x03\"1\n\ncoordinate\x12\x10\n\x08latitude\x18\x01 \x01(\x01\x12\x11\n\tlongitude\x18\x02 \x01(\x01\"\xb8\x02\n\x0cShopDistrict\x12\x13\n\x0b\x64istrict_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\x12-\n\x06params\x18\x04 \x03(\x0b\x32\x1d.seo.ShopDistrict.ParamsEntry\x12\x0f\n\x07\x63ountry\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x11\n\tupdate_at\x18\x07 \x01(\x03\x12\x11\n\tdelete_at\x18\x08 \x01(\x03\x12\x11\n\tcreate_at\x18\t \x01(\x03\x12\x12\n\nis_deleted\x18\n \x01(\x08\x12\x0c\n\x04\x63ity\x18\x0b \x01(\t\x12\x0e\n\x06seo_id\x18\x0c \x01(\t\x12\r\n\x05state\x18\r \x01(\t\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xeb\x07\n\x0b\x41pplyRecord\x12\x11\n\trecord_id\x18\x01 \x01(\t\x12\x14\n\x0c\x63ompany_name\x18\x02 \x01(\t\x12\x12\n\nstore_name\x18\x03 \x01(\t\x12\x12\n\nstore_type\x18\x04 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x05 \x01(\t\x12\x16\n\x0e\x63ontact_number\x18\x06 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x07 \x01(\t\x12\x13\n\x0b\x64istrict_id\x18\x08 \x01(\t\x12\x17\n\x0fper_consumption\x18\t \x01(\x03\x12\x18\n\x10\x63ommission_ratio\x18\n \x01(\x01\x12\x15\n\rcashback_user\x18\x0b \x01(\x01\x12\x17\n\x0fsettlement_date\x18\x0c \x01(\x03\x12\x17\n\x0fkey_person_name\x18\r \x01(\t\x12\x19\n\x11key_person_number\x18\x0e \x01(\t\x12\r\n\x05\x65mail\x18\x0f \x01(\t\x12\x10\n\x08whatsapp\x18\x10 \x01(\t\x12\x0e\n\x06remark\x18\x11 \x01(\t\x12\x30\n\x08location\x18\x12 \x03(\x0b\x32\x1e.seo.ApplyRecord.LocationEntry\x12\x34\n\ncoordinate\x18\x13 \x03(\x0b\x32 .seo.ApplyRecord.CoordinateEntry\x12\x11\n\tagreement\x18\x14 \x03(\t\x12\x14\n\x0cmain_picture\x18\x15 \x01(\t\x12\x1f\n\x17store_backgroud_picture\x18\x16 \x01(\t\x12)\n\x15store_detail_pictures\x18\x17 \x03(\x0b\x32\n.seo.Image\x12-\n\x0e\x62usiness_hours\x18\x18 \x03(\x0b\x32\x15.seo.ShopBusinessHour\x12\x0e\n\x06status\x18\x19 \x01(\t\x12\x15\n\rreject_reason\x18\x1a \x01(\t\x12\x16\n\x0e\x63reate_user_id\x18\x1b \x01(\t\x12\x15\n\raudit_user_id\x18\x1c \x01(\t\x12\x0f\n\x07shop_id\x18\x1d \x01(\t\x12\x13\n\x0bsupplier_id\x18\x1e \x01(\t\x12\x10\n\x08priority\x18\x1f \x01(\x03\x12\x11\n\tupdate_at\x18  \x01(\x03\x12\x11\n\tdelete_at\x18! \x01(\x03\x12\x11\n\tcreate_at\x18\" \x01(\x03\x12\x12\n\nis_deleted\x18# \x01(\x08\x12\x0b\n\x03\x63\x66o\x18$ \x01(\x03\x12\x1b\n\x03tag\x18% \x01(\x0b\x32\x0e.seo.TagObject\x1a/\n\rLocationEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x31\n\x0f\x43oordinateEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\":\n\x10ShopBusinessHour\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x18\n\x05hours\x18\x02 \x03(\x0b\x32\t.seo.Hour\"(\n\x04Hour\x12\x10\n\x08start_at\x18\x01 \x01(\t\x12\x0e\n\x06\x65nd_at\x18\x02 \x01(\t\"U\n\x14QueryApplyRecordResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\"\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x14.seo.ApplyRecordData\"@\n\x0f\x41pplyRecordData\x12\r\n\x05total\x18\x01 \x01(\x03\x12\x1e\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x10.seo.ApplyRecord\"O\n\x11QueryDistrictResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x11.seo.DistrictData\">\n\x0c\x44istrictData\x12\r\n\x05total\x18\x01 \x01(\x03\x12\x1f\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x11.seo.ShopDistrict\"\xcc\x07\n\x14UpsertApplyRecordReq\x12\x11\n\trecord_id\x18\x01 \x01(\t\x12\x14\n\x0c\x63ompany_name\x18\x02 \x01(\t\x12\x12\n\nstore_name\x18\x03 \x01(\t\x12\x12\n\nstore_type\x18\x04 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x05 \x01(\t\x12\x16\n\x0e\x63ontact_number\x18\x06 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x07 \x01(\t\x12\x13\n\x0b\x64istrict_id\x18\x08 \x01(\t\x12\x17\n\x0fper_consumption\x18\t \x01(\x03\x12\x18\n\x10\x63ommission_ratio\x18\n \x01(\x01\x12\x15\n\rcashback_user\x18\x0b \x01(\x01\x12\x17\n\x0fsettlement_date\x18\x0c \x01(\x03\x12\x17\n\x0fkey_person_name\x18\r \x01(\t\x12\x19\n\x11key_person_number\x18\x0e \x01(\t\x12\r\n\x05\x65mail\x18\x0f \x01(\t\x12\x10\n\x08whatsapp\x18\x10 \x01(\t\x12\x0e\n\x06remark\x18\x11 \x01(\t\x12\x39\n\x08location\x18\x12 \x03(\x0b\x32\'.seo.UpsertApplyRecordReq.LocationEntry\x12=\n\ncoordinate\x18\x13 \x03(\x0b\x32).seo.UpsertApplyRecordReq.CoordinateEntry\x12\x11\n\tagreement\x18\x14 \x03(\t\x12\x14\n\x0cmain_picture\x18\x15 \x01(\t\x12\x1f\n\x17store_backgroud_picture\x18\x16 \x01(\t\x12)\n\x15store_detail_pictures\x18\x17 \x03(\x0b\x32\n.seo.Image\x12-\n\x0e\x62usiness_hours\x18\x18 \x03(\x0b\x32\x15.seo.ShopBusinessHour\x12\x0e\n\x06status\x18\x19 \x01(\t\x12\x15\n\rreject_reason\x18\x1a \x01(\t\x12\x16\n\x0e\x63reate_user_id\x18\x1b \x01(\t\x12\x15\n\raudit_user_id\x18\x1c \x01(\t\x12\x0f\n\x07shop_id\x18\x1d \x01(\t\x12\x13\n\x0bsupplier_id\x18\x1e \x01(\t\x12\x10\n\x08priority\x18\x1f \x01(\x03\x12\x11\n\tis_upsert\x18  \x01(\x08\x12\x0b\n\x03\x63\x66o\x18! \x01(\x03\x12\x1b\n\x03tag\x18\" \x01(\x0b\x32\x0e.seo.TagObject\x1a/\n\rLocationEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x31\n\x0f\x43oordinateEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"@\n\x15UpsertApplyRecordResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"\xe9\x01\n\x11UpsertDistrictReq\x12\x13\n\x0b\x64istrict_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\x12\x32\n\x06params\x18\x04 \x03(\x0b\x32\".seo.UpsertDistrictReq.ParamsEntry\x12\x0f\n\x07\x63ountry\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x11\n\tis_upsert\x18\x07 \x01(\x08\x12\x0c\n\x04\x63ity\x18\x08 \x01(\t\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"=\n\x12UpsertDistrictResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"8\n\nCategories\x12\x1b\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\r.seo.Category\x12\r\n\x05total\x18\x02 \x01(\x03\"-\n\x08\x43\x61tegory\x12\x10\n\x08\x63\x61tegory\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\"Q\n\x12\x42randCollectionReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\x12\x1c\n\x04list\x18\x03 \x03(\x0b\x32\x0e.seo.BrandData\"8\n\x17QueryBrandCollectionReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\"\'\n\x17QueryBrandCollectionRsb\x12\x0c\n\x04list\x18\x01 \x03(\t\")\n\tBrandData\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08priority\x18\x02 \x01(\x03\"\xd1\x08\n\x07ShopReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x13\n\x0bsupplier_id\x18\x02 \x01(\t\x12\x10\n\x08\x62rand_id\x18\x03 \x01(\t\x12\x0e\n\x06status\x18\x04 \x01(\t\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x16\n\x0estore_subtitle\x18\x06 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x07 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x08 \x01(\t\x12\r\n\x05\x63over\x18\t \x01(\t\x12\x0c\n\x04\x64\x65sc\x18\x16 \x01(\t\x12\x10\n\x08\x63urrency\x18\n \x01(\t\x12\x0c\n\x04logo\x18\x0b \x01(\t\x12\r\n\x05\x65mail\x18\x0c \x01(\t\x12\x10\n\x08geo_hash\x18\r \x01(\t\x12!\n\rdetail_images\x18\x0e \x03(\x0b\x32\n.seo.Image\x12\x13\n\x0brebate_rate\x18\x0f \x01(\x01\x12,\n\x08location\x18\x10 \x03(\x0b\x32\x1a.seo.ShopReq.LocationEntry\x12\x30\n\ncoordinate\x18\x11 \x03(\x0b\x32\x1c.seo.ShopReq.CoordinateEntry\x12\x12\n\nstore_type\x18\x12 \x01(\t\x12\x11\n\tis_upsert\x18\x13 \x01(\x08\x12-\n\x0e\x62usiness_hours\x18\x14 \x03(\x0b\x32\x15.seo.ShopBusinessHour\x12\x17\n\x0fper_consumption\x18\x15 \x01(\x03\x12\x13\n\x0b\x64istrict_id\x18\x17 \x01(\t\x12\x18\n\x10\x63ommission_ratio\x18\x18 \x01(\x01\x12\x17\n\x0fkey_person_name\x18\x19 \x01(\t\x12\x19\n\x11key_person_number\x18\x1a \x01(\t\x12\x10\n\x08priority\x18\x1b \x01(\x03\x12\x10\n\x08whatsapp\x18\x1c \x01(\t\x12\x0e\n\x06remark\x18\x1d \x01(\t\x12\x16\n\x0e\x63ontact_number\x18\x1e \x01(\t\x12\x0b\n\x03\x63\x66o\x18\x1f \x01(\x03\x12\x1b\n\x03tag\x18  \x01(\x0b\x32\x0e.seo.TagObject\x12\x13\n\x0b\x64\x61ta_source\x18! \x01(\t\x12!\n\x07setting\x18\" \x01(\x0b\x32\x10.seo.ShopSetting\x12\x0f\n\x07seo_key\x18# \x01(\t\x12\x0e\n\x06seo_id\x18$ \x01(\t\x12*\n\x0esocial_account\x18% \x03(\x0b\x32\x12.seo.SocialAccount\x12\x13\n\x0b\x64\x65scription\x18- \x01(\t\x12\x19\n\x11photo_description\x18. \x01(\t\x12\x18\n\x10menu_description\x18/ \x01(\t\x12\x1a\n\x12review_description\x18\x30 \x01(\t\x12(\n\x0especial_dishes\x18\x31 \x03(\x0b\x32\x10.seo.SpecialDish\x1a/\n\rLocationEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x31\n\x0f\x43oordinateEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"<\n\x0bShopSetting\x12\x14\n\x0cprint_enable\x18\x01 \x01(\x08\x12\x17\n\x0f\x64\x65livery_enable\x18\x02 \x01(\x08\"\xaa\n\n\x04Shop\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0brebate_rate\x18\x03 \x01(\x01\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\x12\x11\n\tupdate_at\x18\x05 \x01(\x03\x12\x11\n\tdelete_at\x18\x06 \x01(\x03\x12\x11\n\tcreate_at\x18\x07 \x01(\x03\x12\x12\n\nis_deleted\x18\x08 \x01(\x08\x12\x10\n\x08\x63urrency\x18\t \x01(\t\x12\x13\n\x0bsupplier_id\x18\n \x01(\t\x12\x16\n\x0estore_subtitle\x18\x0b \x01(\t\x12\x10\n\x08\x62rand_id\x18\x0c \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\r \x01(\t\x12\x0e\n\x06status\x18\x0e \x01(\t\x12\r\n\x05\x63over\x18\x0f \x01(\t\x12\x0c\n\x04\x64\x65sc\x18\x10 \x01(\t\x12\x0c\n\x04logo\x18\x11 \x01(\t\x12\r\n\x05\x65mail\x18\x12 \x01(\t\x12\x10\n\x08geo_hash\x18\x13 \x01(\t\x12!\n\rdetail_images\x18\x14 \x03(\x0b\x32\n.seo.Image\x12)\n\x08location\x18\x15 \x03(\x0b\x32\x17.seo.Shop.LocationEntry\x12-\n\ncoordinate\x18\x16 \x03(\x0b\x32\x19.seo.Shop.CoordinateEntry\x12\x15\n\rsupplier_name\x18\x17 \x01(\t\x12\x12\n\nstore_type\x18\x18 \x01(\t\x12-\n\x0e\x62usiness_hours\x18\x19 \x03(\x0b\x32\x15.seo.ShopBusinessHour\x12#\n\x05stars\x18\x1a \x03(\x0b\x32\x14.seo.Shop.StarsEntry\x12\x15\n\rdistrict_name\x18\x1b \x01(\t\x12\x13\n\x0b\x64istrict_id\x18\x1c \x01(\t\x12\x17\n\x0fper_consumption\x18\x1d \x01(\x03\x12\x18\n\x10\x63ommission_ratio\x18\x1e \x01(\x01\x12\x17\n\x0fkey_person_name\x18\x1f \x01(\t\x12\x19\n\x11key_person_number\x18  \x01(\t\x12\x10\n\x08priority\x18! \x01(\x03\x12\x10\n\x08whatsapp\x18\" \x01(\t\x12\x0e\n\x06remark\x18# \x01(\t\x12\x16\n\x0e\x63ontact_number\x18$ \x01(\t\x12\x0b\n\x03\x63\x66o\x18% \x01(\x03\x12\x1b\n\x03tag\x18& \x01(\x0b\x32\x0e.seo.TagObject\x12\x13\n\x0b\x64\x61ta_source\x18\' \x01(\t\x12!\n\x07setting\x18( \x01(\x0b\x32\x10.seo.ShopSetting\x12\x0f\n\x07seo_key\x18) \x01(\t\x12\x0e\n\x06seo_id\x18* \x01(\t\x12*\n\x0esocial_account\x18+ \x03(\x0b\x32\x12.seo.SocialAccount\x12\x10\n\x08\x64istance\x18, \x01(\x01\x12\x13\n\x0b\x64\x65scription\x18- \x01(\t\x12\x19\n\x11photo_description\x18. \x01(\t\x12\x18\n\x10menu_description\x18/ \x01(\t\x12\x1a\n\x12review_description\x18\x30 \x01(\t\x12(\n\x0especial_dishes\x18\x31 \x03(\x0b\x32\x10.seo.SpecialDish\x12\x13\n\x0b\x63omment_sum\x18\x32 \x01(\x03\x1a/\n\rLocationEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x31\n\x0f\x43oordinateEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1a,\n\nStarsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"*\n\x0bSpecialDish\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05image\x18\x02 \x01(\t\">\n\rSocialAccount\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08platform\x18\x02 \x01(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x03 \x01(\t\"/\n\x05Shops\x12\x17\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\t.seo.Shop\x12\r\n\x05total\x18\x02 \x01(\x03\"\x1a\n\x07ShopRsb\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\"/\n\x05Users\x12\x17\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\t.seo.User\x12\r\n\x05total\x18\x02 \x01(\x03\"\xd4\x01\n\x11UpdateSupplierReq\x12\x13\n\x0bsupplier_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x03 \x01(\t\x12\x10\n\x08\x62rand_id\x18\x04 \x01(\t\x12\x0e\n\x06status\x18\x05 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x06 \x01(\t\x12\x11\n\tis_upsert\x18\x07 \x01(\x08\x12\x18\n\x10incharge_user_id\x18\x08 \x01(\t\x12\x17\n\x0fsettlement_date\x18\t \x01(\x03\x12\x11\n\tagreement\x18\n \x03(\t\"7\n\tSuppliers\x12\x1b\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\r.seo.Supplier\x12\r\n\x05total\x18\x02 \x01(\x03\"\"\n\x0bSupplierRsb\x12\x13\n\x0bsupplier_id\x18\x01 \x01(\t\"2\n\x05Image\x12\r\n\x05image\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x65sc\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\"\xde\x01\n\rUpdateUserReq\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08nickname\x18\x03 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\x12\x0c\n\x04role\x18\x05 \x01(\t\x12*\n\x04tags\x18\x06 \x03(\x0b\x32\x1c.seo.UpdateUserReq.TagsEntry\x12\x10\n\x08password\x18\x07 \x01(\t\x12\x0e\n\x06status\x18\x08 \x01(\t\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x1a\n\x07UserRsb\x12\x0f\n\x07user_id\x18\x01 \x01(\t\" \n\rDeleteUserReq\x12\x0f\n\x07user_id\x18\x01 \x01(\t\"\x18\n\nDeleteById\x12\n\n\x02id\x18\x01 \x01(\t\"\x85\x02\n\x04User\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08nickname\x18\x03 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\x12\x0c\n\x04role\x18\x05 \x01(\t\x12!\n\x04tags\x18\x06 \x03(\x0b\x32\x13.seo.User.TagsEntry\x12\x10\n\x08password\x18\x07 \x01(\t\x12\x0e\n\x06status\x18\x08 \x01(\t\x12\x11\n\tupdate_at\x18\t \x01(\x03\x12\x11\n\tdelete_at\x18\n \x01(\x03\x12\x11\n\tcreate_at\x18\x0b \x01(\x03\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x85\x02\n\x08Supplier\x12\x13\n\x0bsupplier_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x03 \x01(\t\x12\x10\n\x08\x62rand_id\x18\x04 \x01(\t\x12\x0e\n\x06status\x18\x05 \x01(\t\x12\x11\n\tupdate_at\x18\x06 \x01(\x03\x12\x11\n\tdelete_at\x18\x07 \x01(\x03\x12\x11\n\tcreate_at\x18\x08 \x01(\x03\x12\x12\n\nis_deleted\x18\t \x01(\x08\x12\x10\n\x08\x63\x61tegory\x18\n \x01(\t\x12\x18\n\x10incharge_user_id\x18\x0b \x01(\t\x12\x17\n\x0fsettlement_date\x18\x0c \x01(\x03\x12\x11\n\tagreement\x18\r \x03(\t\"\x1e\n\x0e\x43ounterShopReq\x12\x0c\n\x04list\x18\x01 \x03(\t\"j\n\x0e\x43ounterShopRsb\x12+\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x1d.seo.CounterShopRsb.DataEntry\x1a+\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"*\n\x0b\x43ommentsReq\x12\x1b\n\x05items\x18\x01 \x03(\x0b\x32\x0c.seo.Comment\"\x1c\n\x0b\x43ommentsRsb\x12\r\n\x05items\x18\x01 \x03(\t\"5\n\x08\x43omments\x12\x1a\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x0c.seo.Comment\x12\r\n\x05total\x18\x02 \x01(\x03\"\x86\x04\n\x07\x43omment\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x13\n\x0buser_avatar\x18\x03 \x01(\t\x12\r\n\x05score\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x12\x10\n\x08store_id\x18\x06 \x01(\t\x12\x11\n\tcreate_at\x18\x07 \x01(\x03\x12\r\n\x05media\x18\x08 \x03(\t\x12\x11\n\trecommend\x18\t \x01(\x08\x12\x0c\n\x04tags\x18\n \x03(\t\x12\x0f\n\x07\x63ountry\x18\x0b \x01(\t\x12\x11\n\tupdate_at\x18\x0c \x01(\x03\x12\x11\n\tdelete_at\x18\r \x01(\x03\x12\x12\n\nis_deleted\x18\x0f \x01(\x08\x12\x0e\n\x06status\x18\x10 \x01(\t\x12\x10\n\x08has_next\x18\x11 \x01(\t\x12-\n\tsub_score\x18\x12 \x03(\x0b\x32\x1a.seo.Comment.SubScoreEntry\x12\x32\n\x12\x61\x64\x64itional_comment\x18\x13 \x03(\x0b\x32\x16.seo.AdditionalComment\x12\x10\n\x08order_id\x18\x14 \x01(\t\x12\x0f\n\x07user_id\x18\x15 \x01(\t\x12\r\n\x05\x62onus\x18\x16 \x01(\x03\x12\x11\n\tanonymous\x18\x18 \x01(\x08\x12\x0c\n\x04type\x18\x17 \x01(\t\x1a/\n\rSubScoreEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"e\n\x11\x41\x64\x64itionalComment\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12\r\n\x05media\x18\x03 \x03(\t\x12\x11\n\tcreate_at\x18\x04 \x01(\x03\x12\x11\n\tupdate_at\x18\x05 \x01(\x03\"\xa0\x01\n\x07ShopTag\x12\x0e\n\x06tag_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08priority\x18\x03 \x01(\x03\x12\x0e\n\x06parent\x18\x04 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x11\n\tcreate_at\x18\x07 \x01(\x03\x12\x11\n\tupdate_at\x18\x08 \x01(\x03\x12\x0e\n\x06seo_id\x18\t \x01(\t\"8\n\x0bShopTagData\x12\r\n\x05total\x18\x01 \x01(\x03\x12\x1a\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x0c.seo.ShopTag\"M\n\x10QueryShopTagResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1e\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x10.seo.ShopTagData\"&\n\tTagObject\x12\x0c\n\x04show\x18\x01 \x01(\t\x12\x0b\n\x03\x61ll\x18\x02 \x03(\t\"S\n\x10\x43reateShopTagReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08priority\x18\x02 \x01(\x03\x12\x0e\n\x06parent\x18\x03 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\"<\n\x11\x43reateShopTagResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"$\n\x11VerifyShopInfoReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\"P\n\x12VerifyShopInfoResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x03\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x11.seo.MissingField\"%\n\x0cMissingField\x12\x15\n\rmissing_field\x18\x01 \x03(\t\"_\n\x1dTransferStoresToContractedReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x13\n\x0bsupplier_id\x18\x02 \x01(\t\x12\x18\n\x10\x63ommission_ratio\x18\x03 \x01(\x01\";\n\x1eTransferStoresToContractedResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x03\x12\x0b\n\x03msg\x18\x02 \x01(\t\"<\n\x11IncrUpdateShopReq\x12\x0e\n\x06\x66ields\x18\x01 \x03(\t\x12\x17\n\x04shop\x18\x02 \x01(\x0b\x32\t.seo.Shop\"/\n\x12IncrUpdateShopResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\"L\n\x16\x43reateSocialAccountReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x10\n\x08platform\x18\x02 \x01(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x03 \x01(\t\"4\n\x17\x43reateSocialAccountResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\"X\n\x16UpdateSocialAccountReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x10\n\x08platform\x18\x03 \x01(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x04 \x01(\t\"4\n\x17UpdateSocialAccountResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\"6\n\x16\x44\x65leteSocialAccountReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x0b\n\x03ids\x18\x02 \x03(\t\"4\n\x17\x44\x65leteSocialAccountResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\"y\n\x1eQueryShopTagExistShopByCityReq\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12\x0e\n\x06\x63ities\x18\x02 \x03(\t\x12\x0c\n\x04tags\x18\x03 \x03(\t\x12(\n\raddress_level\x18\x04 \x01(\x0e\x32\x11.seo.AddressLevel\"\xd1\x01\n\x1fQueryShopTagExistShopByCityResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12<\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32..seo.QueryShopTagExistShopByCityResp.DataEntry\x1aU\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x37\n\x05value\x18\x02 \x01(\x0b\x32(.seo.QueryShopTagExistShopByCityRespData:\x02\x38\x01\"X\n#QueryShopTagExistShopByCityRespData\x12\x31\n\x03tag\x18\x01 \x03(\x0b\x32$.seo.QueryShopTagExistShopByCityItem\"h\n\x1fQueryShopTagExistShopByCityItem\x12\x0e\n\x06tag_id\x18\x01 \x01(\t\x12\x10\n\x08tag_name\x18\x02 \x01(\t\x12\x0e\n\x06seo_id\x18\x03 \x01(\t\x12\x13\n\x0bstore_count\x18\x04 \x01(\x03\"\x7f\n\x1fQueryDistrictExistShopByCityReq\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12\x0e\n\x06\x63ities\x18\x02 \x03(\t\x12\x11\n\tdistricts\x18\x03 \x03(\t\x12(\n\raddress_level\x18\x04 \x01(\x0e\x32\x11.seo.AddressLevel\"\xd4\x01\n QueryDistrictExistShopByCityResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12=\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32/.seo.QueryDistrictExistShopByCityResp.DataEntry\x1aV\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x38\n\x05value\x18\x02 \x01(\x0b\x32).seo.QueryDistrictExistShopByCityRespData:\x02\x38\x01\"_\n$QueryDistrictExistShopByCityRespData\x12\x37\n\x08\x64istrict\x18\x01 \x03(\x0b\x32%.seo.QueryDistrictExistShopByCityItem\"\x9a\x01\n QueryDistrictExistShopByCityItem\x12\x13\n\x0b\x64istrict_id\x18\x01 \x01(\t\x12\x15\n\rdistrict_name\x18\x02 \x01(\t\x12\x0e\n\x06seo_id\x18\x03 \x01(\t\x12\x13\n\x0bstore_count\x18\x04 \x01(\x03\x12\x11\n\tcity_name\x18\x05 \x01(\t\x12\x12\n\nstate_name\x18\x06 \x01(\t*1\n\x0c\x41\x64\x64ressLevel\x12\t\n\x05State\x10\x00\x12\x08\n\x04\x43ity\x10\x01\x12\x0c\n\x08\x44istrict\x10\x02\x42\x17Z\x15\x61pp/protocol/grpc/seob\x06proto3'
+  serialized_pb=b'\n\x0eseo/data.proto\x12\x03seo\"$\n\x11StateAndStreetReq\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\"\x80\x01\n\x11StateAndStreetRsb\x12.\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32 .seo.StateAndStreetRsb.DataEntry\x1a;\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1d\n\x05value\x18\x02 \x01(\x0b\x32\x0e.seo.StateInfo:\x02\x38\x01\"\x1b\n\tStateInfo\x12\x0e\n\x06street\x18\x01 \x03(\t\"y\n\x0e\x42yDistanceInfo\x12$\n\x0b\x63oordinates\x18\x01 \x01(\x0b\x32\x0f.seo.coordinate\x12\x14\n\x0cmax_distance\x18\x02 \x01(\x03\x12\x0e\n\x06status\x18\x03 \x01(\t\x12\r\n\x05limit\x18\x04 \x01(\x03\x12\x0c\n\x04skip\x18\x05 \x01(\x03\"1\n\ncoordinate\x12\x10\n\x08latitude\x18\x01 \x01(\x01\x12\x11\n\tlongitude\x18\x02 \x01(\x01\"\xc9\x02\n\x0cShopDistrict\x12\x13\n\x0b\x64istrict_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\x12-\n\x06params\x18\x04 \x03(\x0b\x32\x1d.seo.ShopDistrict.ParamsEntry\x12\x0f\n\x07\x63ountry\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x11\n\tupdate_at\x18\x07 \x01(\x03\x12\x11\n\tdelete_at\x18\x08 \x01(\x03\x12\x11\n\tcreate_at\x18\t \x01(\x03\x12\x12\n\nis_deleted\x18\n \x01(\x08\x12\x0c\n\x04\x63ity\x18\x0b \x01(\t\x12\x0e\n\x06seo_id\x18\x0c \x01(\t\x12\r\n\x05state\x18\r \x01(\t\x12\x0f\n\x07seo_key\x18\x0e \x01(\t\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xeb\x07\n\x0b\x41pplyRecord\x12\x11\n\trecord_id\x18\x01 \x01(\t\x12\x14\n\x0c\x63ompany_name\x18\x02 \x01(\t\x12\x12\n\nstore_name\x18\x03 \x01(\t\x12\x12\n\nstore_type\x18\x04 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x05 \x01(\t\x12\x16\n\x0e\x63ontact_number\x18\x06 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x07 \x01(\t\x12\x13\n\x0b\x64istrict_id\x18\x08 \x01(\t\x12\x17\n\x0fper_consumption\x18\t \x01(\x03\x12\x18\n\x10\x63ommission_ratio\x18\n \x01(\x01\x12\x15\n\rcashback_user\x18\x0b \x01(\x01\x12\x17\n\x0fsettlement_date\x18\x0c \x01(\x03\x12\x17\n\x0fkey_person_name\x18\r \x01(\t\x12\x19\n\x11key_person_number\x18\x0e \x01(\t\x12\r\n\x05\x65mail\x18\x0f \x01(\t\x12\x10\n\x08whatsapp\x18\x10 \x01(\t\x12\x0e\n\x06remark\x18\x11 \x01(\t\x12\x30\n\x08location\x18\x12 \x03(\x0b\x32\x1e.seo.ApplyRecord.LocationEntry\x12\x34\n\ncoordinate\x18\x13 \x03(\x0b\x32 .seo.ApplyRecord.CoordinateEntry\x12\x11\n\tagreement\x18\x14 \x03(\t\x12\x14\n\x0cmain_picture\x18\x15 \x01(\t\x12\x1f\n\x17store_backgroud_picture\x18\x16 \x01(\t\x12)\n\x15store_detail_pictures\x18\x17 \x03(\x0b\x32\n.seo.Image\x12-\n\x0e\x62usiness_hours\x18\x18 \x03(\x0b\x32\x15.seo.ShopBusinessHour\x12\x0e\n\x06status\x18\x19 \x01(\t\x12\x15\n\rreject_reason\x18\x1a \x01(\t\x12\x16\n\x0e\x63reate_user_id\x18\x1b \x01(\t\x12\x15\n\raudit_user_id\x18\x1c \x01(\t\x12\x0f\n\x07shop_id\x18\x1d \x01(\t\x12\x13\n\x0bsupplier_id\x18\x1e \x01(\t\x12\x10\n\x08priority\x18\x1f \x01(\x03\x12\x11\n\tupdate_at\x18  \x01(\x03\x12\x11\n\tdelete_at\x18! \x01(\x03\x12\x11\n\tcreate_at\x18\" \x01(\x03\x12\x12\n\nis_deleted\x18# \x01(\x08\x12\x0b\n\x03\x63\x66o\x18$ \x01(\x03\x12\x1b\n\x03tag\x18% \x01(\x0b\x32\x0e.seo.TagObject\x1a/\n\rLocationEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x31\n\x0f\x43oordinateEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\":\n\x10ShopBusinessHour\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x18\n\x05hours\x18\x02 \x03(\x0b\x32\t.seo.Hour\"(\n\x04Hour\x12\x10\n\x08start_at\x18\x01 \x01(\t\x12\x0e\n\x06\x65nd_at\x18\x02 \x01(\t\"U\n\x14QueryApplyRecordResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\"\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x14.seo.ApplyRecordData\"@\n\x0f\x41pplyRecordData\x12\r\n\x05total\x18\x01 \x01(\x03\x12\x1e\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x10.seo.ApplyRecord\"O\n\x11QueryDistrictResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x11.seo.DistrictData\">\n\x0c\x44istrictData\x12\r\n\x05total\x18\x01 \x01(\x03\x12\x1f\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x11.seo.ShopDistrict\"\xcc\x07\n\x14UpsertApplyRecordReq\x12\x11\n\trecord_id\x18\x01 \x01(\t\x12\x14\n\x0c\x63ompany_name\x18\x02 \x01(\t\x12\x12\n\nstore_name\x18\x03 \x01(\t\x12\x12\n\nstore_type\x18\x04 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x05 \x01(\t\x12\x16\n\x0e\x63ontact_number\x18\x06 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x07 \x01(\t\x12\x13\n\x0b\x64istrict_id\x18\x08 \x01(\t\x12\x17\n\x0fper_consumption\x18\t \x01(\x03\x12\x18\n\x10\x63ommission_ratio\x18\n \x01(\x01\x12\x15\n\rcashback_user\x18\x0b \x01(\x01\x12\x17\n\x0fsettlement_date\x18\x0c \x01(\x03\x12\x17\n\x0fkey_person_name\x18\r \x01(\t\x12\x19\n\x11key_person_number\x18\x0e \x01(\t\x12\r\n\x05\x65mail\x18\x0f \x01(\t\x12\x10\n\x08whatsapp\x18\x10 \x01(\t\x12\x0e\n\x06remark\x18\x11 \x01(\t\x12\x39\n\x08location\x18\x12 \x03(\x0b\x32\'.seo.UpsertApplyRecordReq.LocationEntry\x12=\n\ncoordinate\x18\x13 \x03(\x0b\x32).seo.UpsertApplyRecordReq.CoordinateEntry\x12\x11\n\tagreement\x18\x14 \x03(\t\x12\x14\n\x0cmain_picture\x18\x15 \x01(\t\x12\x1f\n\x17store_backgroud_picture\x18\x16 \x01(\t\x12)\n\x15store_detail_pictures\x18\x17 \x03(\x0b\x32\n.seo.Image\x12-\n\x0e\x62usiness_hours\x18\x18 \x03(\x0b\x32\x15.seo.ShopBusinessHour\x12\x0e\n\x06status\x18\x19 \x01(\t\x12\x15\n\rreject_reason\x18\x1a \x01(\t\x12\x16\n\x0e\x63reate_user_id\x18\x1b \x01(\t\x12\x15\n\raudit_user_id\x18\x1c \x01(\t\x12\x0f\n\x07shop_id\x18\x1d \x01(\t\x12\x13\n\x0bsupplier_id\x18\x1e \x01(\t\x12\x10\n\x08priority\x18\x1f \x01(\x03\x12\x11\n\tis_upsert\x18  \x01(\x08\x12\x0b\n\x03\x63\x66o\x18! \x01(\x03\x12\x1b\n\x03tag\x18\" \x01(\x0b\x32\x0e.seo.TagObject\x1a/\n\rLocationEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x31\n\x0f\x43oordinateEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"@\n\x15UpsertApplyRecordResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"\xe9\x01\n\x11UpsertDistrictReq\x12\x13\n\x0b\x64istrict_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\x12\x32\n\x06params\x18\x04 \x03(\x0b\x32\".seo.UpsertDistrictReq.ParamsEntry\x12\x0f\n\x07\x63ountry\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x11\n\tis_upsert\x18\x07 \x01(\x08\x12\x0c\n\x04\x63ity\x18\x08 \x01(\t\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"=\n\x12UpsertDistrictResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"8\n\nCategories\x12\x1b\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\r.seo.Category\x12\r\n\x05total\x18\x02 \x01(\x03\"-\n\x08\x43\x61tegory\x12\x10\n\x08\x63\x61tegory\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\"Q\n\x12\x42randCollectionReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\x12\x1c\n\x04list\x18\x03 \x03(\x0b\x32\x0e.seo.BrandData\"8\n\x17QueryBrandCollectionReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\"\'\n\x17QueryBrandCollectionRsb\x12\x0c\n\x04list\x18\x01 \x03(\t\")\n\tBrandData\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08priority\x18\x02 \x01(\x03\"\xe2\x08\n\x07ShopReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x13\n\x0bsupplier_id\x18\x02 \x01(\t\x12\x10\n\x08\x62rand_id\x18\x03 \x01(\t\x12\x0e\n\x06status\x18\x04 \x01(\t\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x16\n\x0estore_subtitle\x18\x06 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x07 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x08 \x01(\t\x12\r\n\x05\x63over\x18\t \x01(\t\x12\x0c\n\x04\x64\x65sc\x18\x16 \x01(\t\x12\x10\n\x08\x63urrency\x18\n \x01(\t\x12\x0c\n\x04logo\x18\x0b \x01(\t\x12\r\n\x05\x65mail\x18\x0c \x01(\t\x12\x10\n\x08geo_hash\x18\r \x01(\t\x12!\n\rdetail_images\x18\x0e \x03(\x0b\x32\n.seo.Image\x12\x13\n\x0brebate_rate\x18\x0f \x01(\x01\x12,\n\x08location\x18\x10 \x03(\x0b\x32\x1a.seo.ShopReq.LocationEntry\x12\x30\n\ncoordinate\x18\x11 \x03(\x0b\x32\x1c.seo.ShopReq.CoordinateEntry\x12\x12\n\nstore_type\x18\x12 \x01(\t\x12\x11\n\tis_upsert\x18\x13 \x01(\x08\x12-\n\x0e\x62usiness_hours\x18\x14 \x03(\x0b\x32\x15.seo.ShopBusinessHour\x12\x17\n\x0fper_consumption\x18\x15 \x01(\x03\x12\x13\n\x0b\x64istrict_id\x18\x17 \x01(\t\x12\x18\n\x10\x63ommission_ratio\x18\x18 \x01(\x01\x12\x17\n\x0fkey_person_name\x18\x19 \x01(\t\x12\x19\n\x11key_person_number\x18\x1a \x01(\t\x12\x10\n\x08priority\x18\x1b \x01(\x03\x12\x10\n\x08whatsapp\x18\x1c \x01(\t\x12\x0e\n\x06remark\x18\x1d \x01(\t\x12\x16\n\x0e\x63ontact_number\x18\x1e \x01(\t\x12\x0b\n\x03\x63\x66o\x18\x1f \x01(\x03\x12\x1b\n\x03tag\x18  \x01(\x0b\x32\x0e.seo.TagObject\x12\x13\n\x0b\x64\x61ta_source\x18! \x01(\t\x12!\n\x07setting\x18\" \x01(\x0b\x32\x10.seo.ShopSetting\x12\x0f\n\x07seo_key\x18# \x01(\t\x12\x0e\n\x06seo_id\x18$ \x01(\t\x12*\n\x0esocial_account\x18% \x03(\x0b\x32\x12.seo.SocialAccount\x12\x13\n\x0b\x64\x65scription\x18- \x01(\t\x12\x19\n\x11photo_description\x18. \x01(\t\x12\x18\n\x10menu_description\x18/ \x01(\t\x12\x1a\n\x12review_description\x18\x30 \x01(\t\x12(\n\x0especial_dishes\x18\x31 \x03(\x0b\x32\x10.seo.SpecialDish\x12\x0f\n\x07service\x18\x32 \x03(\t\x1a/\n\rLocationEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x31\n\x0f\x43oordinateEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"<\n\x0bShopSetting\x12\x14\n\x0cprint_enable\x18\x01 \x01(\x08\x12\x17\n\x0f\x64\x65livery_enable\x18\x02 \x01(\x08\"\xbb\n\n\x04Shop\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0brebate_rate\x18\x03 \x01(\x01\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\x12\x11\n\tupdate_at\x18\x05 \x01(\x03\x12\x11\n\tdelete_at\x18\x06 \x01(\x03\x12\x11\n\tcreate_at\x18\x07 \x01(\x03\x12\x12\n\nis_deleted\x18\x08 \x01(\x08\x12\x10\n\x08\x63urrency\x18\t \x01(\t\x12\x13\n\x0bsupplier_id\x18\n \x01(\t\x12\x16\n\x0estore_subtitle\x18\x0b \x01(\t\x12\x10\n\x08\x62rand_id\x18\x0c \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\r \x01(\t\x12\x0e\n\x06status\x18\x0e \x01(\t\x12\r\n\x05\x63over\x18\x0f \x01(\t\x12\x0c\n\x04\x64\x65sc\x18\x10 \x01(\t\x12\x0c\n\x04logo\x18\x11 \x01(\t\x12\r\n\x05\x65mail\x18\x12 \x01(\t\x12\x10\n\x08geo_hash\x18\x13 \x01(\t\x12!\n\rdetail_images\x18\x14 \x03(\x0b\x32\n.seo.Image\x12)\n\x08location\x18\x15 \x03(\x0b\x32\x17.seo.Shop.LocationEntry\x12-\n\ncoordinate\x18\x16 \x03(\x0b\x32\x19.seo.Shop.CoordinateEntry\x12\x15\n\rsupplier_name\x18\x17 \x01(\t\x12\x12\n\nstore_type\x18\x18 \x01(\t\x12-\n\x0e\x62usiness_hours\x18\x19 \x03(\x0b\x32\x15.seo.ShopBusinessHour\x12#\n\x05stars\x18\x1a \x03(\x0b\x32\x14.seo.Shop.StarsEntry\x12\x15\n\rdistrict_name\x18\x1b \x01(\t\x12\x13\n\x0b\x64istrict_id\x18\x1c \x01(\t\x12\x17\n\x0fper_consumption\x18\x1d \x01(\x03\x12\x18\n\x10\x63ommission_ratio\x18\x1e \x01(\x01\x12\x17\n\x0fkey_person_name\x18\x1f \x01(\t\x12\x19\n\x11key_person_number\x18  \x01(\t\x12\x10\n\x08priority\x18! \x01(\x03\x12\x10\n\x08whatsapp\x18\" \x01(\t\x12\x0e\n\x06remark\x18# \x01(\t\x12\x16\n\x0e\x63ontact_number\x18$ \x01(\t\x12\x0b\n\x03\x63\x66o\x18% \x01(\x03\x12\x1b\n\x03tag\x18& \x01(\x0b\x32\x0e.seo.TagObject\x12\x13\n\x0b\x64\x61ta_source\x18\' \x01(\t\x12!\n\x07setting\x18( \x01(\x0b\x32\x10.seo.ShopSetting\x12\x0f\n\x07seo_key\x18) \x01(\t\x12\x0e\n\x06seo_id\x18* \x01(\t\x12*\n\x0esocial_account\x18+ \x03(\x0b\x32\x12.seo.SocialAccount\x12\x10\n\x08\x64istance\x18, \x01(\x01\x12\x13\n\x0b\x64\x65scription\x18- \x01(\t\x12\x19\n\x11photo_description\x18. \x01(\t\x12\x18\n\x10menu_description\x18/ \x01(\t\x12\x1a\n\x12review_description\x18\x30 \x01(\t\x12(\n\x0especial_dishes\x18\x31 \x03(\x0b\x32\x10.seo.SpecialDish\x12\x13\n\x0b\x63omment_sum\x18\x32 \x01(\x03\x12\x0f\n\x07service\x18\x33 \x03(\t\x1a/\n\rLocationEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x31\n\x0f\x43oordinateEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1a,\n\nStarsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"*\n\x0bSpecialDish\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05image\x18\x02 \x01(\t\">\n\rSocialAccount\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08platform\x18\x02 \x01(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x03 \x01(\t\"/\n\x05Shops\x12\x17\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\t.seo.Shop\x12\r\n\x05total\x18\x02 \x01(\x03\"\x1a\n\x07ShopRsb\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\"/\n\x05Users\x12\x17\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\t.seo.User\x12\r\n\x05total\x18\x02 \x01(\x03\"\xd4\x01\n\x11UpdateSupplierReq\x12\x13\n\x0bsupplier_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x03 \x01(\t\x12\x10\n\x08\x62rand_id\x18\x04 \x01(\t\x12\x0e\n\x06status\x18\x05 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x06 \x01(\t\x12\x11\n\tis_upsert\x18\x07 \x01(\x08\x12\x18\n\x10incharge_user_id\x18\x08 \x01(\t\x12\x17\n\x0fsettlement_date\x18\t \x01(\x03\x12\x11\n\tagreement\x18\n \x03(\t\"7\n\tSuppliers\x12\x1b\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\r.seo.Supplier\x12\r\n\x05total\x18\x02 \x01(\x03\"\"\n\x0bSupplierRsb\x12\x13\n\x0bsupplier_id\x18\x01 \x01(\t\"2\n\x05Image\x12\r\n\x05image\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x65sc\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\"\xde\x01\n\rUpdateUserReq\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08nickname\x18\x03 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\x12\x0c\n\x04role\x18\x05 \x01(\t\x12*\n\x04tags\x18\x06 \x03(\x0b\x32\x1c.seo.UpdateUserReq.TagsEntry\x12\x10\n\x08password\x18\x07 \x01(\t\x12\x0e\n\x06status\x18\x08 \x01(\t\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x1a\n\x07UserRsb\x12\x0f\n\x07user_id\x18\x01 \x01(\t\" \n\rDeleteUserReq\x12\x0f\n\x07user_id\x18\x01 \x01(\t\"\x18\n\nDeleteById\x12\n\n\x02id\x18\x01 \x01(\t\"\x85\x02\n\x04User\x12\x0f\n\x07user_id\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08nickname\x18\x03 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\x12\x0c\n\x04role\x18\x05 \x01(\t\x12!\n\x04tags\x18\x06 \x03(\x0b\x32\x13.seo.User.TagsEntry\x12\x10\n\x08password\x18\x07 \x01(\t\x12\x0e\n\x06status\x18\x08 \x01(\t\x12\x11\n\tupdate_at\x18\t \x01(\x03\x12\x11\n\tdelete_at\x18\n \x01(\x03\x12\x11\n\tcreate_at\x18\x0b \x01(\x03\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x85\x02\n\x08Supplier\x12\x13\n\x0bsupplier_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x03 \x01(\t\x12\x10\n\x08\x62rand_id\x18\x04 \x01(\t\x12\x0e\n\x06status\x18\x05 \x01(\t\x12\x11\n\tupdate_at\x18\x06 \x01(\x03\x12\x11\n\tdelete_at\x18\x07 \x01(\x03\x12\x11\n\tcreate_at\x18\x08 \x01(\x03\x12\x12\n\nis_deleted\x18\t \x01(\x08\x12\x10\n\x08\x63\x61tegory\x18\n \x01(\t\x12\x18\n\x10incharge_user_id\x18\x0b \x01(\t\x12\x17\n\x0fsettlement_date\x18\x0c \x01(\x03\x12\x11\n\tagreement\x18\r \x03(\t\"\x1e\n\x0e\x43ounterShopReq\x12\x0c\n\x04list\x18\x01 \x03(\t\"j\n\x0e\x43ounterShopRsb\x12+\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x1d.seo.CounterShopRsb.DataEntry\x1a+\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"*\n\x0b\x43ommentsReq\x12\x1b\n\x05items\x18\x01 \x03(\x0b\x32\x0c.seo.Comment\"\x1c\n\x0b\x43ommentsRsb\x12\r\n\x05items\x18\x01 \x03(\t\"5\n\x08\x43omments\x12\x1a\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x0c.seo.Comment\x12\r\n\x05total\x18\x02 \x01(\x03\"\x86\x04\n\x07\x43omment\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x13\n\x0buser_avatar\x18\x03 \x01(\t\x12\r\n\x05score\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x12\x10\n\x08store_id\x18\x06 \x01(\t\x12\x11\n\tcreate_at\x18\x07 \x01(\x03\x12\r\n\x05media\x18\x08 \x03(\t\x12\x11\n\trecommend\x18\t \x01(\x08\x12\x0c\n\x04tags\x18\n \x03(\t\x12\x0f\n\x07\x63ountry\x18\x0b \x01(\t\x12\x11\n\tupdate_at\x18\x0c \x01(\x03\x12\x11\n\tdelete_at\x18\r \x01(\x03\x12\x12\n\nis_deleted\x18\x0f \x01(\x08\x12\x0e\n\x06status\x18\x10 \x01(\t\x12\x10\n\x08has_next\x18\x11 \x01(\t\x12-\n\tsub_score\x18\x12 \x03(\x0b\x32\x1a.seo.Comment.SubScoreEntry\x12\x32\n\x12\x61\x64\x64itional_comment\x18\x13 \x03(\x0b\x32\x16.seo.AdditionalComment\x12\x10\n\x08order_id\x18\x14 \x01(\t\x12\x0f\n\x07user_id\x18\x15 \x01(\t\x12\r\n\x05\x62onus\x18\x16 \x01(\x03\x12\x11\n\tanonymous\x18\x18 \x01(\x08\x12\x0c\n\x04type\x18\x17 \x01(\t\x1a/\n\rSubScoreEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"e\n\x11\x41\x64\x64itionalComment\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12\r\n\x05media\x18\x03 \x03(\t\x12\x11\n\tcreate_at\x18\x04 \x01(\x03\x12\x11\n\tupdate_at\x18\x05 \x01(\x03\"\xc0\x01\n\x07ShopTag\x12\x0e\n\x06tag_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08priority\x18\x03 \x01(\x03\x12\x0e\n\x06parent\x18\x04 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x05 \x01(\t\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x11\n\tcreate_at\x18\x07 \x01(\x03\x12\x11\n\tupdate_at\x18\x08 \x01(\x03\x12\x0e\n\x06seo_id\x18\t \x01(\t\x12\r\n\x05image\x18\n \x01(\t\x12\x0f\n\x07seo_key\x18\x0b \x01(\t\"\xcf\x01\n\x0bShopService\x12\x12\n\nservice_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07name_tr\x18\x03 \x01(\t\x12\x0e\n\x06parent\x18\x04 \x01(\t\x12\x11\n\tcreate_at\x18\x07 \x01(\x03\x12\x11\n\tupdate_at\x18\x08 \x01(\x03\x12\x11\n\tdelete_at\x18\t \x01(\x03\x12\x12\n\nis_deleted\x18\n \x01(\x08\x12\x0e\n\x06seo_id\x18\x0b \x01(\t\x12\x0f\n\x07seo_key\x18\x0c \x01(\t\x12\x0f\n\x07\x63ountry\x18\r \x01(\t\"P\n\x0eShopServiceReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07name_tr\x18\x02 \x01(\t\x12\x0e\n\x06parent\x18\x03 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\":\n\x0fShopServiceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"U\n\x14QueryShopServiceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\"\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x14.seo.ShopServiceData\"@\n\x0fShopServiceData\x12\r\n\x05total\x18\x01 \x01(\x03\x12\x1e\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x10.seo.ShopService\"1\n\x10ValidAssembleReq\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x03(\t\"P\n\x11ValidAssembleResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12 \n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x12.seo.ValidAssemble\"=\n\rValidAssemble\x12\x1f\n\x08\x61ssemble\x18\x01 \x03(\x0b\x32\r.seo.Assembly\x12\x0b\n\x03num\x18\x02 \x01(\x05\"2\n\x08\x41ssembly\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\"8\n\x0bShopTagData\x12\r\n\x05total\x18\x01 \x01(\x03\x12\x1a\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x0c.seo.ShopTag\"M\n\x10QueryShopTagResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1e\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x10.seo.ShopTagData\"&\n\tTagObject\x12\x0c\n\x04show\x18\x01 \x01(\t\x12\x0b\n\x03\x61ll\x18\x02 \x03(\t\"S\n\x10\x43reateShopTagReq\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08priority\x18\x02 \x01(\x03\x12\x0e\n\x06parent\x18\x03 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x04 \x01(\t\"<\n\x11\x43reateShopTagResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"$\n\x11VerifyShopInfoReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\"P\n\x12VerifyShopInfoResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x03\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x11.seo.MissingField\"%\n\x0cMissingField\x12\x15\n\rmissing_field\x18\x01 \x03(\t\"_\n\x1dTransferStoresToContractedReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x13\n\x0bsupplier_id\x18\x02 \x01(\t\x12\x18\n\x10\x63ommission_ratio\x18\x03 \x01(\x01\";\n\x1eTransferStoresToContractedResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x03\x12\x0b\n\x03msg\x18\x02 \x01(\t\"<\n\x11IncrUpdateShopReq\x12\x0e\n\x06\x66ields\x18\x01 \x03(\t\x12\x17\n\x04shop\x18\x02 \x01(\x0b\x32\t.seo.Shop\"/\n\x12IncrUpdateShopResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\"L\n\x16\x43reateSocialAccountReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x10\n\x08platform\x18\x02 \x01(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x03 \x01(\t\"4\n\x17\x43reateSocialAccountResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\"X\n\x16UpdateSocialAccountReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x10\n\x08platform\x18\x03 \x01(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x04 \x01(\t\"4\n\x17UpdateSocialAccountResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\"6\n\x16\x44\x65leteSocialAccountReq\x12\x0f\n\x07shop_id\x18\x01 \x01(\t\x12\x0b\n\x03ids\x18\x02 \x03(\t\"4\n\x17\x44\x65leteSocialAccountResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\"y\n\x1eQueryShopTagExistShopByCityReq\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12\x0e\n\x06\x63ities\x18\x02 \x03(\t\x12\x0c\n\x04tags\x18\x03 \x03(\t\x12(\n\raddress_level\x18\x04 \x01(\x0e\x32\x11.seo.AddressLevel\"\xd1\x01\n\x1fQueryShopTagExistShopByCityResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12<\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32..seo.QueryShopTagExistShopByCityResp.DataEntry\x1aU\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x37\n\x05value\x18\x02 \x01(\x0b\x32(.seo.QueryShopTagExistShopByCityRespData:\x02\x38\x01\"X\n#QueryShopTagExistShopByCityRespData\x12\x31\n\x03tag\x18\x01 \x03(\x0b\x32$.seo.QueryShopTagExistShopByCityItem\"\x88\x01\n\x1fQueryShopTagExistShopByCityItem\x12\x0e\n\x06tag_id\x18\x01 \x01(\t\x12\x10\n\x08tag_name\x18\x02 \x01(\t\x12\x0e\n\x06seo_id\x18\x03 \x01(\t\x12\x13\n\x0bstore_count\x18\x04 \x01(\x03\x12\r\n\x05image\x18\x05 \x01(\t\x12\x0f\n\x07seo_key\x18\x06 \x01(\t\"\x7f\n\x1fQueryDistrictExistShopByCityReq\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12\x0e\n\x06\x63ities\x18\x02 \x03(\t\x12\x11\n\tdistricts\x18\x03 \x03(\t\x12(\n\raddress_level\x18\x04 \x01(\x0e\x32\x11.seo.AddressLevel\"\xd4\x01\n QueryDistrictExistShopByCityResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12=\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32/.seo.QueryDistrictExistShopByCityResp.DataEntry\x1aV\n\tDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x38\n\x05value\x18\x02 \x01(\x0b\x32).seo.QueryDistrictExistShopByCityRespData:\x02\x38\x01\"_\n$QueryDistrictExistShopByCityRespData\x12\x37\n\x08\x64istrict\x18\x01 \x03(\x0b\x32%.seo.QueryDistrictExistShopByCityItem\"\xab\x01\n QueryDistrictExistShopByCityItem\x12\x13\n\x0b\x64istrict_id\x18\x01 \x01(\t\x12\x15\n\rdistrict_name\x18\x02 \x01(\t\x12\x0e\n\x06seo_id\x18\x03 \x01(\t\x12\x13\n\x0bstore_count\x18\x04 \x01(\x03\x12\x11\n\tcity_name\x18\x05 \x01(\t\x12\x12\n\nstate_name\x18\x06 \x01(\t\x12\x0f\n\x07seo_key\x18\x07 \x01(\t*1\n\x0c\x41\x64\x64ressLevel\x12\t\n\x05State\x10\x00\x12\x08\n\x04\x43ity\x10\x01\x12\x0c\n\x08\x44istrict\x10\x02\x42\x17Z\x15\x61pp/protocol/grpc/seob\x06proto3'
 )
 
 _ADDRESSLEVEL = _descriptor.EnumDescriptor(
@@ -48,8 +48,8 @@ _ADDRESSLEVEL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=10841,
-  serialized_end=10890,
+  serialized_start=11925,
+  serialized_end=11974,
 )
 _sym_db.RegisterEnumDescriptor(_ADDRESSLEVEL)
 
@@ -58,6 +58,140 @@ State = 0
 City = 1
 District = 2
 
+
+
+_STATEANDSTREETREQ = _descriptor.Descriptor(
+  name='StateAndStreetReq',
+  full_name='seo.StateAndStreetReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='country', full_name='seo.StateAndStreetReq.country', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=23,
+  serialized_end=59,
+)
+
+
+_STATEANDSTREETRSB_DATAENTRY = _descriptor.Descriptor(
+  name='DataEntry',
+  full_name='seo.StateAndStreetRsb.DataEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='seo.StateAndStreetRsb.DataEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='seo.StateAndStreetRsb.DataEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=131,
+  serialized_end=190,
+)
+
+_STATEANDSTREETRSB = _descriptor.Descriptor(
+  name='StateAndStreetRsb',
+  full_name='seo.StateAndStreetRsb',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='data', full_name='seo.StateAndStreetRsb.data', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_STATEANDSTREETRSB_DATAENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=62,
+  serialized_end=190,
+)
+
+
+_STATEINFO = _descriptor.Descriptor(
+  name='StateInfo',
+  full_name='seo.StateInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='street', full_name='seo.StateInfo.street', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=192,
+  serialized_end=219,
+)
 
 
 _BYDISTANCEINFO = _descriptor.Descriptor(
@@ -115,8 +249,8 @@ _BYDISTANCEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23,
-  serialized_end=144,
+  serialized_start=221,
+  serialized_end=342,
 )
 
 
@@ -154,8 +288,8 @@ _COORDINATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=146,
-  serialized_end=195,
+  serialized_start=344,
+  serialized_end=393,
 )
 
 
@@ -193,8 +327,8 @@ _SHOPDISTRICT_PARAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=465,
-  serialized_end=510,
+  serialized_start=680,
+  serialized_end=725,
 )
 
 _SHOPDISTRICT = _descriptor.Descriptor(
@@ -296,6 +430,13 @@ _SHOPDISTRICT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='seo_key', full_name='seo.ShopDistrict.seo_key', index=13,
+      number=14, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -308,8 +449,8 @@ _SHOPDISTRICT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=198,
-  serialized_end=510,
+  serialized_start=396,
+  serialized_end=725,
 )
 
 
@@ -347,8 +488,8 @@ _APPLYRECORD_LOCATIONENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1418,
-  serialized_end=1465,
+  serialized_start=1633,
+  serialized_end=1680,
 )
 
 _APPLYRECORD_COORDINATEENTRY = _descriptor.Descriptor(
@@ -385,8 +526,8 @@ _APPLYRECORD_COORDINATEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1467,
-  serialized_end=1516,
+  serialized_start=1682,
+  serialized_end=1731,
 )
 
 _APPLYRECORD = _descriptor.Descriptor(
@@ -668,8 +809,8 @@ _APPLYRECORD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=513,
-  serialized_end=1516,
+  serialized_start=728,
+  serialized_end=1731,
 )
 
 
@@ -707,8 +848,8 @@ _SHOPBUSINESSHOUR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1518,
-  serialized_end=1576,
+  serialized_start=1733,
+  serialized_end=1791,
 )
 
 
@@ -746,8 +887,8 @@ _HOUR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1578,
-  serialized_end=1618,
+  serialized_start=1793,
+  serialized_end=1833,
 )
 
 
@@ -792,8 +933,8 @@ _QUERYAPPLYRECORDRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1620,
-  serialized_end=1705,
+  serialized_start=1835,
+  serialized_end=1920,
 )
 
 
@@ -831,8 +972,8 @@ _APPLYRECORDDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1707,
-  serialized_end=1771,
+  serialized_start=1922,
+  serialized_end=1986,
 )
 
 
@@ -877,8 +1018,8 @@ _QUERYDISTRICTRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1773,
-  serialized_end=1852,
+  serialized_start=1988,
+  serialized_end=2067,
 )
 
 
@@ -916,8 +1057,8 @@ _DISTRICTDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1854,
-  serialized_end=1916,
+  serialized_start=2069,
+  serialized_end=2131,
 )
 
 
@@ -955,8 +1096,8 @@ _UPSERTAPPLYRECORDREQ_LOCATIONENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1418,
-  serialized_end=1465,
+  serialized_start=1633,
+  serialized_end=1680,
 )
 
 _UPSERTAPPLYRECORDREQ_COORDINATEENTRY = _descriptor.Descriptor(
@@ -993,8 +1134,8 @@ _UPSERTAPPLYRECORDREQ_COORDINATEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1467,
-  serialized_end=1516,
+  serialized_start=1682,
+  serialized_end=1731,
 )
 
 _UPSERTAPPLYRECORDREQ = _descriptor.Descriptor(
@@ -1255,8 +1396,8 @@ _UPSERTAPPLYRECORDREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1919,
-  serialized_end=2891,
+  serialized_start=2134,
+  serialized_end=3106,
 )
 
 
@@ -1301,8 +1442,8 @@ _UPSERTAPPLYRECORDRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2893,
-  serialized_end=2957,
+  serialized_start=3108,
+  serialized_end=3172,
 )
 
 
@@ -1340,8 +1481,8 @@ _UPSERTDISTRICTREQ_PARAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=465,
-  serialized_end=510,
+  serialized_start=680,
+  serialized_end=725,
 )
 
 _UPSERTDISTRICTREQ = _descriptor.Descriptor(
@@ -1420,8 +1561,8 @@ _UPSERTDISTRICTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2960,
-  serialized_end=3193,
+  serialized_start=3175,
+  serialized_end=3408,
 )
 
 
@@ -1466,8 +1607,8 @@ _UPSERTDISTRICTRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3195,
-  serialized_end=3256,
+  serialized_start=3410,
+  serialized_end=3471,
 )
 
 
@@ -1505,8 +1646,8 @@ _CATEGORIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3258,
-  serialized_end=3314,
+  serialized_start=3473,
+  serialized_end=3529,
 )
 
 
@@ -1544,8 +1685,8 @@ _CATEGORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3316,
-  serialized_end=3361,
+  serialized_start=3531,
+  serialized_end=3576,
 )
 
 
@@ -1590,8 +1731,8 @@ _BRANDCOLLECTIONREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3363,
-  serialized_end=3444,
+  serialized_start=3578,
+  serialized_end=3659,
 )
 
 
@@ -1629,8 +1770,8 @@ _QUERYBRANDCOLLECTIONREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3446,
-  serialized_end=3502,
+  serialized_start=3661,
+  serialized_end=3717,
 )
 
 
@@ -1661,8 +1802,8 @@ _QUERYBRANDCOLLECTIONRSB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3504,
-  serialized_end=3543,
+  serialized_start=3719,
+  serialized_end=3758,
 )
 
 
@@ -1700,8 +1841,8 @@ _BRANDDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3545,
-  serialized_end=3586,
+  serialized_start=3760,
+  serialized_end=3801,
 )
 
 
@@ -1739,8 +1880,8 @@ _SHOPREQ_LOCATIONENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1418,
-  serialized_end=1465,
+  serialized_start=1633,
+  serialized_end=1680,
 )
 
 _SHOPREQ_COORDINATEENTRY = _descriptor.Descriptor(
@@ -1777,8 +1918,8 @@ _SHOPREQ_COORDINATEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1467,
-  serialized_end=1516,
+  serialized_start=1682,
+  serialized_end=1731,
 )
 
 _SHOPREQ = _descriptor.Descriptor(
@@ -2083,6 +2224,13 @@ _SHOPREQ = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='service', full_name='seo.ShopReq.service', index=42,
+      number=50, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2095,8 +2243,8 @@ _SHOPREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3589,
-  serialized_end=4694,
+  serialized_start=3804,
+  serialized_end=4926,
 )
 
 
@@ -2134,8 +2282,8 @@ _SHOPSETTING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4696,
-  serialized_end=4756,
+  serialized_start=4928,
+  serialized_end=4988,
 )
 
 
@@ -2173,8 +2321,8 @@ _SHOP_LOCATIONENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1418,
-  serialized_end=1465,
+  serialized_start=1633,
+  serialized_end=1680,
 )
 
 _SHOP_COORDINATEENTRY = _descriptor.Descriptor(
@@ -2211,8 +2359,8 @@ _SHOP_COORDINATEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1467,
-  serialized_end=1516,
+  serialized_start=1682,
+  serialized_end=1731,
 )
 
 _SHOP_STARSENTRY = _descriptor.Descriptor(
@@ -2249,8 +2397,8 @@ _SHOP_STARSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6037,
-  serialized_end=6081,
+  serialized_start=6286,
+  serialized_end=6330,
 )
 
 _SHOP = _descriptor.Descriptor(
@@ -2611,6 +2759,13 @@ _SHOP = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='service', full_name='seo.Shop.service', index=50,
+      number=51, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2623,8 +2778,8 @@ _SHOP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4759,
-  serialized_end=6081,
+  serialized_start=4991,
+  serialized_end=6330,
 )
 
 
@@ -2662,8 +2817,8 @@ _SPECIALDISH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6083,
-  serialized_end=6125,
+  serialized_start=6332,
+  serialized_end=6374,
 )
 
 
@@ -2708,8 +2863,8 @@ _SOCIALACCOUNT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6127,
-  serialized_end=6189,
+  serialized_start=6376,
+  serialized_end=6438,
 )
 
 
@@ -2747,8 +2902,8 @@ _SHOPS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6191,
-  serialized_end=6238,
+  serialized_start=6440,
+  serialized_end=6487,
 )
 
 
@@ -2779,8 +2934,8 @@ _SHOPRSB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6240,
-  serialized_end=6266,
+  serialized_start=6489,
+  serialized_end=6515,
 )
 
 
@@ -2818,8 +2973,8 @@ _USERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6268,
-  serialized_end=6315,
+  serialized_start=6517,
+  serialized_end=6564,
 )
 
 
@@ -2913,8 +3068,8 @@ _UPDATESUPPLIERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6318,
-  serialized_end=6530,
+  serialized_start=6567,
+  serialized_end=6779,
 )
 
 
@@ -2952,8 +3107,8 @@ _SUPPLIERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6532,
-  serialized_end=6587,
+  serialized_start=6781,
+  serialized_end=6836,
 )
 
 
@@ -2984,8 +3139,8 @@ _SUPPLIERRSB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6589,
-  serialized_end=6623,
+  serialized_start=6838,
+  serialized_end=6872,
 )
 
 
@@ -3030,8 +3185,8 @@ _IMAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6625,
-  serialized_end=6675,
+  serialized_start=6874,
+  serialized_end=6924,
 )
 
 
@@ -3069,8 +3224,8 @@ _UPDATEUSERREQ_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6857,
-  serialized_end=6900,
+  serialized_start=7106,
+  serialized_end=7149,
 )
 
 _UPDATEUSERREQ = _descriptor.Descriptor(
@@ -3149,8 +3304,8 @@ _UPDATEUSERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6678,
-  serialized_end=6900,
+  serialized_start=6927,
+  serialized_end=7149,
 )
 
 
@@ -3181,8 +3336,8 @@ _USERRSB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6902,
-  serialized_end=6928,
+  serialized_start=7151,
+  serialized_end=7177,
 )
 
 
@@ -3213,8 +3368,8 @@ _DELETEUSERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6930,
-  serialized_end=6962,
+  serialized_start=7179,
+  serialized_end=7211,
 )
 
 
@@ -3245,8 +3400,8 @@ _DELETEBYID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6964,
-  serialized_end=6988,
+  serialized_start=7213,
+  serialized_end=7237,
 )
 
 
@@ -3284,8 +3439,8 @@ _USER_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6857,
-  serialized_end=6900,
+  serialized_start=7106,
+  serialized_end=7149,
 )
 
 _USER = _descriptor.Descriptor(
@@ -3385,8 +3540,8 @@ _USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6991,
-  serialized_end=7252,
+  serialized_start=7240,
+  serialized_end=7501,
 )
 
 
@@ -3501,8 +3656,8 @@ _SUPPLIER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7255,
-  serialized_end=7516,
+  serialized_start=7504,
+  serialized_end=7765,
 )
 
 
@@ -3533,8 +3688,8 @@ _COUNTERSHOPREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7518,
-  serialized_end=7548,
+  serialized_start=7767,
+  serialized_end=7797,
 )
 
 
@@ -3572,8 +3727,8 @@ _COUNTERSHOPRSB_DATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7613,
-  serialized_end=7656,
+  serialized_start=7862,
+  serialized_end=7905,
 )
 
 _COUNTERSHOPRSB = _descriptor.Descriptor(
@@ -3603,8 +3758,8 @@ _COUNTERSHOPRSB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7550,
-  serialized_end=7656,
+  serialized_start=7799,
+  serialized_end=7905,
 )
 
 
@@ -3635,8 +3790,8 @@ _COMMENTSREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7658,
-  serialized_end=7700,
+  serialized_start=7907,
+  serialized_end=7949,
 )
 
 
@@ -3667,8 +3822,8 @@ _COMMENTSRSB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7702,
-  serialized_end=7730,
+  serialized_start=7951,
+  serialized_end=7979,
 )
 
 
@@ -3706,8 +3861,8 @@ _COMMENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7732,
-  serialized_end=7785,
+  serialized_start=7981,
+  serialized_end=8034,
 )
 
 
@@ -3745,8 +3900,8 @@ _COMMENT_SUBSCOREENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8259,
-  serialized_end=8306,
+  serialized_start=8508,
+  serialized_end=8555,
 )
 
 _COMMENT = _descriptor.Descriptor(
@@ -3930,8 +4085,8 @@ _COMMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7788,
-  serialized_end=8306,
+  serialized_start=8037,
+  serialized_end=8555,
 )
 
 
@@ -3990,8 +4145,8 @@ _ADDITIONALCOMMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8308,
-  serialized_end=8409,
+  serialized_start=8557,
+  serialized_end=8658,
 )
 
 
@@ -4066,6 +4221,20 @@ _SHOPTAG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='image', full_name='seo.ShopTag.image', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='seo_key', full_name='seo.ShopTag.seo_key', index=10,
+      number=11, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -4078,8 +4247,464 @@ _SHOPTAG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8412,
-  serialized_end=8572,
+  serialized_start=8661,
+  serialized_end=8853,
+)
+
+
+_SHOPSERVICE = _descriptor.Descriptor(
+  name='ShopService',
+  full_name='seo.ShopService',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='service_id', full_name='seo.ShopService.service_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='seo.ShopService.name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='name_tr', full_name='seo.ShopService.name_tr', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='parent', full_name='seo.ShopService.parent', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='create_at', full_name='seo.ShopService.create_at', index=4,
+      number=7, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='update_at', full_name='seo.ShopService.update_at', index=5,
+      number=8, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='delete_at', full_name='seo.ShopService.delete_at', index=6,
+      number=9, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='is_deleted', full_name='seo.ShopService.is_deleted', index=7,
+      number=10, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='seo_id', full_name='seo.ShopService.seo_id', index=8,
+      number=11, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='seo_key', full_name='seo.ShopService.seo_key', index=9,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='country', full_name='seo.ShopService.country', index=10,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=8856,
+  serialized_end=9063,
+)
+
+
+_SHOPSERVICEREQ = _descriptor.Descriptor(
+  name='ShopServiceReq',
+  full_name='seo.ShopServiceReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='seo.ShopServiceReq.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='name_tr', full_name='seo.ShopServiceReq.name_tr', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='parent', full_name='seo.ShopServiceReq.parent', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='country', full_name='seo.ShopServiceReq.country', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9065,
+  serialized_end=9145,
+)
+
+
+_SHOPSERVICERESP = _descriptor.Descriptor(
+  name='ShopServiceResp',
+  full_name='seo.ShopServiceResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='seo.ShopServiceResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='msg', full_name='seo.ShopServiceResp.msg', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='seo.ShopServiceResp.data', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9147,
+  serialized_end=9205,
+)
+
+
+_QUERYSHOPSERVICERESP = _descriptor.Descriptor(
+  name='QueryShopServiceResp',
+  full_name='seo.QueryShopServiceResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='seo.QueryShopServiceResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='msg', full_name='seo.QueryShopServiceResp.msg', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='seo.QueryShopServiceResp.data', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9207,
+  serialized_end=9292,
+)
+
+
+_SHOPSERVICEDATA = _descriptor.Descriptor(
+  name='ShopServiceData',
+  full_name='seo.ShopServiceData',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='total', full_name='seo.ShopServiceData.total', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='seo.ShopServiceData.data', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9294,
+  serialized_end=9358,
+)
+
+
+_VALIDASSEMBLEREQ = _descriptor.Descriptor(
+  name='ValidAssembleReq',
+  full_name='seo.ValidAssembleReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='country', full_name='seo.ValidAssembleReq.country', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='seo.ValidAssembleReq.type', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9360,
+  serialized_end=9409,
+)
+
+
+_VALIDASSEMBLERESP = _descriptor.Descriptor(
+  name='ValidAssembleResp',
+  full_name='seo.ValidAssembleResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='seo.ValidAssembleResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='msg', full_name='seo.ValidAssembleResp.msg', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='seo.ValidAssembleResp.data', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9411,
+  serialized_end=9491,
+)
+
+
+_VALIDASSEMBLE = _descriptor.Descriptor(
+  name='ValidAssemble',
+  full_name='seo.ValidAssemble',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='assemble', full_name='seo.ValidAssemble.assemble', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='num', full_name='seo.ValidAssemble.num', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9493,
+  serialized_end=9554,
+)
+
+
+_ASSEMBLY = _descriptor.Descriptor(
+  name='Assembly',
+  full_name='seo.Assembly',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='seo.Assembly.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='seo.Assembly.name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='seo.Assembly.type', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=9556,
+  serialized_end=9606,
 )
 
 
@@ -4117,8 +4742,8 @@ _SHOPTAGDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8574,
-  serialized_end=8630,
+  serialized_start=9608,
+  serialized_end=9664,
 )
 
 
@@ -4163,8 +4788,8 @@ _QUERYSHOPTAGRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8632,
-  serialized_end=8709,
+  serialized_start=9666,
+  serialized_end=9743,
 )
 
 
@@ -4202,8 +4827,8 @@ _TAGOBJECT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8711,
-  serialized_end=8749,
+  serialized_start=9745,
+  serialized_end=9783,
 )
 
 
@@ -4255,8 +4880,8 @@ _CREATESHOPTAGREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8751,
-  serialized_end=8834,
+  serialized_start=9785,
+  serialized_end=9868,
 )
 
 
@@ -4301,8 +4926,8 @@ _CREATESHOPTAGRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8836,
-  serialized_end=8896,
+  serialized_start=9870,
+  serialized_end=9930,
 )
 
 
@@ -4333,8 +4958,8 @@ _VERIFYSHOPINFOREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8898,
-  serialized_end=8934,
+  serialized_start=9932,
+  serialized_end=9968,
 )
 
 
@@ -4379,8 +5004,8 @@ _VERIFYSHOPINFORESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8936,
-  serialized_end=9016,
+  serialized_start=9970,
+  serialized_end=10050,
 )
 
 
@@ -4411,8 +5036,8 @@ _MISSINGFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9018,
-  serialized_end=9055,
+  serialized_start=10052,
+  serialized_end=10089,
 )
 
 
@@ -4457,8 +5082,8 @@ _TRANSFERSTORESTOCONTRACTEDREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9057,
-  serialized_end=9152,
+  serialized_start=10091,
+  serialized_end=10186,
 )
 
 
@@ -4496,8 +5121,8 @@ _TRANSFERSTORESTOCONTRACTEDRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9154,
-  serialized_end=9213,
+  serialized_start=10188,
+  serialized_end=10247,
 )
 
 
@@ -4535,8 +5160,8 @@ _INCRUPDATESHOPREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9215,
-  serialized_end=9275,
+  serialized_start=10249,
+  serialized_end=10309,
 )
 
 
@@ -4574,8 +5199,8 @@ _INCRUPDATESHOPRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9277,
-  serialized_end=9324,
+  serialized_start=10311,
+  serialized_end=10358,
 )
 
 
@@ -4620,8 +5245,8 @@ _CREATESOCIALACCOUNTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9326,
-  serialized_end=9402,
+  serialized_start=10360,
+  serialized_end=10436,
 )
 
 
@@ -4659,8 +5284,8 @@ _CREATESOCIALACCOUNTRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9404,
-  serialized_end=9456,
+  serialized_start=10438,
+  serialized_end=10490,
 )
 
 
@@ -4712,8 +5337,8 @@ _UPDATESOCIALACCOUNTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9458,
-  serialized_end=9546,
+  serialized_start=10492,
+  serialized_end=10580,
 )
 
 
@@ -4751,8 +5376,8 @@ _UPDATESOCIALACCOUNTRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9548,
-  serialized_end=9600,
+  serialized_start=10582,
+  serialized_end=10634,
 )
 
 
@@ -4790,8 +5415,8 @@ _DELETESOCIALACCOUNTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9602,
-  serialized_end=9656,
+  serialized_start=10636,
+  serialized_end=10690,
 )
 
 
@@ -4829,8 +5454,8 @@ _DELETESOCIALACCOUNTRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9658,
-  serialized_end=9710,
+  serialized_start=10692,
+  serialized_end=10744,
 )
 
 
@@ -4882,8 +5507,8 @@ _QUERYSHOPTAGEXISTSHOPBYCITYREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9712,
-  serialized_end=9833,
+  serialized_start=10746,
+  serialized_end=10867,
 )
 
 
@@ -4921,8 +5546,8 @@ _QUERYSHOPTAGEXISTSHOPBYCITYRESP_DATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9960,
-  serialized_end=10045,
+  serialized_start=10994,
+  serialized_end=11079,
 )
 
 _QUERYSHOPTAGEXISTSHOPBYCITYRESP = _descriptor.Descriptor(
@@ -4966,8 +5591,8 @@ _QUERYSHOPTAGEXISTSHOPBYCITYRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9836,
-  serialized_end=10045,
+  serialized_start=10870,
+  serialized_end=11079,
 )
 
 
@@ -4998,8 +5623,8 @@ _QUERYSHOPTAGEXISTSHOPBYCITYRESPDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10047,
-  serialized_end=10135,
+  serialized_start=11081,
+  serialized_end=11169,
 )
 
 
@@ -5039,6 +5664,20 @@ _QUERYSHOPTAGEXISTSHOPBYCITYITEM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='image', full_name='seo.QueryShopTagExistShopByCityItem.image', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='seo_key', full_name='seo.QueryShopTagExistShopByCityItem.seo_key', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -5051,8 +5690,8 @@ _QUERYSHOPTAGEXISTSHOPBYCITYITEM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10137,
-  serialized_end=10241,
+  serialized_start=11172,
+  serialized_end=11308,
 )
 
 
@@ -5104,8 +5743,8 @@ _QUERYDISTRICTEXISTSHOPBYCITYREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10243,
-  serialized_end=10370,
+  serialized_start=11310,
+  serialized_end=11437,
 )
 
 
@@ -5143,8 +5782,8 @@ _QUERYDISTRICTEXISTSHOPBYCITYRESP_DATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10499,
-  serialized_end=10585,
+  serialized_start=11566,
+  serialized_end=11652,
 )
 
 _QUERYDISTRICTEXISTSHOPBYCITYRESP = _descriptor.Descriptor(
@@ -5188,8 +5827,8 @@ _QUERYDISTRICTEXISTSHOPBYCITYRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10373,
-  serialized_end=10585,
+  serialized_start=11440,
+  serialized_end=11652,
 )
 
 
@@ -5220,8 +5859,8 @@ _QUERYDISTRICTEXISTSHOPBYCITYRESPDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10587,
-  serialized_end=10682,
+  serialized_start=11654,
+  serialized_end=11749,
 )
 
 
@@ -5275,6 +5914,13 @@ _QUERYDISTRICTEXISTSHOPBYCITYITEM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='seo_key', full_name='seo.QueryDistrictExistShopByCityItem.seo_key', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -5287,10 +5933,13 @@ _QUERYDISTRICTEXISTSHOPBYCITYITEM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10685,
-  serialized_end=10839,
+  serialized_start=11752,
+  serialized_end=11923,
 )
 
+_STATEANDSTREETRSB_DATAENTRY.fields_by_name['value'].message_type = _STATEINFO
+_STATEANDSTREETRSB_DATAENTRY.containing_type = _STATEANDSTREETRSB
+_STATEANDSTREETRSB.fields_by_name['data'].message_type = _STATEANDSTREETRSB_DATAENTRY
 _BYDISTANCEINFO.fields_by_name['coordinates'].message_type = _COORDINATE
 _SHOPDISTRICT_PARAMSENTRY.containing_type = _SHOPDISTRICT
 _SHOPDISTRICT.fields_by_name['params'].message_type = _SHOPDISTRICT_PARAMSENTRY
@@ -5353,6 +6002,10 @@ _COMMENTS.fields_by_name['data'].message_type = _COMMENT
 _COMMENT_SUBSCOREENTRY.containing_type = _COMMENT
 _COMMENT.fields_by_name['sub_score'].message_type = _COMMENT_SUBSCOREENTRY
 _COMMENT.fields_by_name['additional_comment'].message_type = _ADDITIONALCOMMENT
+_QUERYSHOPSERVICERESP.fields_by_name['data'].message_type = _SHOPSERVICEDATA
+_SHOPSERVICEDATA.fields_by_name['data'].message_type = _SHOPSERVICE
+_VALIDASSEMBLERESP.fields_by_name['data'].message_type = _VALIDASSEMBLE
+_VALIDASSEMBLE.fields_by_name['assemble'].message_type = _ASSEMBLY
 _SHOPTAGDATA.fields_by_name['data'].message_type = _SHOPTAG
 _QUERYSHOPTAGRESP.fields_by_name['data'].message_type = _SHOPTAGDATA
 _VERIFYSHOPINFORESP.fields_by_name['data'].message_type = _MISSINGFIELD
@@ -5367,6 +6020,9 @@ _QUERYDISTRICTEXISTSHOPBYCITYRESP_DATAENTRY.fields_by_name['value'].message_type
 _QUERYDISTRICTEXISTSHOPBYCITYRESP_DATAENTRY.containing_type = _QUERYDISTRICTEXISTSHOPBYCITYRESP
 _QUERYDISTRICTEXISTSHOPBYCITYRESP.fields_by_name['data'].message_type = _QUERYDISTRICTEXISTSHOPBYCITYRESP_DATAENTRY
 _QUERYDISTRICTEXISTSHOPBYCITYRESPDATA.fields_by_name['district'].message_type = _QUERYDISTRICTEXISTSHOPBYCITYITEM
+DESCRIPTOR.message_types_by_name['StateAndStreetReq'] = _STATEANDSTREETREQ
+DESCRIPTOR.message_types_by_name['StateAndStreetRsb'] = _STATEANDSTREETRSB
+DESCRIPTOR.message_types_by_name['StateInfo'] = _STATEINFO
 DESCRIPTOR.message_types_by_name['ByDistanceInfo'] = _BYDISTANCEINFO
 DESCRIPTOR.message_types_by_name['coordinate'] = _COORDINATE
 DESCRIPTOR.message_types_by_name['ShopDistrict'] = _SHOPDISTRICT
@@ -5413,6 +6069,15 @@ DESCRIPTOR.message_types_by_name['Comments'] = _COMMENTS
 DESCRIPTOR.message_types_by_name['Comment'] = _COMMENT
 DESCRIPTOR.message_types_by_name['AdditionalComment'] = _ADDITIONALCOMMENT
 DESCRIPTOR.message_types_by_name['ShopTag'] = _SHOPTAG
+DESCRIPTOR.message_types_by_name['ShopService'] = _SHOPSERVICE
+DESCRIPTOR.message_types_by_name['ShopServiceReq'] = _SHOPSERVICEREQ
+DESCRIPTOR.message_types_by_name['ShopServiceResp'] = _SHOPSERVICERESP
+DESCRIPTOR.message_types_by_name['QueryShopServiceResp'] = _QUERYSHOPSERVICERESP
+DESCRIPTOR.message_types_by_name['ShopServiceData'] = _SHOPSERVICEDATA
+DESCRIPTOR.message_types_by_name['ValidAssembleReq'] = _VALIDASSEMBLEREQ
+DESCRIPTOR.message_types_by_name['ValidAssembleResp'] = _VALIDASSEMBLERESP
+DESCRIPTOR.message_types_by_name['ValidAssemble'] = _VALIDASSEMBLE
+DESCRIPTOR.message_types_by_name['Assembly'] = _ASSEMBLY
 DESCRIPTOR.message_types_by_name['ShopTagData'] = _SHOPTAGDATA
 DESCRIPTOR.message_types_by_name['QueryShopTagResp'] = _QUERYSHOPTAGRESP
 DESCRIPTOR.message_types_by_name['TagObject'] = _TAGOBJECT
@@ -5441,6 +6106,35 @@ DESCRIPTOR.message_types_by_name['QueryDistrictExistShopByCityRespData'] = _QUER
 DESCRIPTOR.message_types_by_name['QueryDistrictExistShopByCityItem'] = _QUERYDISTRICTEXISTSHOPBYCITYITEM
 DESCRIPTOR.enum_types_by_name['AddressLevel'] = _ADDRESSLEVEL
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+StateAndStreetReq = _reflection.GeneratedProtocolMessageType('StateAndStreetReq', (_message.Message,), {
+  'DESCRIPTOR' : _STATEANDSTREETREQ,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.StateAndStreetReq)
+  })
+_sym_db.RegisterMessage(StateAndStreetReq)
+
+StateAndStreetRsb = _reflection.GeneratedProtocolMessageType('StateAndStreetRsb', (_message.Message,), {
+
+  'DataEntry' : _reflection.GeneratedProtocolMessageType('DataEntry', (_message.Message,), {
+    'DESCRIPTOR' : _STATEANDSTREETRSB_DATAENTRY,
+    '__module__' : 'seo.data_pb2'
+    # @@protoc_insertion_point(class_scope:seo.StateAndStreetRsb.DataEntry)
+    })
+  ,
+  'DESCRIPTOR' : _STATEANDSTREETRSB,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.StateAndStreetRsb)
+  })
+_sym_db.RegisterMessage(StateAndStreetRsb)
+_sym_db.RegisterMessage(StateAndStreetRsb.DataEntry)
+
+StateInfo = _reflection.GeneratedProtocolMessageType('StateInfo', (_message.Message,), {
+  'DESCRIPTOR' : _STATEINFO,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.StateInfo)
+  })
+_sym_db.RegisterMessage(StateInfo)
 
 ByDistanceInfo = _reflection.GeneratedProtocolMessageType('ByDistanceInfo', (_message.Message,), {
   'DESCRIPTOR' : _BYDISTANCEINFO,
@@ -5884,6 +6578,69 @@ ShopTag = _reflection.GeneratedProtocolMessageType('ShopTag', (_message.Message,
   })
 _sym_db.RegisterMessage(ShopTag)
 
+ShopService = _reflection.GeneratedProtocolMessageType('ShopService', (_message.Message,), {
+  'DESCRIPTOR' : _SHOPSERVICE,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.ShopService)
+  })
+_sym_db.RegisterMessage(ShopService)
+
+ShopServiceReq = _reflection.GeneratedProtocolMessageType('ShopServiceReq', (_message.Message,), {
+  'DESCRIPTOR' : _SHOPSERVICEREQ,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.ShopServiceReq)
+  })
+_sym_db.RegisterMessage(ShopServiceReq)
+
+ShopServiceResp = _reflection.GeneratedProtocolMessageType('ShopServiceResp', (_message.Message,), {
+  'DESCRIPTOR' : _SHOPSERVICERESP,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.ShopServiceResp)
+  })
+_sym_db.RegisterMessage(ShopServiceResp)
+
+QueryShopServiceResp = _reflection.GeneratedProtocolMessageType('QueryShopServiceResp', (_message.Message,), {
+  'DESCRIPTOR' : _QUERYSHOPSERVICERESP,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.QueryShopServiceResp)
+  })
+_sym_db.RegisterMessage(QueryShopServiceResp)
+
+ShopServiceData = _reflection.GeneratedProtocolMessageType('ShopServiceData', (_message.Message,), {
+  'DESCRIPTOR' : _SHOPSERVICEDATA,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.ShopServiceData)
+  })
+_sym_db.RegisterMessage(ShopServiceData)
+
+ValidAssembleReq = _reflection.GeneratedProtocolMessageType('ValidAssembleReq', (_message.Message,), {
+  'DESCRIPTOR' : _VALIDASSEMBLEREQ,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.ValidAssembleReq)
+  })
+_sym_db.RegisterMessage(ValidAssembleReq)
+
+ValidAssembleResp = _reflection.GeneratedProtocolMessageType('ValidAssembleResp', (_message.Message,), {
+  'DESCRIPTOR' : _VALIDASSEMBLERESP,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.ValidAssembleResp)
+  })
+_sym_db.RegisterMessage(ValidAssembleResp)
+
+ValidAssemble = _reflection.GeneratedProtocolMessageType('ValidAssemble', (_message.Message,), {
+  'DESCRIPTOR' : _VALIDASSEMBLE,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.ValidAssemble)
+  })
+_sym_db.RegisterMessage(ValidAssemble)
+
+Assembly = _reflection.GeneratedProtocolMessageType('Assembly', (_message.Message,), {
+  'DESCRIPTOR' : _ASSEMBLY,
+  '__module__' : 'seo.data_pb2'
+  # @@protoc_insertion_point(class_scope:seo.Assembly)
+  })
+_sym_db.RegisterMessage(Assembly)
+
 ShopTagData = _reflection.GeneratedProtocolMessageType('ShopTagData', (_message.Message,), {
   'DESCRIPTOR' : _SHOPTAGDATA,
   '__module__' : 'seo.data_pb2'
@@ -6084,6 +6841,7 @@ _sym_db.RegisterMessage(QueryDistrictExistShopByCityItem)
 
 
 DESCRIPTOR._options = None
+_STATEANDSTREETRSB_DATAENTRY._options = None
 _SHOPDISTRICT_PARAMSENTRY._options = None
 _APPLYRECORD_LOCATIONENTRY._options = None
 _APPLYRECORD_COORDINATEENTRY._options = None

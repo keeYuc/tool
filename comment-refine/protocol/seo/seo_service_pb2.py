@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\025app/protocol/grpc/seo',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15seo/seo_service.proto\x12\x03seo\x1a\x0c\x63ommon.proto\x1a\ndata.proto2\xf3\x05\n\nSeoService\x12*\n\tQueryShop\x12\x11.common.QueryInfo\x1a\n.seo.Shops\x12\x36\n\x13QueryShopByDistance\x12\x13.seo.ByDistanceInfo\x1a\n.seo.Shops\x12\x30\n\x0cQueryComment\x12\x11.common.QueryInfo\x1a\r.seo.Comments\x12(\n\nCreateShop\x12\x0c.seo.ShopReq\x1a\x0c.seo.ShopRsb\x12(\n\nUpdateShop\x12\x0c.seo.ShopReq\x1a\x0c.seo.ShopRsb\x12\x34\n\x0e\x43reateComments\x12\x10.seo.CommentsReq\x1a\x10.seo.CommentsRsb\x12\x34\n\x0eUpdateComments\x12\x10.seo.CommentsReq\x1a\x10.seo.CommentsRsb\x12\x38\n\x0cQueryShopTag\x12\x11.common.QueryInfo\x1a\x15.seo.QueryShopTagResp\x12>\n\rCreateShopTag\x12\x15.seo.CreateShopTagReq\x1a\x16.seo.CreateShopTagResp\x12>\n\x11QueryShopDistrict\x12\x11.common.QueryInfo\x1a\x16.seo.QueryDistrictResp\x12h\n\x1bQueryShopTagExistShopByCity\x12#.seo.QueryShopTagExistShopByCityReq\x1a$.seo.QueryShopTagExistShopByCityResp\x12k\n\x1cQueryDistrictExistShopByCity\x12$.seo.QueryDistrictExistShopByCityReq\x1a%.seo.QueryDistrictExistShopByCityRespB\x17Z\x15\x61pp/protocol/grpc/seob\x06proto3'
+  serialized_pb=b'\n\x15seo/seo_service.proto\x12\x03seo\x1a\x0c\x63ommon.proto\x1a\ndata.proto2\x84\x08\n\nSeoService\x12*\n\tQueryShop\x12\x11.common.QueryInfo\x1a\n.seo.Shops\x12\x36\n\x13QueryShopByDistance\x12\x13.seo.ByDistanceInfo\x1a\n.seo.Shops\x12\x30\n\x0cQueryComment\x12\x11.common.QueryInfo\x1a\r.seo.Comments\x12(\n\nCreateShop\x12\x0c.seo.ShopReq\x1a\x0c.seo.ShopRsb\x12(\n\nUpdateShop\x12\x0c.seo.ShopReq\x1a\x0c.seo.ShopRsb\x12\x34\n\x0e\x43reateComments\x12\x10.seo.CommentsReq\x1a\x10.seo.CommentsRsb\x12\x34\n\x0eUpdateComments\x12\x10.seo.CommentsReq\x1a\x10.seo.CommentsRsb\x12\x38\n\x0cQueryShopTag\x12\x11.common.QueryInfo\x1a\x15.seo.QueryShopTagResp\x12@\n\x10QueryShopService\x12\x11.common.QueryInfo\x1a\x19.seo.QueryShopServiceResp\x12>\n\rCreateShopTag\x12\x15.seo.CreateShopTagReq\x1a\x16.seo.CreateShopTagResp\x12>\n\x11\x43reateShopService\x12\x13.seo.ShopServiceReq\x1a\x14.seo.ShopServiceResp\x12>\n\x11QueryShopDistrict\x12\x11.common.QueryInfo\x1a\x16.seo.QueryDistrictResp\x12h\n\x1bQueryShopTagExistShopByCity\x12#.seo.QueryShopTagExistShopByCityReq\x1a$.seo.QueryShopTagExistShopByCityResp\x12k\n\x1cQueryDistrictExistShopByCity\x12$.seo.QueryDistrictExistShopByCityReq\x1a%.seo.QueryDistrictExistShopByCityResp\x12H\n\x16QueryAllStateAndStreet\x12\x16.seo.StateAndStreetReq\x1a\x16.seo.StateAndStreetRsb\x12\x43\n\x12QueryValidAssemble\x12\x15.seo.ValidAssembleReq\x1a\x16.seo.ValidAssembleRespB\x17Z\x15\x61pp/protocol/grpc/seob\x06proto3'
   ,
   dependencies=[common__pb2.DESCRIPTOR,data__pb2.DESCRIPTOR,])
 
@@ -40,7 +40,7 @@ _SEOSERVICE = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=57,
-  serialized_end=812,
+  serialized_end=1085,
   methods=[
   _descriptor.MethodDescriptor(
     name='QueryShop',
@@ -123,9 +123,19 @@ _SEOSERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='QueryShopService',
+    full_name='seo.SeoService.QueryShopService',
+    index=8,
+    containing_service=None,
+    input_type=common__pb2._QUERYINFO,
+    output_type=data__pb2._QUERYSHOPSERVICERESP,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='CreateShopTag',
     full_name='seo.SeoService.CreateShopTag',
-    index=8,
+    index=9,
     containing_service=None,
     input_type=data__pb2._CREATESHOPTAGREQ,
     output_type=data__pb2._CREATESHOPTAGRESP,
@@ -133,9 +143,19 @@ _SEOSERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='CreateShopService',
+    full_name='seo.SeoService.CreateShopService',
+    index=10,
+    containing_service=None,
+    input_type=data__pb2._SHOPSERVICEREQ,
+    output_type=data__pb2._SHOPSERVICERESP,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='QueryShopDistrict',
     full_name='seo.SeoService.QueryShopDistrict',
-    index=9,
+    index=11,
     containing_service=None,
     input_type=common__pb2._QUERYINFO,
     output_type=data__pb2._QUERYDISTRICTRESP,
@@ -145,7 +165,7 @@ _SEOSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='QueryShopTagExistShopByCity',
     full_name='seo.SeoService.QueryShopTagExistShopByCity',
-    index=10,
+    index=12,
     containing_service=None,
     input_type=data__pb2._QUERYSHOPTAGEXISTSHOPBYCITYREQ,
     output_type=data__pb2._QUERYSHOPTAGEXISTSHOPBYCITYRESP,
@@ -155,10 +175,30 @@ _SEOSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='QueryDistrictExistShopByCity',
     full_name='seo.SeoService.QueryDistrictExistShopByCity',
-    index=11,
+    index=13,
     containing_service=None,
     input_type=data__pb2._QUERYDISTRICTEXISTSHOPBYCITYREQ,
     output_type=data__pb2._QUERYDISTRICTEXISTSHOPBYCITYRESP,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='QueryAllStateAndStreet',
+    full_name='seo.SeoService.QueryAllStateAndStreet',
+    index=14,
+    containing_service=None,
+    input_type=data__pb2._STATEANDSTREETREQ,
+    output_type=data__pb2._STATEANDSTREETRSB,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='QueryValidAssemble',
+    full_name='seo.SeoService.QueryValidAssemble',
+    index=15,
+    containing_service=None,
+    input_type=data__pb2._VALIDASSEMBLEREQ,
+    output_type=data__pb2._VALIDASSEMBLERESP,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

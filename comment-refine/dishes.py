@@ -11,8 +11,8 @@ from protocol.seo import data_pb2
 
 rpc_url_fct = 'localhost:9009'
 rpc_url_seo = 'localhost:9007'
-url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
-#url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+#url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 database = "content"
 
 
