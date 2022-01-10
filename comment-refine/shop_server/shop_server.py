@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import datetime
 import grpc
+import config
 from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
@@ -48,7 +49,6 @@ class ShopServer:
         self.load_shop()
         self.import_service()
 
-
     def create_service(self, p, en, tr):
         ser = seo_service_pb2_grpc.SeoServiceStub(self.channel)
         rsb = ser.CreateShopService(data_pb2.ShopServiceReq(
@@ -81,7 +81,7 @@ class ShopServer:
         self.shop_ids = []
         self.shop_id_map = {}
         for i in self.table_shop_map.find(
-                {}, {'crawler_shop_id': True, 'merchant_shop_id': True}):
+                {'merchant_shop_id': {'$in': config.shop_ids}}, {'':True,'crawler_shop_id': True, 'merchant_shop_id': True}):
             self.shop_ids.append(i['crawler_shop_id'])
             self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
         print('load fin len :', len(self.shop_ids))
