@@ -4,6 +4,7 @@ import time
 import random
 import pandas as pd
 import pymongo
+import config
 from protocol.file_center import file_center_service_pb2_grpc
 from protocol.file_center import image_pb2
 from protocol.seo import seo_service_pb2_grpc
@@ -13,7 +14,7 @@ rpc_url_fct = 'seo:9000'
 rpc_url_seo = 'seo:9000'
 # url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
-#url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+# url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 database = "content"
 
 
@@ -28,10 +29,10 @@ class dishes():
 
     def __load_path(self, path, o):
         for i in path:
-            if os.path.isdir(o+'/'+i):
-                self.__load_path(os.listdir(o+'/'+i), o+'/'+i)
+            if os.path.isdir(o + '/' + i):
+                self.__load_path(os.listdir(o + '/' + i), o + '/' + i)
             else:
-                self.files[i.split('.')[0]] = o+'/'+i
+                self.files[i.split('.')[0]] = o + '/' + i
 
     def img_import(self):
         con = grpc.insecure_channel(rpc_url_fct)
@@ -56,7 +57,8 @@ class dishes():
         con = grpc.insecure_channel(rpc_url_seo)
         server = seo_service_pb2_grpc.SeoServiceStub(con)
         # for shop_id in dishes_config.shop_ids:
-        for shop in self.table_shop.find({'country': 'TR'}, {'tag': True, 'shop_id': True, '_id': False}):
+        for shop in self.table_shop.find({'shop_id': {'$in': {config.shop_ids}}, 'country': 'TR'},
+                                         {'tag': True, 'shop_id': True, '_id': False}):
             shop_dishes = []
             shop_names = set()
             if 'tag' in shop.keys():
@@ -73,7 +75,7 @@ class dishes():
                         else:
                             data = self.choice_one(self.tag_dishes[self.choice_one(
                                 rand_list)]
-                            )
+                                                   )
                             if data.name not in shop_names:
                                 shop_dishes.append(data)
                                 shop_names.add(data.name)
@@ -97,8 +99,9 @@ class dishes():
         return rand_map
 
     def choice_one(self, list: list):
-        return list[[random.randint(0, len(list)-1), random.randint(0,
-                                                                    len(list)-1), random.randint(0, len(list)-1)][random.randint(0, 2)]]
+        return list[[random.randint(0, len(list) - 1), random.randint(0,
+                                                                      len(list) - 1), random.randint(0, len(list) - 1)][
+            random.randint(0, 2)]]
 
     def dishes_build(self):
         self.tag_dishes = {}

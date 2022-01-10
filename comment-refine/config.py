@@ -425,4 +425,4 @@ tr_word = {'güzel': ['hoş', 'kibar', 'biçimli', 'sevimli'],
            }
 
 
-shop_ids = 
+shop_ids = []
