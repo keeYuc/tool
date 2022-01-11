@@ -64,7 +64,7 @@ class dishes():
             if 'tag' in shop.keys():
                 rand_list = self.__rand_list(
                     set(shop['tag']['all']) & self.tag_ids)
-                sum = max(random.randint(5, 15), 5)
+                sum = max(random.randint(5, 15), 5)  
                 cs = 0
                 while len(rand_list) > 0:
                     cs += 1

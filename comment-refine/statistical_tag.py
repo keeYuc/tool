@@ -1,8 +1,8 @@
 import pandas as pd
 import pymongo
 
-# uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+#uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 database = "content"
 myclient = pymongo.MongoClient(uri)
 table_shop = myclient[database]["shop"]
