@@ -1,9 +1,10 @@
 import threading
 
 import pymongo
-from concurrent.futures import ThreadPoolExecutor,wait,ALL_COMPLETED
-uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-# uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
+
+#uri = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+uri = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 database = "content"
 myclient = pymongo.MongoClient(uri)
 table_shop = myclient[database]["shop"]
@@ -13,9 +14,15 @@ tag_name_map = {}
 reflect_map = {}
 
 
+
 def run():
     for tag in table_tag.find():
-        name = tag['name'].replace(' ', '').upper()
+        name = tag['name'].replace(' ', '')
+        if name == name.rstrip('s'):
+            name = name.rstrip('n').upper()
+        else:
+            name = name.rstrip('s').upper()
+
         tag_map[tag['tag_id']] = {
             'name': name, 'shops': 0, 'item': tag, 'is_parent': tag['parent'] == ''}
         if name in tag_name_map.keys():
@@ -56,13 +63,14 @@ def clean_tag(tag_id, is_parent):
     if is_parent:
         table_tag.update_many({'parent': tag_id}, {'$set': {'parent': ''}})
 
-has = 0
-lock=threading.Lock()
+
 def shop_clean():
-    with ThreadPoolExecutor(max_workers=20)as t:
-        wait_list=[]
+    with ThreadPoolExecutor(max_workers=20) as t:
+        wait_list = []
         for shop in table_shop.find({'tag': {'$exists': True}}, {'tag': True, 'shop_id': True}):
-            wait_list.append(t.submit(do_shop_clean(shop)))
+            wait_list.append(t.submit(do_shop_clean, shop))
+        wait(wait_list, return_when=ALL_COMPLETED)
+
 
 def do_shop_clean(shop):
     new_tags = set()
@@ -78,10 +86,8 @@ def do_shop_clean(shop):
         table_shop.update_one({'shop_id': shop['shop_id']}, {'$set': {'tag.all': tags, 'tag.show': tags[0]}})
     else:
         table_shop.update_one({'shop_id': shop['shop_id']}, {'$unset': {'tag': 1}})
-        lock.acquire()
-        has += 1
-        lock.release()
-        print('has clean shop len: {}'.format(has))
+        print('has clean shop : {}'.format(shop['shop_id']))
+
 
 if __name__ == '__main__':
     run()
