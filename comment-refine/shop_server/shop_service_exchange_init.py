@@ -4,13 +4,13 @@ import grpc
 from protocol.seo import seo_service_pb2_grpc
 from protocol.seo import data_pb2
 
-# url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
-url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+#url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
 database = "content"
 myclient = pymongo.MongoClient(url)
 table_service = myclient[database]['shop_service']
 table_shop = myclient[database]['shop']
-channel = grpc.insecure_channel("localhost:9009")
+channel = grpc.insecure_channel("seo:9000")
 service_map = {}
 country = "TR"
 

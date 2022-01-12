@@ -57,7 +57,7 @@ class dishes():
         con = grpc.insecure_channel(rpc_url_seo)
         server = seo_service_pb2_grpc.SeoServiceStub(con)
         # for shop_id in dishes_config.shop_ids:
-        for shop in self.table_shop.find({'shop_id': {'$in': {config.shop_ids}}, 'country': 'TR'},
+        for shop in self.table_shop.find({'shop_id': {'$in': config.shop_ids}, 'country': 'TR'},
                                          {'tag': True, 'shop_id': True, '_id': False}):
             shop_dishes = []
             shop_names = set()

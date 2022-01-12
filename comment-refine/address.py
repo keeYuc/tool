@@ -1,5 +1,4 @@
 import os
-import grpc
 import time
 import random
 import config
@@ -7,8 +6,8 @@ import pymongo
 import threading
 from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 
-url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-# url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+#url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 database_c = "crawler"
 database_content = "content"
 
