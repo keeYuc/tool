@@ -28,8 +28,9 @@ def count_time(prefix):
 
 class ShopServer:
     def __init__(self):
-        url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-        # url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+        #url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
+        url = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
+        #url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
         database = "content"
         database_crawler = "crawler"
         myclient = pymongo.MongoClient(url)
@@ -38,7 +39,7 @@ class ShopServer:
         self.table_data_zom = myclient[database_crawler]['middleware_store_zomato']
         self.table_data_trip = myclient[database_crawler]['middleware_store_ta']
         self.table_service = myclient[database]['shop_service']
-        self.channel = grpc.insecure_channel("localhost:9009")
+        self.channel = grpc.insecure_channel("seo:9000")
         self.service_map = {}
         self.lock = threading.Lock()
         self.service = []
@@ -66,7 +67,7 @@ class ShopServer:
                 self.service_map[i['类型-土耳其语']] = {'service_id': service_id}
             if i['服务-土耳其语'] not in self.service_map.keys():
                 service_id = self.create_service(
-                    self.service_map[i['类型-英文']]['service_id'], i['服务-英文'], i['服务-土耳其语'])
+                    self.service_map[i['类型-土耳其语']]['service_id'], i['服务-英文'], i['服务-土耳其语'])
                 self.service_map[i['服务-土耳其语']] = {'service_id': service_id}
 
     def replace_service(self, arr: list):
@@ -81,8 +82,8 @@ class ShopServer:
         self.shop_ids = []
         self.shop_id_map = {}
         for i in self.table_shop_map.find(
-                {'merchant_shop_id': {'$in': config.shop_ids}}, {'':True,'crawler_shop_id': True, 'merchant_shop_id': True}):
-            self.shop_ids.append(i['crawler_shop_id'])
+                {'merchant_shop_id': {'$in': config.shop_ids}}, {'': True, 'crawler_shop_id': True, 'merchant_shop_id': True, 'platform': True}):
+            self.shop_ids.append([i['crawler_shop_id'], i['platform']])
             self.shop_id_map[i['crawler_shop_id']] = i['merchant_shop_id']
         print('load fin len :', len(self.shop_ids))
 
@@ -99,14 +100,14 @@ class ShopServer:
             if rs != 'nan':
                 list.append(rs)
 
-    def __do_import(self, crawler_shop_id):
+    def __do_import(self, crawler_shop_id, platform):
         self.lock.acquire()
         self.sum_shops += 1
         self.lock.release()
         service = []
-        data = self.table_data_trip.find_one(
-            {'id': crawler_shop_id}, {'original_detail': True, '_id': False})
-        if data != None:
+        if platform == 'tripadvisor':
+            data = self.table_data_trip.find_one(
+                {'id': crawler_shop_id}, {'original_detail': True, '_id': False})
             print('find in trip')
             org = data['original_detail']
             if type(org) == type(''):
@@ -118,7 +119,7 @@ class ShopServer:
                     self.reflect_service(i['tagValue'], service)
         else:
             data = self.table_data_zom.find_one(
-                {'id': crawler_shop_id, 'page_data': True, '_id': False})
+                {'id': crawler_shop_id}, {'page_data': True, '_id': False})
             if data != None:
                 print('find in zom')
                 for i in data['page_data']['sections']['SECTION_RES_DETAILS']['HIGHLIGHTS']['highlights']:
@@ -144,8 +145,8 @@ class ShopServer:
     def import_service(self):
         with ThreadPoolExecutor(max_workers=10) as t:
             wait_list = []
-            for crawler_shop_id in self.shop_ids:
-                wait_list.append(t.submit(self.__do_import, crawler_shop_id))
+            for item in self.shop_ids:
+                wait_list.append(t.submit(self.__do_import, item[0], item[1]))
             wait(wait_list, return_when=ALL_COMPLETED)
 
     def add_create_at(self, shop_id):
