@@ -29,8 +29,8 @@ def count_time(prefix):
 class ShopServer:
     def __init__(self):
         #url = 'mongodb://root:8DNsidknweoRGwSbWgDN@localhost:27019'
-        url = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
-        #url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+        #url = 'mongodb://root:8DNsidknweoRGwSbWgDN@mongo:27017'
+        url = 'mongodb://crawler:hha1layfqyx@gcp-docdb.cluster-cqwt9pwni8mm.ap-southeast-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
         database = "content"
         database_crawler = "crawler"
         myclient = pymongo.MongoClient(url)
