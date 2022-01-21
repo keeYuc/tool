@@ -1,0 +1,103 @@
+服务,中文,stores,一级,二级
+Masaya Servis,餐桌服务,3821,Yaygın,Masaya Servis
+Paket Yemek,外卖餐,1769,Yaygın,Paket Yemek
+Rezervasyonlar,预订,3400,Yaygın,Rezervasyonlar
+Açık Havada Oturma,户外座位,2713,Oturma,Açık Havada Oturma
+Oturma,坐,3768,Yaygın,Masaya Servis
+Cadde Üzerinde Park,在街上停车,848,Yaygın,Otopark Var
+Vale Otopark,代客泊车,669,Yaygın,Otopark Var
+Ücretsiz Yol Üstü Olmayan Park Yeri,免费街边停车,462,Yaygın,Otopark Var
+Televizyon,电视,727,Servisi,Televizyon
+Bebek Sandalyesi Var,婴儿椅 是,1769,Servisi,Bebek Sandalyesi
+Tekerlekli Sandalye İle Erişim,轮椅通道,2098,Servisi,Tekerlekli Sandalye İle Erişim
+Alkol Var,可用酒精,1801,Gıda,Alkol servisi
+Tüm İçkiler,所有饮品,1127,Gıda,Tüm İçkiler
+Şarap ve Bira,葡萄酒和啤酒,748,Gıda,Şarap ve Bira
+Dijital Ödemeler,数字支付,581,Yaygın,Dijital Ödemeler
+Ücretsiz Wifi,免费WiFi,2048,Yaygın,Ücretsiz Wifi
+American Express Kabul Ediliyor,接受美国运通,394,Yaygın,Kredi Kartı Geçerli
+Mastercard Kabul Ediliyor,接受万事达卡,699,Yaygın,Kredi Kartı Geçerli
+Visa Kabul Ediliyor,接受签证,715,Yaygın,Kredi Kartı Geçerli
+Sadece Nakit,现金支付,234,Ödeme,Sadece Nakit
+Kredi Kartı Geçerli,信用卡有效,2068,Yaygın,Kredi Kartı Geçerli
+Otopark Var,可停车,1117,Yaygın,Otopark Var
+Dışarı Yemek Servisi,送餐服务,1041,Yaygın,Dışarı Yemek Servisi
+Özel Yemek,特别餐,502,,
+Köpek Dostu,狗友好,277,Servisi,Köpek Dostu
+Aile tarzı,家庭风格,575,Gıda,Aile tarzı
+İndirimli Park Hizmeti,优惠停车服务,230,Yaygın,Otopark Var
+Discover Kabul Ediliyor,发现接受,86,,
+Oyun alanları,游乐场,119,Servisi,Oyun alanları
+Arabaya Servis,汽车服务,100,Yaygın,Otopark Var
+Sigara içilmeyen restoranlar,禁烟餐厅,156,Yaygın,Sigara içilmeyen restoranlar
+Canlı Müzik,现场音乐,216,Servisi,Canlı Müzik
+Açık Büfe,开放式自助餐,191,Gıda,Açık Büfe
+Su Kıyısında,由海滨,76,Oturma,Su Kıyısında
+Caz Barı,爵士酒吧,31,,
+Kendi İçkini Kendin Getir,自带饮料,27,,
+Hediye Kartıyla Yemek,使用礼品卡用餐,54,Ödeme,Hediye Kartıyla Yemek
+Spor karşılaşmalarının izlenebildiği barlar,可以观看体育赛事的酒吧,31,,
+Plaj,海滩,21,Oturma,Su Kıyısında
+Teras,阳台,636,Oturma,Açık Havada Oturma
+Rezervasyon önerilir,建议预订,3773,Yaygın,Rezervasyonlar
+Sigara İçme Alanı,吸烟区,6497,Yaygın,Sigara içmek
+Grup Yemeği,团体晚餐,352,Servisi,Grup Yemeği
+Wifi,无线上网,10764,Yaygın,Ücretsiz Wifi
+İç Mekan,室内的,19206,Oturma,Kapalı Oturma
+Fasıl,章节,172,,
+Boğaz Manzarası,博斯普鲁斯海峡景观,172,Oturma,Su Kıyısında
+Vale Mevcut,可代客泊车,760,Yaygın,Otopark Var
+Dış Mekan,户外的,15881,Oturma,Açık Havada Oturma
+Deniz Kenarı,海滨,1002,Oturma,Su Kıyısında
+Lüks Yemek,豪华餐饮,309,,
+Şarap,葡萄酒,71,Gıda,Alkol servisi
+Kahvaltı,早餐,8108,Gıda,Sabah kahvaltısı
+Çocuklar için Uygun,适合儿童,1220,Servisi,Çocuklar için Uygun
+Mescit,清真寺,89,Gıda,Mescit
+Çalışmak İçin Uygun,适合工作,83,,
+İş Yemeği İçin Uygun,适合商务午餐,331,Gıda,Öğle yemeği
+Evcil Hayvan Dostu,宠物友好,989,Servisi,Köpek Dostu
+Glutensiz,不含麸质,189,,
+Tatlı ve Pasta,甜点和蛋糕,3092,Gıda,Tatlı ve Pastalar
+Özel Otopark,私人停车场,469,Yaygın,Otopark Var
+Nargile,纳吉尔,903,Servisi,Nargile
+Gel-Al,过来拿,8007,Yaygın,Paket Yemek
+Rakı,拉基,670,Gıda,Rakı
+Masa rezervasyonu zorunlu,需要预订餐桌,103,Yaygın,Rezervasyonlar
+Maç Yayını,比赛转播,474,Servisi,Televizyon
+Paket Servis,带走,9452,Yaygın,Paket Yemek
+Öğlen Menüsü,午餐菜单,249,Gıda,Öğle yemeği
+Şehir Manzarası,城市景观,175,,
+Vegan Seçenekler Mevcut,提供素食选项,412,Gıda,saf sebze
+VIP Yemek Salonu Mevcut,有贵宾餐厅,29,,
+Vejetaryen Dostu,适合素食主义者,194,Gıda,saf sebze
+Çocuk Alanı,儿童区,50,Servisi,Çocuklar için Uygun
+Kokteyl servisi mevcut,提供鸡尾酒服务,198,Gıda,Alkol servisi
+Gece Hayatı,夜生活,1799,,
+Sports Bar,体育酒吧,34,Gıda,Alkol servisi
+Organik Yemek,有机食品,92,Servisi,Gece Hayatı
+Sadece Paket Servis,仅限外卖,236,Yaygın,Paket Yemek
+Self Servis,自助服务,395,Servisi,Self Servis
+Masa Oyunları,桌上游戏,266,Servisi,Masa Oyunları
+Sadece Gel Al,来吧,182,,
+Kısıtlı Giriş,禁止进入,58,,
+Romantik Yemek,浪漫的晚餐,118,Servisi,Romantik Yemek
+Canlı Eğlence,现场娱乐,36,Servisi,Canlı Müzik
+Club,俱乐部,13,,
+Ücretli Otopark,付费停车,42,Yaygın,Otopark Var
+Brunch,早午餐,42,Gıda,Sabah kahvaltısı
+Karaoke,卡拉OK,65,,
+Engelli Dostu,残疾人友好,114,Servisi,Tekerlekli Sandalye İle Erişim
+Mobil Şarj Aleti Mevcut,提供移动充电器,32,Servisi,Mobil Şarj Aleti Mevcut
+Alkol Servisi Var,提供酒水服务,872,Gıda,Alkol servisi
+Ünlülerin Uğrak Yeri,名人常去的地方,4,,
+Gizli Bar,畅所欲言,1,,
+Bira,啤酒,52,Gıda,Şarap ve Bira
+Dans Pisti,舞池,11,,
+Park Alanı Mevcut Değil,没有可用的停车区,22,,
+Balcony,阳台,10,Oturma,çatı katı
+Fal Cafe,假咖啡馆,46,,
+Kendin Pişir Kendin Ye,可自己做饭,6,,
+Ücretli giriş,付费入场,8,,
+Göl Kenarı,湖边,11,Oturma,Göl Kenarı
+Nehir Manzarası,河景,14,Oturma,Nehir Manzarası
